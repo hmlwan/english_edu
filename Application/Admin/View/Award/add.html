@@ -1,0 +1,297 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>获奖管理 - 添加获奖</h3>
+					<h5>获奖管理的添加、修改和删除</h5>
+				</div>
+			</div>
+		</div>
+		<form id="add_form" method="post" action="{:U('Award/add')}" enctype="multipart/form-data">
+			<input type="hidden" name="form_submit" value="ok" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="type_name"><em>*</em>奖项名称</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="name" name="award_name" class="input-txt" value="{$vo.award_name}">
+						<span class="err"></span>
+						<p class="notic">奖项名称不能为空且必须小于10个字</p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="type_name"><em>*</em>获奖对象</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="username"  name="username" class="input-txt" value="{$vo.username}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="type_name"><em>*</em>获奖时间</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="hello3" readonly name="award_time" class="input-txt" value="{$vo.award_time}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="award_rank"><em>*</em>奖项级别</label>
+					</dt>
+					<dd class="opt">
+						<select name="award_rank">
+							<option value="">--请选择--</option>
+							<option value="1">镇级</option>
+							<option value="2">区级</option>
+							<option value="3">市级</option>
+							<option value="4">国家级</option>
+							<option value="5">全球级</option>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="award_rank"><em>*</em>所属部门</label>
+					</dt>
+					<dd class="opt">
+						<select name="department">
+							<option value="">--请选择--</option>
+							<volist name="department_list" id='vo'>
+								<option value="{$vo.sort}">{$vo.department_name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="award_form"><em>*</em>获奖形式</label>
+					</dt>
+					<dd class="opt">
+						<select name="award_form">
+							<option value="">--请选择--</option>
+							<option value="1">教师个人</option>
+							<option value="2">教师团体</option>
+							<option value="3">学生个人</option>
+							<option value="4">学生团体</option>
+							<option value="5">学生荣誉</option>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="status"><em>*</em>负责教师</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<textarea name="teacher_charge" cols="50">{$vo.teacher_charge}</textarea>
+						</div>
+						<p class="notic">多个负责教师用(,)隔开</p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="status"><em>*</em>颁奖单位</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<textarea name="unit" cols="50">{$vo.unit}</textarea>
+						</div>
+						<p class="notic">多个颁奖单位用(,)隔开</p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit"><em>*</em>获奖证书上传</dt>
+					<dd class="opt" id="divComUploadContainer">
+						<div class="input-file-show">
+							<span class="type-file-box">
+								<input class="type-file-file" id="fileupload" name="fileupload" type="file" size="30" multiple hidefocus="true" title="">
+								<input type="text" id="text" class="type-file-text" />
+								<input type="button" name="button" id="button" value="选择上传..." class="type-file-button" />
+							</span>
+						</div>
+						<div id="thumbnails" class="ncap-thumb-list">
+							<h5><i class="fa fa-exclamation-circle"></i>上传后的图片可以插入到富文本编辑器中使用，无用附件请手动删除，如不处理系统会始终保存该附件图片。</h5>
+							<div class="drop_img">
+								<volist name='carousel_img' id="img_row">
+									<div id="20160317100346{$key}">
+										<input type="hidden" name="carousel_img[][path]" value="{$img_row.path}">
+										<div class="thumb-list-pics"><a href="javascript:void(0);"><img src="{$img_row.path}" alt=""></a></div>
+										<a href="javascript:del_file_upload(0,20160317100346{$key},'{$img_row.path}');" class="del" title="删除">X</a>
+										<!--<a href="javascript:insert_editor('{$img_row.path}');" class="inset"><i class="fa fa-clipboard"></i>插入图片</a>-->
+									</div>
+								</volist>
+							</div>
+						</div>
+					</dd>
+				</dl>
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<link rel="stylesheet" href="__COMMON__/plugin/drop-img/jquery.dad.css" />
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" /></head>
+	<js href="__COMMON__/plugin/laydate/laydate.js" />
+	<js href="__COMMON__/plugin/layer/layer.js" />
+
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+
+	<js href="__COMMON__/jquery-ui/jquery.ui.widget.js" />
+	<js href="__COMMON__/js/jquery/jquery.fileupload.js" />
+	<js href="__COMMON__/js/jquery/jquery.nyroModal.js" />
+
+	<js href="__COMMON__/js/jquery/jquery.iframe-transport.js" />
+	<js href="__COMMON__/plugin/drop-img/jquery.dad.js" />
+
+	<script type="text/javascript">
+        var start = {
+            elem: '#start',
+            format: 'YYYY/MM/DD',
+            min: laydate.now(),
+            max: '2099-06-16', //最大日期
+            istime: true,
+            istoday: false,
+            choose: function(datas){
+                end.min = datas;
+                end.start = datas
+            }
+        };
+        var end = {
+            elem: '#end',
+            format: 'YYYY/MM/DD',
+            min:  laydate.now(),
+            max: '2099-06-16',
+            istime: true,
+            istody: false,
+            choose: function(datas){
+                start.max = datas;
+            }
+        }
+        laydate(start);
+        laydate(end);
+	</script>
+	<script>
+        laydate({
+            elem: '#hello3',
+            min: '1900-06-16', //-1代表昨天，-2代表前天，以此类推
+            max: laydate.now(), //+1代表明天，+2代表后天，以此类推
+        });
+	</script>
+
+
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+        $('.drop_img').dad({
+            draggable:'img'
+        });
+        // 图片上传
+        $('input[name="fileupload"]').each(function(){
+            $(this).fileupload({
+                dataType: 'json',
+                url: '{:U("upload_attachment")}',
+                done: function (e,json){
+                    var data = json.result;
+                    if(data.status==1){
+                        add_uploadedfile(data.data);
+                    }
+                }
+            });
+        });
+
+        function add_uploadedfile(data){
+
+            var newImg = '<li id="' + data.file_id + '"><input type="hidden" name="carousel_img[][path]" value="' + data.file_path  + '" /><div class="thumb-list-pics"><a href="javascript:void(0);"><img src="' + data.file_path  + '" alt=""/></a></div><a href="javascript:del_file_upload(0,' + data.file_id +',\'' + data.file_path  + '\');" class="del" title="删除">X</a><a href="javascript:insert_editor(\'' + data.file_path  + '\');" class="inset"><i class="fa fa-clipboard"></i>插入图片</a></li>';
+            $('#thumbnails > div').append(newImg);
+        }
+
+        function insert_editor(file_name){
+            KE.appendHtml('content', '<img src="'+ file_name + '">');
+        }
+
+//        function del_file_upload(aid,file_id,file_path){
+//         alert(222);
+//            return false;
+//            if(!window.confirm('您确定要删除吗?')){
+//                return;
+//            }
+//            var url = '{:U("Award/remove_attachment")}';
+//
+//			return false;
+//            var nid = '{$id}';
+//            $.getJSON(url, {'aid':aid,'nid':nid,'file_path':file_path},function(json){
+//                if(json.status==1){
+//                    $('#' + file_id).remove();
+//                }else{
+//                    alert('删除失败');
+//                }
+//            });
+//        }
+
+		//按钮先执行验证再提交表单
+		$("#submitBtn").click(function(){
+			if($("#add_form").valid()){
+			 var sub_data = $('#add_form').serialize();
+			 var response_url = $('#add_form').attr('action');
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					data: sub_data,
+					url: response_url,
+					success:function(json_data){
+					    if(json_data.ret == 1){
+                            layer.alert(json_data.msg);
+                            window.location.href = "{:U('index')}";
+						}else{
+                            layer.alert(json_data.msg);
+						}
+
+					}
+				});
+			}
+		});
+
+		$("#add_form").validate({
+			errorPlacement: function(error, element){
+				var error_td = element.parent('dd').children('span.err');
+				error_td.append(error);
+			},
+			rules : {
+				id 		: 	{required : true},
+				type_name	: 	{required : true},
+				sort		:	{required:true}
+			},
+			messages : {
+				id			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				type_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				sort	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+			}
+		});
+
+	});
+	</script>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+</html>

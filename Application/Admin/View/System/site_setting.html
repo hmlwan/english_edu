@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<css href="__COMMON__/jquery-ui/jquery-ui.min.css" />
+<css href="__THEME__/css/index.css" />
+<css href="__THEME__/font/font-awesome.min.css" />
+<css href="__COMMON__/css/perfect-scrollbar.min.css" />
+<style>html, body { overflow: visible;}</style>
+<script>
+
+var ADMIN_TEMPLATES_URL = '__THEME__';
+var LOADING_IMAGE = "__THEME__/images/loading.gif";
+var ADMIN_RESOURCE_URL = '__THEME__';
+</script>
+<js href="__COMMON__/js/jquery/jquery.js" />
+<js href="__COMMON__/jquery-ui/jquery-ui.min.js" />
+<js href="__COMMON__/jquery-ui/zh-CN.js" />
+<js href="__THEME__/js/admin.js" />
+<script src="__THEME__/dialog/dialog.js" id="dialog_js"></script>
+<js href="__THEME__/js/flexigrid.js" />
+<js href="__COMMON__/js/jquery/jquery.validation.min.js" />
+<js href="__THEME__/js/common.js" />
+<js href="__COMMON__/js/perfect-scrollbar.min.js" />
+<js href="__COMMON__/js/jquery/jquery.mousewheel.js" />
+
+</head>
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<div class="subject">
+					<h3>{$subject}</h3>
+					<h5>个人的基本详细信息</h5>
+				</div>
+			</div>
+		</div>
+		<!-- 操作说明 -->
+		<div class="explanation" id="explanation">
+			<div class="title" id="checkZoom">
+				<i class="fa fa-lightbulb-o"></i>
+				<h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+				<span id="explanationZoom" title="收起提示"></span> 
+			</div>
+			<ul>
+				<li>个人基本信息包括个人资料，班级信息等。</li>
+			</ul>
+		</div>
+		<if condition="$role_list['role_id'] eq 2">
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>账号名称</label>
+					</dt>
+					<dd class="opt">
+						{$vo.admin_name}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>角色</label>
+					</dt>
+					<dd class="opt">
+						{$vo._role_name}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>年级</label>
+					</dt>
+					<dd class="opt">
+						{$vo._grate_name}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>班级</label>
+					</dt>
+					<dd class="opt">
+						{$vo._class_name}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>最后登录时间</label>
+					</dt>
+					<dd class="opt">
+						{$vo.last_login_time|date="Y-m-d H:i:s",###}
+						<span class="err"></span>
+					</dd>
+				</dl>
+			</div>
+
+		<elseif condition="$role_list['role_id'] eq 7" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>账号名称</label>
+					</dt>
+					<dd class="opt">
+						{$vo.admin_name}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>角色</label>
+					</dt>
+					<dd class="opt">
+						{$vo._role_name}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>年级班级</label>
+					</dt>
+					<dd class="opt">
+						{$vo.classmate}
+						<span class="err"></span>
+					</dd>
+				</dl>
+			  	<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>负责科目</label>
+					</dt>
+					<dd class="opt">
+						{$vo.discipline}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>主管部门</label>
+					</dt>
+					<dd class="opt">
+						<if condition="$vo['department']">
+							{$vo.department}
+						<else />
+							无
+						</if>
+
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>最好登录时间</label>
+					</dt>
+					<dd class="opt">
+						{$vo.last_login_time|date="Y-m-d H:i:s"}
+						<span class="err"></span>
+					</dd>
+				</dl>
+			</div>
+		<else />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>账号名称</label>
+					</dt>
+					<dd class="opt">
+						{$vo.admin_name}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>角色</label>
+					</dt>
+					<dd class="opt">
+						{$vo._role_name}
+						<span class="err"></span>
+					</dd>
+				</dl>
+			</div>
+		</if>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		
+	});
+	</script> 
+	<div id="goTop"> 
+		<a href="JavaScript:void(0);" id="btntop">
+			<i class="fa fa-angle-up"></i>
+		</a>
+		<a href="JavaScript:void(0);" id="btnbottom">
+			<i class="fa fa-angle-down"></i>
+		</a>
+	</div>
+</body>
+</html>

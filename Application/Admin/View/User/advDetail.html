@@ -1,0 +1,178 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>顾问 - 顾问详情</h3>
+					<h5>顾问审核验证</h5>
+				</div>
+			</div>
+		</div>
+
+		<form id="add_form" method="post" action="{:U('User/detail')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type='hidden' name='id' value='{$vo.id}'/>
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>真实姓名</label>
+					</dt>
+					<dd class="opt">
+						{$vo.real_name}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>身份证号码</label>
+					</dt>
+					<dd class="opt">
+						{$vo.card_code}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>店铺电话</label>
+					</dt>
+					<dd class="opt">
+						{$vo.shop_phone}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>地址信息</label>
+					</dt>
+					<dd class="opt">
+						{$vo.area}{$vo.address}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="file_pic"><em>*</em>身份证照片</label>
+					</dt>
+					<dd class="opt" style='height:auto'>
+						<volist name="vo['card_pic']" id="v">
+							<div class="input-file-show" >
+								<a href="{$v}" target="_blank"><img  src="{$v}" width="150px"  height='150px' style=''/></a>
+							</div>
+						</volist>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="file_pic"><em>*</em>案例照片</label>
+					</dt>
+					<dd class="opt" style='	height:auto'>
+						<volist name="vo['case_pic']" id="v1">
+							<div class="input-file-show" >
+								<a href="{$v1}" target="_blank"><img  src="{$v1}" width="150px"  height='150px' style=''/></a>
+							</div>
+						</volist>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sort"><em>*</em>介绍</label>
+					</dt>
+					<dd class="opt">
+						{$vo.indroduce}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sort"><em>*</em>顾问审核</label>
+					</dt>
+					<dd class="opt"></dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">审核结果：</dt>
+					<switch name="vo['status']">
+						<case value="1"><dd class="opt">审核成功</dd></case>
+						<case value="2"><dd class="opt">待审核</dd>
+							<dd class="opt">
+							<select name="vo['notpass_val']" id="notpass">
+								<option value="">--请选择--</option>
+								<volist name="vo['notpass_val']" id="vo1">
+									<option value='{$vo1.id}'>{$vo1.notpassRes}</option>
+								</volist>
+							</select>
+								<input type="text" name="contents" id="contents" class="input-txt" style="display:none" value="">
+							</dd>
+						</case>
+						<case value="3"><dd class="opt">审核失败</dd>
+							<dd class="opt">
+								<select name="vo['notpass_val']" id="notpass">
+									<option value="">--请选择--</option>
+									<volist name="vo['notpass_val']" id="vo1">
+										<option value='{$vo1.id}' <if condition="$resInfo['key'] eq $vo1['id']">selected</if>>{$vo1.notpassRes}</option>
+									</volist>
+								</select>
+								<if condition="$resInfo['key'] eq 5">
+									<input type="text" name="contents" id="contents" class="input-txt" style="display:inline-block" value="{$resInfo.contents}">
+									<else />
+									<input type="text" name="contents" id="contents" class="input-txt" style="display:none" value="">
+								</if>
+							</dd>
+						</case>
+					</switch>
+				</dl>
+				<if condition="$vo['status'] neq 1">
+					<div class="bot"><a href="javascript:void(0)" data-adv="{$vo.adviser_id}" class="ncap-btn-big ncap-btn-green" id="submitBtn">审核</a></div>
+				</if>
+			</div>
+	</form>
+		<script>
+			$(function(){
+				$('#submitBtn').click(function(){
+					var result_val = $("#notpass option:selected").val();
+					var adv_id = $(this).attr('data-adv');
+					if(result_val == 5){
+						var result1 = $('input[name=contents]').val();
+						var result = "审核失败！" + result1;
+					}else{
+						var result = $("#notpass option:selected").text();
+					}
+					var data_res = {'adviser_id':adv_id,'result':result,'result_val':result_val};
+					var response_url = "{:U('User/check')}";
+					$.ajax({
+						url:response_url,
+						dataType:"json",
+						type:'POST',
+						data:data_res,
+						success:function(json_data){
+							if(json_data.code==1){
+//								$(".notpassres").html(json_data.data.result);
+								alert(json_data.msg);
+								window.location.href="{:U('User/adviser')}";
+							}else{
+								alert(json_data.msg);
+							}
+						}
+					})
+				});
+			});
+		</script>
+		<script>
+			$('#notpass').click(function(){
+				var res_val = $("#notpass option:selected").val();
+				if(res_val == 5){
+					$('#contents').show();
+				}else{
+					$('#contents').hide();
+				}
+			});
+
+		</script>
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+	</div>
+</body>

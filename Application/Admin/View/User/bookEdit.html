@@ -1,0 +1,142 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>任教管理 - 修改信息</h3>
+					<h5>任教管理的添加、修改和删除</h5>
+				</div>
+			</div>
+		</div>
+		<form id="add_form" method="post" action="{:U('bookEdit')}" enctype="multipart/form-data">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="type_name"><em>*</em>年级</label>
+					</dt>
+					<dd class="opt">
+						<select name="grate_id" >
+							<option value="">--请选择--</option>
+							<volist name="grate_list" id="g_val">
+								<option value="{$g_val.sort}" <if condition="$vo['grate_id'] eq $g_val['sort']">selected</if>>{$g_val.grate_name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="type_name"><em>*</em>班级</label>
+					</dt>
+					<dd class="opt">
+						<select name="class_id" >
+							<option value="">--请选择--</option>
+							<volist name="class_list" id="c_val">
+								<option value="{$c_val.sort}" <if condition="$vo['class_id'] eq $c_val['sort']">selected</if>>{$c_val.class_name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic">选择班级之前需先选择年级</p>
+					</dd>
+				</dl>
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<link rel="stylesheet" href="__COMMON__/plugin/drop-img/jquery.dad.css" />
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" /></head>
+	<js href="__COMMON__/plugin/laydate/laydate.js" />
+	<js href="__COMMON__/plugin/layer/layer.js" />
+
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+
+	<js href="__COMMON__/jquery-ui/jquery.ui.widget.js" />
+	<js href="__COMMON__/js/jquery/jquery.fileupload.js" />
+	<js href="__COMMON__/js/jquery/jquery.nyroModal.js" />
+
+	<js href="__COMMON__/js/jquery/jquery.iframe-transport.js" />
+	<js href="__COMMON__/plugin/drop-img/jquery.dad.js" />
+
+	<script type="text/javascript">
+
+		$(function(){
+			$("select[name='grate_id']").change(function(){
+				 var _self = $(this);
+				 var sort = _self.val();
+				 console.log(sort);
+				if(sort > 0 ){
+				    var url = "{:U('getclass')}";
+				    var sub_data = {grate_id:sort};
+					$.post(url,sub_data,function (data) {
+                        console.log(data.length);
+                        $("select[name='class_id']").empty();
+                        $("select[name='class_id']").append("<option value=''>--请选择--</option>");
+						if(data.length > 0){
+                            for(var i=0;i<data.length;i++){
+                                $("select[name='class_id']").append("<option value='"+data[i]['sort']+"'>"+data[i]['class_name']+"</option>");
+							}
+						}
+                    });
+				}else{
+                    $("select[name='class_id']").val('--请选择--');
+				}
+			})
+		});
+
+			//按钮先执行验证再提交表单
+			$("#submitBtn").click(function(){
+				if($("#add_form").valid()){
+				 var sub_data = $('#add_form').serialize();
+				 var response_url = $('#add_form').attr('action');
+					$.ajax({
+						type: 'POST',
+						dataType: 'json',
+						data: sub_data,
+						url: response_url,
+						success:function(json_data){
+							if(json_data.ret == 1){
+								layer.alert(json_data.msg,function(){
+									window.location.href= "{:U('teacher')}";
+								});
+
+							}else{
+								layer.alert(json_data.msg);
+							}
+
+						}
+					});
+				}
+			});
+
+			$("#add_form").validate({
+				errorPlacement: function(error, element){
+					var error_td = element.parent('dd').children('span.err');
+					error_td.append(error);
+				},
+				rules : {
+					id 		: 	{required : true},
+					type_name	: 	{required : true},
+					sort		:	{required:true}
+				},
+				messages : {
+					id			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+					type_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+					sort	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+				}
+			});
+	</script>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<form id="modifyPwd_form" method="post" action="{:U('User/modifyPwd')}">
+    <div class="ncap-form-default">
+        <input type="hidden" name="admin" value="luokun">
+        <dl class="row">
+            <dt class="tit">
+                <label for="pid"><em>*</em></label>
+            </dt>
+            <dd class="opt" >
+                <input type="text" name="oldpassword" id="oldpassword" value="" placeholder="旧密码" required style="width: 94%;font-size: 16px;padding:10px 4px;border-radius: 7px;">
+                <span class="err"></span>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label for="pid"><em>*</em></label>
+            </dt>
+            <dd class="opt">
+                <input type="text" name="newpassword" id="newpassword"  placeholder="新密码" value="" required style="width: 94%;font-size: 16px;padding:10px 4px;border-radius: 7px;">
+                <span class="err"></span>
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="tit">
+                <label for="pid"><em>*</em></label>
+            </dt>
+            <dd class="opt">
+                <input type="text" name="repassword" id="repassword" placeholder="确认密码" value="" required style="width: 94%;font-size: 16px;padding:10px 4px;border-radius: 7px;">
+                 <span class="err"></span>
+            </dd>
+        </dl>        
+       <div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn" style="width:66%;border-radius: 20px;padding: 8px 19px;font-size: 19px;">确认修改</a>
+        <!--   <div class="bot"><input class="ncap-btn-big ncap-btn-green" id="submitBtn" type="submit" value="确认提交"></div>-->
+        </div>
+        </div>
+     <div class="close-btn" style="text-align:center; font-size: 16px;cursor:pointer;" >取消</div>
+</form>
+<js href="__COMMON__/js/jquery/jquery.validation.min.js" />
+<script type="text/javascript">
+    $(function(){
+        $('#modifyPwd_form').validate({
+            errorPlacement: function(error,element){
+                var error_td = element.parent('dd').children('span.err');
+                error_td.append(error);
+            },
+            /*submitHandler:function(form) {
+                var sub_data = $('#modifyPwd_form').serialize();
+                var response_url = $('#modifyPwd_form').attr('action');
+
+                $.ajax({
+                    type: "POST",
+                    dataType: 'json',
+                    url: response_url,
+                    data: sub_data,
+                    success: function (json_data) {
+//                        alert(json_data.msg);
+                        if(json_data.ret==1){
+                            layer.msg(json_data.msg, {
+                                icon: 1,
+                                time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                            }, function(){
+                                layer.closeAll();
+                                $(".manager-menu").slideUp('slow');
+                            });
+                        }else{
+                            layer.msg(json_data.msg, {
+                                icon: 2,
+                                time: 5000 //2秒关闭（如果不配置，默认是3秒）
+                            });
+                        }
+                    }
+                })
+            },*/
+
+            rules: {
+                oldpassword:{
+                    required:true,
+                },
+                newpassword:{
+                    required:true,
+                    minlength:6
+                },
+                repassword:{
+                    required:true,
+                    minlength:6,
+                    equalTo:"#newpassword"
+                }
+            },
+            messages: {
+                oldpassword:{
+                    required:'<i class="fa fa-exclamation-circle"></i>请输入原密码',
+                    minlength:'<i class="fa fa-exclamation-circle"></i>密码不能少于6个字符'
+                },
+                newpassword:{
+                    required:'<i class="fa fa-exclamation-circle"></i>请输入新密码',
+                    minlength:'<i class="fa fa-exclamation-circle"></i>密码不能少于6个字符'
+                },
+                repassword:{
+                    required:'<i class="fa fa-exclamation-circle"></i>请输入确认密码',
+                    minlength:'<i class="fa fa-exclamation-circle"></i>密码不能少于6个字符',
+                    equalTo: '<i class="fa fa-exclamation-circle"></i>请再次输入相同的密码'
+                }
+            }
+        });
+    });
+</script>

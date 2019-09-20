@@ -1,0 +1,85 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<div class="subject">
+					<h3>清理缓存</h3>
+					<h5>清理缓存 --- 详情</h5>
+
+				</div>
+			</div>
+		</div>
+		<div class="explanation" id="explanation">
+			<div class="title" id="checkZoom">
+				<i class="fa fa-lightbulb-o"></i>
+				<h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+				<span id="explanationZoom" title="收起提示"></span>
+			</div>
+			<ul>
+				<li>选择清理缓存会把Cache文件中的后台和前台数据清理掉。</li>
+				<li>选择清理数据会把Data文件中的数据清理掉。</li>
+				<li>选择清理日志会把Logs文件中的日志文件清理掉。</li>
+				<li>选择清理临时文件会把Temp文件中的暂时存放的文件清理掉。</li>
+				<li>全选会一键把所有的文件都清理掉。</li>
+			</ul>
+		</div>
+	<table border="0" cellpadding="2" cellspacing="1" style="width:100%">
+		<div class="ncap-form-default">
+			<dd class="opt" nowrap align="center">
+					<input type="checkbox" name="Cache" class="cache" value="Cache"/>清理缓存
+					<input type="checkbox" name="Data" class="cache" value="Data"/>清理数据
+					<input type="checkbox" name="Logs" class="cache" value="Logs"/>清理日志
+					<input type="checkbox" name="Temp" class="cache" value="Temp"/>清理临时文件
+					<input type="checkbox" name="allcheck"  id="allcheck" value=""/>全选/反选
+				<dt><span id="mess"></span></dt>
+			</dd>
+			<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">一键清理</a></div>
+		</div>
+    </table>
+	</div>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+
+<script type="text/javascript">
+	$(function(){
+		$('#allcheck').click(function(){
+			if($(this).attr('checked')){
+				$('.cache').attr("checked",true);
+			}else{
+				$('.cache').attr("checked",false);
+			}
+		});
+	});
+	$(function(){
+		$('#submitBtn').click(function(){
+			var val = $('.cache').serialize();
+			if(val){
+				if(confirm('确定要清理吗？')) {
+					var response_url = "{:U('System/cache')}";
+					$.ajax({
+						type: "POST",
+						dataType: 'json',
+						data: val,
+						url: response_url,
+						success: function (json_data) {
+							if (json_data.ret == 1) {
+								$('#mess').html(json_data.msg);
+								layer.msg(json_data.msg);
+							}else {
+								$('#mess').html(json_data.msg);
+								layer.msg(json_data.msg);
+							}
+						}
+					});
+				}
+			}else{
+				layer.msg('请先选择清理文件！');
+			}
+		});
+	});
+</script>

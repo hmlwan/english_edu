@@ -1,0 +1,110 @@
+	<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>年级管理 - 修改信息</h3>
+					<h5>年级管理的添加、修改和删除</h5>
+				</div>
+			</div>
+		</div>
+		<form id="add_form" method="post" action="{:U('Grate/edit')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="type_name"><em>*</em>年级名称</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="name" name="grate_name" class="input-txt" value="{$vo.grate_name}">
+						<span class="err"></span>
+						<p class="notic">年级名称不能为空且必须小于10个字</p>
+					</dd>
+				</dl>
+
+				<dl class="row">
+					<dt class="tit">
+						<label for="status"><em>*</em>状态</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<label class="cb-enable selected" for="status1">启用</label>
+							<label class="cb-disable" for="status0">禁用</label>
+							<input type="radio" value="1" name="status" id="status1">
+							<input type="radio" value="0" name="status" id="status0">
+						</div>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sort"><em>*</em>排序</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="sort" name="sort" class="w60" value='{$vo.sort}'>
+						<span class="err"></span>
+						<p class="notic">数字范围为0~255，数字越大越靠前。</p>
+					</dd>
+				</dl>
+				
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+
+	<js href="__COMMON__/jquery-ui/jquery.ui.widget.js" />
+	<js href="__COMMON__/js/jquery/jquery.fileupload.js" />
+	<js href="__COMMON__/js/jquery/jquery.nyroModal.js" />
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		//按钮先执行验证再提交表单
+		$("#submitBtn").click(function(){
+			if($("#add_form").valid()){
+			 var sub_data = $('#add_form').serialize();
+			 var response_url = $('#add_form').attr('action');
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					data: sub_data,
+					url: response_url,
+					success:function(json_data){
+						alert(json_data.info);
+						window.location.href="{:U('Grate/index')}";
+					}
+				});
+			}
+		})
+
+		$("#add_form").validate({
+			errorPlacement: function(error, element){
+				var error_td = element.parent('dd').children('span.err');
+				error_td.append(error);
+			},
+			rules : {
+				id 		: 	{required : true},
+				type_name	: 	{required : true},
+				sort		:	{required:true}
+			},
+			messages : {
+				id			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				type_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				sort	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+			}
+		});
+
+	});
+	</script>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+</html>

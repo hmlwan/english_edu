@@ -1,0 +1,125 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<div class="subject">
+					<h3>系统设置</h3>
+					<h5>系统设置 --- 详情</h5>
+
+				</div>
+			</div>
+		</div>
+		<div class="explanation" id="explanation">
+			<div class="title" id="checkZoom">
+				<i class="fa fa-lightbulb-o"></i>
+				<h4 title="提示相关设置操作时应注意的要点">操作提示</h4>
+				<span id="explanationZoom" title="收起提示"></span>
+			</div>
+			<ul>
+				<li>分别选择微信，支付和短信设置进行设置。</li>
+			</ul>
+		</div>
+		<div class="item-bar">
+			<div class="item-title">
+				<div class="subject">
+					<span><a href="{:U('System/system',array('type'=>1))}">微信设置</a></span>
+					<span><a href="{:U('System/system',array('type'=>2))}">支付设置</a></span>
+					<span><a href="{:U('System/system',array('type'=>3))}">短信设置</a></span>
+				</div>
+			</div>
+		</div>
+		<form method="post" action="{:U('System/system')}" id="set_system" name="set_system">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="APPkey">APPkey</label>
+					</dt>
+					<dd class="opt">
+						<input id="APPkey" name="APPkey" value="{$vo.APPkey}" class="input-txt" type="text" />
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="APPsecret">APPsecret</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" class="input-txt"  name="APPsecret" id="APPsecret" value="{$vo.APPsecret}">
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="callback">callback</label>
+					</dt>
+					<dd class="opt">
+						<input id="callback" name="callback" value="{$vo.callback}" class="input-txt" type="text" />
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sort">排序</label>
+					</dt>
+					<dd class="opt">
+						<input id="sort" name="sort" value="{$vo.sort}" class="input-txt" type="text" />
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="type">类型</label>
+					</dt>
+					<dd class="opt">
+						<select name="type" id="type">
+							<if condition="$Think.get.type eq '1'">
+							<option value="1" >微信设置</option>
+							<elseif condition="$Think.get.type eq '2'"/>
+							<option value="2">支付设置</option>
+							<else />
+							<option value="3">短信设置</option>
+							</if>
+						</select>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#submitBtn").click(function(){
+			if($("#set_system").valid()){
+				$("#set_system").submit();
+			}
+		});
+		$("#set_system").validate({
+			errorPlacement: function (error, element) {
+				var error_td = element.parent('dd').children('p.notic');
+				error_td.append(error);
+			},
+			rules:{
+				APPkey:{required:true},
+				APPsecret:{required:true},
+				callback:{required:true},
+				sort:{required:true}
+			},
+			messages:{
+				APPkey:{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				APPsecret:{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				callback:{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				sort:{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+			}
+		});
+	});
+</script>
+

@@ -1,0 +1,124 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{$Think.session._JUMPURL_}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>{$subject}提现 - 查看详情</h3>
+					<h5>{$subject}提现管理详情</h5>
+				</div>
+			</div>
+		</div>
+		
+		
+		<form id="add_form" method="post" action="{:U('Acount/detail')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type='hidden' name='id' value='{$vo.id}'/>
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>用户名</label>
+					</dt>
+					<dd class="opt">
+						{$vo.username}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>金额</label>
+					</dt>
+					<dd class="opt">
+						{$vo.money}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>持卡人</label>
+					</dt>
+					<dd class="opt">
+						{$vo.cardholder}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>开户行</label>
+					</dt>
+					<dd class="opt">
+						{$vo.bank}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>银行卡号</label>
+					</dt>
+					<dd class="opt">
+						{$vo.card_no}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>更改提现状态</label>
+					</dt>
+
+					<dd class="opt">
+						<select name="withdraw_status">
+							<if condition="($Think.session.admin.role_id eq 1) AND  ($arr.status eq null) ">
+							<option value="1">财务（可提现）</option>
+								<elseif condition="($Think.session.admin.role_id eq 4) AND ($arr.status eq '2' )" />
+							<option value="2">经理（准许提现）</option>
+									<elseif condition="($Think.session.admin.role_id eq 1) AND ($arr.status eq '3')"/>
+							<option value="3">财务（打款）</option>
+							</if>
+						</select>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="pid"><em>*</em>备注</label>
+					</dt>
+					<dd class="opt">
+						<textarea name="note" rows="3" style="width:350px;height:80px;">{$arr.note}</textarea>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<div class="bot"><a href="javascript:void(0)" data-id="{$vo.id}" class="ncap-btn-big ncap-btn-green" id="submitBtn">确定</a></div>
+
+			</div>
+		</form>
+		 	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+			<script type="text/javascript">
+				$(function(){
+					$('#submitBtn').click(function(){
+						var id = $(this).attr('data-id');
+						var val = $("select[name=withdraw_status] option:selected").val();
+						var note = $("textarea[name=note]").val();
+						var sub_data = {'id':id,'val':val,'note':note};
+						var response_url = "{:U('Acount/ajax_withdraw')}";
+						$.ajax({
+							type : "POST",
+							dataType : "json",
+							url : response_url,
+							data :  sub_data,
+							success:function(json_data){
+								if(json_data.ret==1){
+									alert(json_data.msg);
+									window.location.href="{:U('Acount/index')}";
+								}else{
+									alert(json_data.msg);
+								}
+							}
+						});
+					});
+				});
+
+
+			</script>
+	</div>
+</body>

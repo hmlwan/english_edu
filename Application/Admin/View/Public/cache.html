@@ -1,0 +1,28 @@
+ <div class="page" id="clear_cache">
+	<table border="0" cellpadding="2" cellspacing="1" style="width:100%" >
+		<div class="ncap-form-default">
+			<dd class="opt" nowrap align="center">
+					<input type="checkbox" name="Cache" class="cache" value="Cache"/>清理缓存<br>
+					<input type="checkbox" name="Data" class="cache" value="Data"/>清理数据<br>
+					<input type="checkbox" name="Logs" class="cache" value="Logs"/>清理日志<br>
+					<input type="checkbox" name="Temp" class="cache" value="Temp"/>清理临时文件<br>
+					<input type="checkbox" name="allcheck"  id="allcheck" value=""/>全选/反选<br>
+				<dt><span id="mess"></span></dt>
+			<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submit_Btn">一键加速</a></div>
+			<div class="close_cache" style="text-align:center; font-size: 16px;cursor:pointer;" >取消</div>
+			</dd>
+		</div>
+    </table>
+ </div>
+
+<script type="text/javascript">
+	$(function(){
+		$('#allcheck').click(function(){
+			if($(this).attr('checked')){
+				$('.cache').attr("checked",true);
+			}else{
+				$('.cache').attr("checked",false);
+			}
+		});
+	});
+</script>

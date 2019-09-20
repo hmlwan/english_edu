@@ -1,0 +1,212 @@
+<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>用户 - 用户管理</h3>
+					<h5>用户详情</h5>
+				</div>
+			</div>
+		</div>
+
+		<form id="add_form" method="post" action="{:U('User/userDetail')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="birth"><em>*</em>用户名</label>
+					</dt>
+					<dd class="opt">
+						{$vo.username}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="birth"><em>*</em>电话</label>
+					</dt>
+					<dd class="opt">
+						{$vo.mobile}
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="birth"><em>*</em>生日</label>
+					</dt>
+					<dd class="opt">
+						<if condition="$vo['birth'] neq null">
+							{$vo.birth|date="Y-m-d",###}
+						</if>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="wechat"><em>*</em>微信号</label>
+					</dt>
+					<dd class="opt">
+						{$vo.wechat}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="`qq"><em>*</em>QQ</label>
+					</dt>
+					<dd class="opt">
+						{$vo.`qq}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="mail"><em>*</em>邮箱</label>
+					</dt>
+					<dd class="opt">
+						{$vo.mail}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sex"><em>*</em>性别</label>
+					</dt>
+					<dd class="opt">
+						<switch name="vo['sex']">
+							<case value="0">女</case>
+							<case value="1">男</case>
+							<case value="2">未知</case>
+						</switch>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="marriage"><em>*</em>是否已婚</label>
+					</dt>
+					<dd class="opt">
+						<switch name="vo['marriage']">
+							<case value="0">未婚</case>
+							<case value="1">已婚</case>
+							<case value="2">未知</case>
+						</switch>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="menu_name"><em>*</em>地址</label>
+					</dt>
+					<dd class="opt">
+						{$vo.area}{$vo.address}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="industry"><em>*</em>行业</label>
+					</dt>
+					<dd class="opt">
+						{$vo.industry}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="job"><em>*</em>职位</label>
+					</dt>
+					<dd class="opt">
+						{$vo.job}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="consumability"><em>*</em>消费能力</label>
+					</dt>
+					<dd class="opt">
+						{$vo.consumability}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="is_important"><em>*</em>是否是重要客户</label>
+					</dt>
+					<dd class="opt">
+						<switch name="vo['is_important']">
+							<case value="0">不是</case>
+							<case value="1">是</case>
+						</switch>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="tags"><em>*</em>客户标签</label>
+					</dt>
+					<dd class="opt">
+						{$vo.tags}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="life_pic"><em>*</em>生活照</label>
+					</dt>
+					<dd class="opt" style='height:260px'>
+						<volist name="vo['life_pic']" id="v">
+							<div class="input-file-show" >
+								<a href="{$v}" target="_blank"><img  src="{$v}" width="200px"  height='200px' style=''/></a>
+							</div>
+						</volist>
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="remark"><em>*</em>备注</label>
+					</dt>
+					<dd class="opt">
+						{$vo.remark}
+						<span class="err"></span>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="describe"><em>*</em>描述</label>
+					</dt>
+					<dd class="opt">
+						{$vo.describe}
+						<span class="err"></span>
+					</dd>
+				</dl>
+			</div>
+	</form>
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+	</div>
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+	<script>
+		var KE;
+		KindEditor.ready(function(K) {
+			KE = K.create("textarea[name='describe']", option);
+			KE.appendHtml = function(id,val) {
+				this.html(this.html() + val);
+				if (this.isCreated) {
+					var cmd = this.cmd;
+					cmd.range.selectNodeContents(cmd.doc.body).collapse(false);
+					cmd.select();
+				}
+				return this;
+			}
+		});
+	</script>
+
+
+</body>
