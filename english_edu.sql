@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : mysql
 Source Server Version : 50553
 Source Host           : localhost:3306
-Source Database       : school
+Source Database       : english_edu
 
 Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2017-12-27 21:50:18
+Date: 2019-10-12 17:06:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,19 +37,12 @@ CREATE TABLE `cx_admin` (
   `department_ids` text COMMENT '部门主管id（可以是多个）',
   PRIMARY KEY (`admin_id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员表';
 
 -- ----------------------------
 -- Records of cx_admin
 -- ----------------------------
-INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1514378639', '218', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
-INSERT INTO `cx_admin` VALUES ('3', '2', '127.0.0.1', 's1', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513841734', '1514378604', '2', '0', '', null, '2', '6', null);
-INSERT INTO `cx_admin` VALUES ('5', '2', '0.0.0.0', 's2', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513842141', null, '0', '0', '', null, '2', '8', null);
-INSERT INTO `cx_admin` VALUES ('7', '7', '127.0.0.1', 's3', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513848140', '1514374161', '1', '0', '', '15507966528', null, '8', '1,2');
-INSERT INTO `cx_admin` VALUES ('8', '7', '0.0.0.0', 's4', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513848403', null, '0', '0', '', '15507963171', null, '9', null);
-INSERT INTO `cx_admin` VALUES ('9', '7', '0.0.0.0', 's5', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513848403', null, '0', '0', '', '15507966528', null, '8', null);
-INSERT INTO `cx_admin` VALUES ('10', '7', '0.0.0.0', 's6', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513848600', null, '0', '0', '', '15507963171', null, '9', null);
-INSERT INTO `cx_admin` VALUES ('11', '7', '0.0.0.0', 's7', 'e10adc3949ba59abbe56e057f20f883e', '1', '1513848600', null, '0', '0', '', '15507966528', null, '8', null);
+INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1570784380', '221', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
 
 -- ----------------------------
 -- Table structure for `cx_admin_role`
@@ -61,14 +54,12 @@ CREATE TABLE `cx_admin_role` (
   `sort` tinyint(3) DEFAULT '0' COMMENT '排序',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否启用(0:是 1:否)',
   PRIMARY KEY (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台角色表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台角色表';
 
 -- ----------------------------
 -- Records of cx_admin_role
 -- ----------------------------
 INSERT INTO `cx_admin_role` VALUES ('1', '超级管理员', '100', '1');
-INSERT INTO `cx_admin_role` VALUES ('2', '学生', '0', '1');
-INSERT INTO `cx_admin_role` VALUES ('7', '教师', '0', '1');
 
 -- ----------------------------
 -- Table structure for `cx_area`
@@ -2212,33 +2203,6 @@ INSERT INTO `cx_auth` VALUES ('1', '109');
 INSERT INTO `cx_auth` VALUES ('1', '110');
 INSERT INTO `cx_auth` VALUES ('1', '111');
 INSERT INTO `cx_auth` VALUES ('1', '112');
-INSERT INTO `cx_auth` VALUES ('2', '1');
-INSERT INTO `cx_auth` VALUES ('2', '2');
-INSERT INTO `cx_auth` VALUES ('2', '3');
-INSERT INTO `cx_auth` VALUES ('2', '43');
-INSERT INTO `cx_auth` VALUES ('2', '54');
-INSERT INTO `cx_auth` VALUES ('2', '116');
-INSERT INTO `cx_auth` VALUES ('2', '117');
-INSERT INTO `cx_auth` VALUES ('7', '1');
-INSERT INTO `cx_auth` VALUES ('7', '2');
-INSERT INTO `cx_auth` VALUES ('7', '3');
-INSERT INTO `cx_auth` VALUES ('7', '4');
-INSERT INTO `cx_auth` VALUES ('7', '5');
-INSERT INTO `cx_auth` VALUES ('7', '6');
-INSERT INTO `cx_auth` VALUES ('7', '43');
-INSERT INTO `cx_auth` VALUES ('7', '50');
-INSERT INTO `cx_auth` VALUES ('7', '52');
-INSERT INTO `cx_auth` VALUES ('7', '54');
-INSERT INTO `cx_auth` VALUES ('7', '70');
-INSERT INTO `cx_auth` VALUES ('7', '71');
-INSERT INTO `cx_auth` VALUES ('7', '99');
-INSERT INTO `cx_auth` VALUES ('7', '100');
-INSERT INTO `cx_auth` VALUES ('7', '101');
-INSERT INTO `cx_auth` VALUES ('7', '114');
-INSERT INTO `cx_auth` VALUES ('7', '115');
-INSERT INTO `cx_auth` VALUES ('7', '116');
-INSERT INTO `cx_auth` VALUES ('7', '117');
-INSERT INTO `cx_auth` VALUES ('7', '118');
 
 -- ----------------------------
 -- Table structure for `cx_award`
@@ -2348,7 +2312,7 @@ CREATE TABLE `cx_discipline` (
 -- ----------------------------
 -- Records of cx_discipline
 -- ----------------------------
-INSERT INTO `cx_discipline` VALUES ('6', '数学', '2', '1', '8', '八年级');
+INSERT INTO `cx_discipline` VALUES ('6', '数学', '23', '1', '8', '八年级');
 INSERT INTO `cx_discipline` VALUES ('2', '数学', '2', '1', '9', null);
 INSERT INTO `cx_discipline` VALUES ('3', '语文', '1', '1', '6', null);
 INSERT INTO `cx_discipline` VALUES ('4', '语文', '1', '1', '8', '八年级');
@@ -2513,6 +2477,46 @@ CREATE TABLE `cx_logistics_data` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `cx_member`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_member`;
+CREATE TABLE `cx_member` (
+  `member_id` int(11) NOT NULL AUTO_INCREMENT,
+  `phone` int(11) DEFAULT NULL COMMENT '手机号码',
+  `nick_name` varchar(100) DEFAULT NULL COMMENT '昵称',
+  `head` varchar(250) DEFAULT NULL COMMENT '头像',
+  `mem_type` tinyint(4) DEFAULT NULL COMMENT '用户类型 1：学生 2：老师',
+  `reg_time` int(11) DEFAULT NULL COMMENT '注册时间',
+  `login_time` int(11) DEFAULT NULL COMMENT '登录时间',
+  `login_ip` varchar(50) DEFAULT NULL COMMENT '登录ip',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态1：开启0：禁止',
+  `is_vip` tinyint(4) DEFAULT NULL COMMENT '是否是vip 1:是 0：否',
+  `expire_time` int(11) DEFAULT NULL COMMENT '到期时间',
+  PRIMARY KEY (`member_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- ----------------------------
+-- Records of cx_member
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `cx_member_vip`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_member_vip`;
+CREATE TABLE `cx_member_vip` (
+  `vip_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mem_id` int(11) DEFAULT NULL,
+  `vip_type` tinyint(4) DEFAULT NULL COMMENT 'vip类型 1：年费 2：月费',
+  `expire_time` int(11) DEFAULT NULL COMMENT '到期时间',
+  `create_time` int(11) DEFAULT NULL COMMENT '开通时间',
+  PRIMARY KEY (`vip_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='用户vip记录';
+
+-- ----------------------------
+-- Records of cx_member_vip
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `cx_menu`
 -- ----------------------------
 DROP TABLE IF EXISTS `cx_menu`;
@@ -2554,7 +2558,7 @@ INSERT INTO `cx_menu` VALUES ('82', '用户反馈管理', '69', '1', 'User', 'us
 INSERT INTO `cx_menu` VALUES ('99', '用户管理', '52', '1', 'Member', 'index', '', '', '', '0', '0', '1');
 INSERT INTO `cx_menu` VALUES ('100', '学生信息', '99', '1', 'user', 'student', '', '', '', '0', '100', '1');
 INSERT INTO `cx_menu` VALUES ('101', '教师信息', '99', '1', 'user', 'teacher', '', '', '', '0', '100', '1');
-INSERT INTO `cx_menu` VALUES ('114', '年级管理', '70', '1', 'grate', 'index', '', '', '', '0', '4', '1');
+INSERT INTO `cx_menu` VALUES ('114', '年级管理', '70', '1', 'grate', 'index', '', '', '', '0', '42', '1');
 INSERT INTO `cx_menu` VALUES ('115', '学科管理', '70', '1', 'discipline', 'index', '', '', '', '0', '10', '1');
 INSERT INTO `cx_menu` VALUES ('116', '获奖管理', '43', '1', 'Award', 'index', '', '', '', '0', '4', '1');
 INSERT INTO `cx_menu` VALUES ('117', '获奖记录', '116', '1', 'Award', 'index', '', '', '', '0', '1', '1');
@@ -2646,6 +2650,43 @@ INSERT INTO `cx_news_category` VALUES ('13', '关于我们', '0');
 INSERT INTO `cx_news_category` VALUES ('14', '收入管理', '0');
 
 -- ----------------------------
+-- Table structure for `cx_subject_category`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_subject_category`;
+CREATE TABLE `cx_subject_category` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `subject_cate_name` varchar(50) DEFAULT NULL,
+  `replace_mark` varchar(100) DEFAULT NULL COMMENT '替代标志例如， 填空题用***代替',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
+  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cx_subject_category
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `cx_subject_task`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_subject_task`;
+CREATE TABLE `cx_subject_task` (
+  `subject_task_id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text,
+  `video_id` int(11) DEFAULT NULL COMMENT '视频id',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  `op_time` int(11) DEFAULT NULL COMMENT '操作时间',
+  `create_man` varchar(50) DEFAULT NULL COMMENT '创建人',
+  `op_man` varchar(50) DEFAULT NULL COMMENT '操作人',
+  PRIMARY KEY (`subject_task_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='题目表';
+
+-- ----------------------------
+-- Records of cx_subject_task
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `cx_system`
 -- ----------------------------
 DROP TABLE IF EXISTS `cx_system`;
@@ -2665,6 +2706,24 @@ CREATE TABLE `cx_system` (
 INSERT INTO `cx_system` VALUES ('1', '2', '2', '3', '3', '[{\"recharge_money\":\"1980\",\"recharge_days\":\"365\"},{\"recharge_money\":\"1\",\"recharge_days\":\"1\"}]');
 INSERT INTO `cx_system` VALUES ('2', '3', '3', '3', '1', null);
 INSERT INTO `cx_system` VALUES ('3', '4', '4', '4', '2', null);
+
+-- ----------------------------
+-- Table structure for `cx_teacher`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_teacher`;
+CREATE TABLE `cx_teacher` (
+  `teacher_id` int(11) NOT NULL AUTO_INCREMENT,
+  `grate_id` int(11) DEFAULT NULL COMMENT '所属年级',
+  `teacher_name` varchar(50) DEFAULT NULL COMMENT '教师名称',
+  `is_recomment` tinyint(4) DEFAULT '0' COMMENT '是否推荐 1：是 0：否',
+  `teacher_info` varchar(1024) DEFAULT NULL COMMENT '教师信息',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1开启0关闭',
+  PRIMARY KEY (`teacher_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教师表';
+
+-- ----------------------------
+-- Records of cx_teacher
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `cx_teacher_class`
@@ -2695,6 +2754,19 @@ INSERT INTO `cx_teacher_class` VALUES ('11', '11', '1', '8');
 INSERT INTO `cx_teacher_class` VALUES ('12', '11', '2', '8');
 
 -- ----------------------------
+-- Table structure for `cx_teacher_correct_task`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_teacher_correct_task`;
+CREATE TABLE `cx_teacher_correct_task` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='批改记录';
+
+-- ----------------------------
+-- Records of cx_teacher_correct_task
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `cx_teacher_discipline`
 -- ----------------------------
 DROP TABLE IF EXISTS `cx_teacher_discipline`;
@@ -2721,6 +2793,25 @@ INSERT INTO `cx_teacher_discipline` VALUES ('9', '10', '9', '1');
 INSERT INTO `cx_teacher_discipline` VALUES ('10', '10', '9', '2');
 INSERT INTO `cx_teacher_discipline` VALUES ('11', '11', '8', '1');
 INSERT INTO `cx_teacher_discipline` VALUES ('12', '11', '8', '2');
+
+-- ----------------------------
+-- Table structure for `cx_teaching_video`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_teaching_video`;
+CREATE TABLE `cx_teaching_video` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `teacher_id` int(11) DEFAULT NULL COMMENT '教师id',
+  `video_id` int(11) DEFAULT NULL COMMENT '视频id',
+  `subject_task_id` int(11) DEFAULT NULL COMMENT '作业id',
+  `create_time` int(11) DEFAULT NULL,
+  `create_man` varchar(50) DEFAULT NULL,
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教学视频';
+
+-- ----------------------------
+-- Records of cx_teaching_video
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `cx_theme`
@@ -2794,3 +2885,23 @@ CREATE TABLE `cx_user_feedback` (
 -- ----------------------------
 INSERT INTO `cx_user_feedback` VALUES ('1', '208', '46646446', '15037150825', '1477944548');
 INSERT INTO `cx_user_feedback` VALUES ('2', '218', '好像还是你很喜欢的好的好的几点能到', '18600678647', '1480909160');
+
+-- ----------------------------
+-- Table structure for `cx_video`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_video`;
+CREATE TABLE `cx_video` (
+  `video_id` int(11) NOT NULL AUTO_INCREMENT,
+  `video_name` varchar(100) DEFAULT NULL COMMENT '视频名称',
+  `video_url` varchar(200) DEFAULT NULL COMMENT '视频地址',
+  `status` tinyint(5) DEFAULT '1' COMMENT '状态 1：开启0:关闭',
+  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
+  `create_man` varchar(50) DEFAULT NULL,
+  `op_time` int(11) DEFAULT NULL,
+  `op_man` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`video_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教学视频表';
+
+-- ----------------------------
+-- Records of cx_video
+-- ----------------------------

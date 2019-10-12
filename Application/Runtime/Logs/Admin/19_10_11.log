@@ -1,0 +1,937 @@
+[ 2019-10-11T16:59:32+08:00 ] 127.0.0.1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T16:59:32+08:00 ] 127.0.0.1 /index.php/index/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T16:59:40+08:00 ] 127.0.0.1 /index.php/index/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0320s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `cx_admin` WHERE `admin_name` = 'admin' AND `admin_password` = 'e10adc3949ba59abbe56e057f20f883e' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE ( 1=1 AND role_id='1' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `cx_admin` SET `last_login_time`='1570784380',`last_login_ip`='127.0.0.1' WHERE `admin_id` = 1 [ RunTime:0.0220s ]
+SQL: UPDATE `cx_admin` SET `login_times`=login_times+1 WHERE `admin_id` = 1 [ RunTime:0.0130s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T16:59:41+08:00 ] 127.0.0.1 /index.php/index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0090s ]
+SQL: SELECT `admin_avatar` FROM `cx_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0300s ]
+SQL: SELECT * FROM `cx_menu` WHERE `type` = 1 AND `status` = 1 ORDER BY sort  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T16:59:41+08:00 ] 127.0.0.1 /index.php/index/index.html?act=common&op=ajax_pending_matters
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0080s ]
+SQL: SELECT `admin_avatar` FROM `cx_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_menu` WHERE `type` = 1 AND `status` = 1 ORDER BY sort  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T16:59:41+08:00 ] 127.0.0.1 /index.php?m=Admin&c=grate&a=index&menu_id=114&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Grate" and b.action_name="index" [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `cx_grate` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cx_grate` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `cx_grate` ORDER BY id desc LIMIT 0,8   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: back_htn_html D:\WWW\english_edu\Application\Runtime\Cache\Admin\1daf3a71da037ead2a662ca04c2ab6a3.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T16:59:44+08:00 ] 127.0.0.1 /index.php?m=Admin&c=user&a=student&menu_id=100&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="User" and b.action_name="student" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cx_admin` WHERE `role_id` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `cx_admin` WHERE `role_id` = 2 ORDER BY admin_id asc LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: back D:\WWW\english_edu\Application\Runtime\Cache\Admin\f3df5e1aa955f9faca86b36b220d689f.php 第 50 行.
+NOTIC: [8] Undefined variable: username D:\WWW\english_edu\Application\Runtime\Cache\Admin\f3df5e1aa955f9faca86b36b220d689f.php 第 67 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T16:59:45+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Award&a=index&menu_id=117&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Award" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_award` [ RunTime:0.0290s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_department` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `cx_department` ORDER BY sort asc  [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cx_award` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `cx_award` ORDER BY award_time desc LIMIT 0,15   [ RunTime:0.0000s ]
+SQL: SELECT `department_name` FROM `cx_department` WHERE `sort` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `department_name` FROM `cx_department` WHERE `sort` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `department_name` FROM `cx_department` WHERE `sort` = 2 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: back D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 50 行.
+NOTIC: [8] Undefined variable: award_name D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 67 行.
+NOTIC: [8] Undefined variable: is_pt D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 69 行.
+NOTIC: [8] Undefined variable: username D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 69 行.
+NOTIC: [8] Undefined variable: is_ids D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 73 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: start_time D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 79 行.
+NOTIC: [8] Undefined variable: end_time D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 81 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T16:59:45+08:00 ] 127.0.0.1 /index.php?m=Admin&c=System&a=site_setting&menu_id=3&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="System" and b.action_name="site_setting" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `role_name` FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T16:59:47+08:00 ] 127.0.0.1 /index.php?m=Admin&c=Award&a=index&menu_id=117&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Award" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_award` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_department` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_department` ORDER BY sort asc  [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `cx_award` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `cx_award` ORDER BY award_time desc LIMIT 0,15   [ RunTime:0.0010s ]
+SQL: SELECT `department_name` FROM `cx_department` WHERE `sort` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `department_name` FROM `cx_department` WHERE `sort` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `department_name` FROM `cx_department` WHERE `sort` = 2 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: back D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 50 行.
+NOTIC: [8] Undefined variable: award_name D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 67 行.
+NOTIC: [8] Undefined variable: is_pt D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 69 行.
+NOTIC: [8] Undefined variable: username D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 69 行.
+NOTIC: [8] Undefined variable: is_ids D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 73 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: de_id D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 75 行.
+NOTIC: [8] Undefined variable: start_time D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 79 行.
+NOTIC: [8] Undefined variable: end_time D:\WWW\english_edu\Application\Runtime\Cache\Admin\ade1665f5cb1d058455f0f51e0d2cd97.php 第 81 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:00:36+08:00 ] 127.0.0.1 /index.php?m=Admin&c=System&a=site_setting&menu_id=3&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="System" and b.action_name="site_setting" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_admin` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin` WHERE `admin_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `role_name` FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:20:03+08:00 ] 127.0.0.1 /index.php?m=Admin&c=menu&a=index&menu_id=4&
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0120s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 0 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:20:11+08:00 ] 127.0.0.1 /index.php/menu/index/pid/50/pname/%E4%B8%9A%E5%8A%A1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 50 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:20:17+08:00 ] 127.0.0.1 /index.php/menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0110s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:20:22+08:00 ] 127.0.0.1 /index.php/menu/index/pid/70/pname/Admin/menu/ajax_save_menu?branch=sort&id=114&value=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:20:36+08:00 ] 127.0.0.1 /index.php/menu/index/pid/70/pname/Admin/menu/ajax_save_menu?branch=sort&id=114&value=42
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:39:15+08:00 ] 127.0.0.1 /index.php/menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:41:20+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:45:54+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/Admin/menu/ajax_save_menu?branch=sort&id=114&value=45
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:46:57+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:46:58+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:47:01+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/Admin/menu/ajax_save_menu?branch=sort&id=114&value=42
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:56:02+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:56:02+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:56:05+08:00 ] 127.0.0.1 /Admin/menu/ajax_save_menu?branch=sort&id=114&value=42
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="ajax_save_menu" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: UPDATE `cx_menu` SET `sort`='42' WHERE `menu_id` = '114' [ RunTime:0.0230s ]
+
+[ 2019-10-11T17:56:10+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0110s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:56:12+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:57:36+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T17:57:36+08:00 ] 127.0.0.1 /favicon.ico
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2019-10-11T17:57:48+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2019-10-11T18:00:16+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T18:00:19+08:00 ] 127.0.0.1 /Admin/menu/ajax_save_menu?branch=menu_name&id=71&value=%E7%8F%AD%E7%BA%A7%E7%AE%A1%E7%90%862
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="ajax_save_menu" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: UPDATE `cx_menu` SET `menu_name`='班级管理2' WHERE `menu_id` = '71' [ RunTime:0.0330s ]
+
+[ 2019-10-11T18:00:40+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T18:00:41+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T18:00:42+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0110s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T18:00:44+08:00 ] 127.0.0.1 /Admin/menu/ajax_save_menu?branch=menu_name&id=71&value=%E7%8F%AD%E7%BA%A7%E7%AE%A1%E7%90%862
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="ajax_save_menu" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: UPDATE `cx_menu` SET `menu_name`='班级管理2' WHERE `menu_id` = '71' [ RunTime:0.0180s ]
+
+[ 2019-10-11T18:00:45+08:00 ] 127.0.0.1 /Admin/menu/ajax_save_menu?branch=menu_name&id=115&value=%E5%AD%A6%E7%A7%91%E7%AE%A1%E7%90%864
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="ajax_save_menu" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: UPDATE `cx_menu` SET `menu_name`='学科管理4' WHERE `menu_id` = '115' [ RunTime:0.0160s ]
+
+[ 2019-10-11T18:00:46+08:00 ] 127.0.0.1 /menu/index/pid/70/pname/%E5%8A%9F%E8%83%BD%E7%AE%A1%E7%90%86.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="index" [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `cx_menu` WHERE `pid` = 70 AND `type` = 1 ORDER BY sort asc  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2019-10-11T18:00:48+08:00 ] 127.0.0.1 /Admin/menu/ajax_save_menu?branch=menu_name&id=71&value=%E7%8F%AD%E7%BA%A7%E7%AE%A1%E7%90%86
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0090s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0110s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="ajax_save_menu" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0100s ]
+SQL: UPDATE `cx_menu` SET `menu_name`='班级管理' WHERE `menu_id` = '71' [ RunTime:0.0350s ]
+
+[ 2019-10-11T18:00:49+08:00 ] 127.0.0.1 /Admin/menu/ajax_save_menu?branch=menu_name&id=115&value=%E5%AD%A6%E7%A7%91%E7%AE%A1%E7%90%86
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `cx_admin_role` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `cx_admin_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0080s ]
+SQL: SELECT b.* FROM cx_auth AS a, cx_menu AS b WHERE a.menu_id = b.menu_id AND a. role_id='1' AND  b.module_name="Menu" and b.action_name="ajax_save_menu" [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `cx_menu` [ RunTime:0.0090s ]
+SQL: UPDATE `cx_menu` SET `menu_name`='学科管理' WHERE `menu_id` = '115' [ RunTime:0.0110s ]
+

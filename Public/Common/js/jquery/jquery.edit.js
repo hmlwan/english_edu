@@ -361,6 +361,7 @@ function check_max(str,s_value,max,jqobj)
          .blur(function(){
              var new_value = $(this).attr("value");
              if(new_value != '') {
+             	console.log(ADMIN_TEMPLATES_URL+'/'+settings.c+'/'+settings.a);
                  $.get(ADMIN_TEMPLATES_URL+'/'+settings.c+'/'+settings.a,{branch:s_name,id:column_id,value:new_value},function(data){
                      //data = $.parseJSON(data);
                      if(data.status) {
