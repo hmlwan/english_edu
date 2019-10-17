@@ -23,11 +23,8 @@
 
 				<div class="sDiv2">
 				<form action="{:fn_getUrl()}" method='get'>
-					<input type="hidden" name="m" value="Admin">
-					<input type="hidden" name="c" value="User">
-					<input type="hidden" name="a" value="student">
 					学生姓名搜索：
-					<input type="text" placeholder="搜索相关数据..." class="qsbox" name="username" size="30" value="{$username}">
+					<input type="text" placeholder="搜索相关数据..." class="qsbox" name="username" size="30" value="{$phone}">
 					<input type="submit" value="搜索" class="btn">
 				</form>
 
@@ -45,47 +42,57 @@
 						操作
 					</th>
 					<th width="80" align="center">用户编号</th>
-					<th width="120" align="center">学生姓名</th>
-					<th width="120" align="center">所在年级</th>
-					<th width="120" align="center">所在班级</th>
-					<th width="150" align="center">注册时间</th>
+					<th width="120" align="center">用户手机号</th>
+					<th width="120" align="center">用户昵称</th>
+					<th width="150" align="center">头像</th>
+					<th width="150" align="center">状态</th>
+					<th width="150" align="center">是否是vip会员</th>
+					<th width="150" align="center">到期时间</th>
 					<th width="150" align="center">登录时间</th>
-					<th width="100" align="center">登录次数</th>
+					<th width="150" align="center">注册时间</th>
+					<th width="150" align="center">登录ip</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<volist name="list" id="vo">
-				<tr data-id="{$vo.admin_id}">
+				<tr data-id="{$vo.member_id}">
 					<td class="sign"><i class="ico-check"></i></td>
 					<td class="handle">
-						<a class="btn red" href="javascript:void(0);" onclick="fg_del({$vo.admin_id});"><i class="fa fa-trash-o"></i>删除</a>
-						<a class="btn blue" href="{:U('userEdit',array('id'=>$vo['admin_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<a class="btn red" href="javascript:void(0);" onclick="fg_del({$vo.member_id});"><i class="fa fa-trash-o"></i>删除</a>
+						<a class="btn blue" href="{:U('userEdit',array('id'=>$vo['member_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
 
 						<!--<a class="btn blue" href="{:U(CONTROLLER_NAME.'/userDetail',array('id'=>$vo['id']))}"><i class="fa fa-file-o"></i>详情</a>-->
 					<!--<a class="btn green" href="{:U(CONTROLLER_NAME.'/logData',array('id'=>$vo['id']))}"><i class="fa fa-pencil-square-o"></i>录入</a>-->
 					<!--<a class="btn orange" href="{:U(CONTROLLER_NAME.'/logData',array('id'=>$vo['id'],'type'=>'print'))}"><i class="fa fa-print"></i>打印</a>-->
 					</td>
-					<td class="name">{$vo.admin_id}</td>
-					<td class="name">{$vo.admin_name}</td>
-					<td class="name">{$vo.grate_name}</td>
-					<td class="name">{$vo.class_name}</td>
-					<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
+					<td class="name">{$vo.member_id}</td>
+					<td class="name">{$vo.phone}</td>
+					<td class="name">{$vo.nick_name}</td>
+					<td class="name"><img src="{$vo.head}" style="width: 80px;height: 80px" alt=""></td>
+					<td>
+						<eq name="vo.status" value="0">
+							<span class="no"><i class="fa fa-ban"></i>禁用</span>
+							<else/>
+							<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
+						</eq>
+					</td>
+					<td><if condition="$vo['is_vip'] eq 1">是<else />否</if></td>
+					<td>
+						<if condition="$vo['is_vip'] eq 1">
+							{$vo.expire_time|date='Y-m-d H:i:s',###}
+						</if>
+					</td>
 					<td><if condition="$vo['login_time'] neq 0">{$vo.login_time|date='Y-m-d H:i:s',###}</if></td>
-					<td>{$vo.login_num}</td>
+					<td><if condition="$vo['reg_time'] neq 0">{$vo.reg_time|date='Y-m-d H:i:s',###}</if></td>
+					<td>{$vo.login_ip}</td>
 					<td></td>
 				</tr>
 				</volist>
 			</tbody>
 	
 		</table>
-		<div class="page-main quotes">{$page}
-			<form  method="post" action="{:U('importData')}" id="myform" style="float: right;padding-top:0">
-				<input type="hidden" name="_type" value="1">
-				<span style="color:#f52d08;"> 导入学生数据：</span><input style="width: 160px" class="uploadFile" name="file_stu" type="file" value="">
-				<a href="javascript:void(0);"  onclick="sub()" >确定</a>
-			</form>
-		</div>
+		<div class="page-main quotes">{$page}</div>
 	</div>
 
 	<script>
@@ -134,7 +141,7 @@
 
             var id = ids.join(',');
             if(confirm('确认这些数据吗？')){
-                $.getJSON('{:U("del")}',{'id':id},function(data){
+                $.getJSON('{:U("userdel")}',{'id':id},function(data){
                     if(data.status) {
                         location.reload();
                     }else {
@@ -160,7 +167,7 @@
 				columnControl: false,// 不使用列控制
 				usepager:false,
 				buttons : [
-//					{display: '<i class="fa fa-plus"></i>导入数据', name : 'file_stu', bclass : 'add',title : '导入学生数据',url:"{:U(CONTROLLER_NAME.'/importData')}", onpress : fg_operation },
+//					{display: '<i class="fa fa-plus"></i>新增', name : 'file_stu', bclass : 'add',title : '导入学生数据',url:"{:U(CONTROLLER_NAME.'/importData')}", onpress : fg_operation },
 					{display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation },
 				],
 				sortname: "sort",

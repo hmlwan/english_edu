@@ -1,0 +1,136 @@
+	<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>教学视频管理 - 修改</h3>
+					<h5>教学视频的添加、修改和删除</h5>
+				</div>
+			</div>
+		</div>
+		<form id="add_form" method="post" action="{:U('Video/teaching_video_edit')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<div class="ncap-form-default">
+
+				<dl class="row">
+					<dt class="tit">
+						<label for="video_id"><em>*</em>选择视频</label>
+					</dt>
+					<dd class="opt">
+						<select name="video_id" class="w200" >
+							<option value="">--请选择--</option>
+							<volist name="video_list" id="val">
+								<option value="{$val.video_id}" <if condition="$vo['video_id'] eq $val['video_id']">selected</if>>{$val.video_name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="teacher_id"><em>*</em>选择老师</label>
+					</dt>
+					<dd class="opt">
+						<select name="teacher_id" class="w200" >
+							<option value="">--请选择--</option>
+							<volist name="teacher_list" id="t_val">
+								<option value="{$t_val.teacher_id}" <if condition="$vo['teacher_id'] eq $t_val['teacher_id']">selected</if>>{$t_val.teacher_name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="subject_task_id"><em>*</em>选择作业</label>
+					</dt>
+					<dd class="opt">
+						<select name="subject_task_id" class="w200" >
+							<option value="">--请选择--</option>
+							<volist name="task_list" id="s_val">
+								<option value="{$s_val.subject_task_id}" <if condition="$vo['subject_task_id'] eq $s_val['subject_task_id']">selected</if>>{$s_val.task_name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="status"><em>*</em>状态</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<label class="cb-enable selected" for="status1">启用</label>
+							<label class="cb-disable" for="status0">禁用</label>
+							<input type="radio" value="1" name="status" id="status1">
+							<input type="radio" value="0" name="status" id="status0">
+						</div>
+					</dd>
+				</dl>
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+
+	<js href="__COMMON__/jquery-ui/jquery.ui.widget.js" />
+	<js href="__COMMON__/js/jquery/jquery.fileupload.js" />
+	<js href="__COMMON__/js/jquery/jquery.nyroModal.js" />
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		//按钮先执行验证再提交表单
+		$("#submitBtn").click(function(){
+			if($("#add_form").valid()){
+			 var sub_data = $('#add_form').serialize();
+			 var response_url = $('#add_form').attr('action');
+				$.ajax({
+					type: 'POST',
+					dataType: 'json',
+					data: sub_data,
+					url: response_url,
+					success:function(json_data){
+                        layer.alert(json_data.msg,function(){
+                            window.location.href= "{:U('index')}";
+                        });
+
+					}
+				});
+			}
+		})
+
+		$("#add_form").validate({
+			errorPlacement: function(error, element){
+				var error_td = element.parent('dd').children('span.err');
+				error_td.append(error);
+			},
+			rules : {
+                teacher_id	: 	{required : true},
+                video_id		:	{required:true},
+                subject_task_id		:	{required:true}
+			},
+			messages : {
+                teacher_id	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                video_url	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                subject_task_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+			}
+		});
+
+	});
+	</script>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+</html>

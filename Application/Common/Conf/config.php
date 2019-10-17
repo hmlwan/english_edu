@@ -11,7 +11,7 @@ return array(
 //    'APP_USE_NAMESPACE' => false,
     'ENVIRON' => true,
     'URL_ROUTER_ON' => true, // 是否开启URL路由
-    'URL_MODEL' => 1,
+    'URL_MODEL' => 2,
     'APP_GROUP_LIST' => 'Admin,Home,Common',
     'DEFAULT_MODULE' => 'Admin' ,
 

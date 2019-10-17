@@ -36,31 +36,26 @@ class UserAction extends CommonAction {
     //学生信息
     public function student(){
 
-        $user_model = D('Admin');
+        $user_model = D('Member');
         $page = I('p',1,'trim');
         $rp = 10;
-        $username = I('username');
+        $username = I('phone');
 
 
         $where_data = array();
         if($username){
-            $where_data['username'] = array(
+            $where_data['phone'] = array(
                 'like','%'.$username.'%'
             );
-            $this->assign('username',$username);
+            $this->assign('phone',$username);
         }
-        $where_data['role_id'] = 2;
         $count = $user_model->where($where_data)->count();
         $Page = new \Think\Page($count,$rp);
         $show = $Page->show();
-        $res = $user_model->where($where_data)->page($page.','.$rp)->order('admin_id asc')->select();
+        $res = $user_model->where($where_data)->page($page.','.$rp)->order('member_id asc')->select();
 
-        if($res){
-            foreach ($res as $key => $item){
-                $res[$key]['grate_name'] = M('Grate')->where(array('sort'=>$item['grade']))->getField('grate_name');
-                $res[$key]['class_name'] = M('Class')->where(array('sort'=>$item['class'],'grate_id'=>$item['grade']))->getField('class_name');
-            }
-        }
+
+
         $this->assign('page',$show);
         $this->assign('list',$res);
         $this->display();
@@ -69,13 +64,11 @@ class UserAction extends CommonAction {
      * 老师信息
      */
     public function teacher(){
-
-        $user_model = D('Admin');
+        $user_model = D('Teacher');
         $page = I('p',1,'trim');
         $rp = 10;
         $username = I('username');
-        $phone = I('phone');
-
+        $teacher_name = I('teacher_name');
 
         $where_data = array();
         if($username){
@@ -84,18 +77,19 @@ class UserAction extends CommonAction {
             );
             $this->assign('username',$username);
         }
-
-        if($phone){
-            $where_data['phone'] = array(
-                'like','%'.$phone.'%'
+        if($teacher_name){
+            $where_data['teacher_name'] = array(
+                'like','%'.$teacher_name.'%'
             );
-            $this->assign('phone',$phone);
+            $this->assign('teacher_name',$teacher_name);
         }
-        $where_data['role_id'] = 7;
         $count = $user_model->where($where_data)->count();
         $Page = new \Think\Page($count,$rp);
         $show = $Page->show();
-        $res = $user_model->where($where_data)->page($page.','.$rp)->order('admin_id asc')->select();
+        $res = $user_model->where($where_data)->page($page.','.$rp)->order('teacher_id asc')->select();
+        foreach ($res as &$val){
+            $val['grate_name'] = M("grate")->where(array('id'=>$val['grate_id']))->getField('grate_name');
+        }
 
         $this->assign('page',$show);
         $this->assign('list',$res);
@@ -177,29 +171,6 @@ class UserAction extends CommonAction {
         }
         $this->ajaxReturn(array('ret'=>1,'msg'=>'导入成功'));
     }
-    /*任教详情*/
-    public function teacherDetail(){
-        $teacher_id = I('id');
-        $tea_class_demol = D('TeacherClass');
-        $teacher_list = $tea_class_demol->where(array('admin_id'=>$teacher_id))->order()->select();
-        if($teacher_list){
-            foreach ($teacher_list as $key => $value){
-                $teacher_list[$key]['grate_name'] = M('Grate')->where(array('sort'=>$value['grate_id']))->getField('grate_name');
-                $where = array(
-                    'grate_id' => $value['grate_id'],
-                    'sort' => $value['class_id']
-                );
-                $teacher_list[$key]['class_name'] = M('Class')->where($where)->getField('class_name');
-            }
-        }
-        $this->assign('list',$teacher_list);
-        $this->display();
-    }
-    /*学科详情*/
-    public function subjectDetail(){
-
-        $this->display();
-    }
 
     public function userEdit(){
 
@@ -236,48 +207,67 @@ class UserAction extends CommonAction {
         }
     }
 
+
+    public function userdel()
+    {
+        $model = M('member');
+        $ids = I('id');
+        if ($ids) {
+            $sub_ids = explode(',', $ids);
+            $where = array('member_id' => array('in', $sub_ids));
+            $res = $model->where($where)->delete();
+            if ($res === false) {
+                $this->error('操作失败！');
+            } else {
+                $this->success('操作成功！');
+            }
+        }
+    }
+
     public function teacherEdit(){
 
-        $class_model = M('Class');
+        $model = D('Teacher');
         $grate_model = M('Grate');
-        $admin_model = M("Admin");
-        $department_model = M("Department");
         if(IS_POST){
             $id = I('id');
-            $data = $admin_model->create();
-            $data['admin_password'] = md5(I('post.admin_password'));
-            $data['department_ids'] = implode(',',I('post.department'));
+            $data = $model->create();
+            if(I('post.pwd')){
+                $data['pwd'] = md5(I('post.pwd'));
+            }else{
+                $data['pwd'] = I('post.repwd');
+            }
             if($data){
-                $res = $admin_model->where(array('admin_id'=>$id))->save($data);
+                if($id){
+                    $res = $model->where(array('$id'=>$id))->save($data);
+                }else{
+                    $data['add_time'] = time();
+                    $res = $model->add();
+                }
                 if(false !== $res){
                     $this->ajaxReturn(array('ret'=>1,'msg'=>'操作成功'));
                 }else{
                     $this->ajaxReturn(array('ret'=>0,'msg'=>'操作失败'));
                 }
             }
-
         }else{
             $id = I('get.id');
-            $list = $admin_model->find($id);
-            $list['_department_ids'] = explode(',',$list['department_ids']);
-            $this->assign('vo',$list);
+            $list = $model->find($id);
 
-            $assign['class_list'] = $class_model->select();
+            $this->assign('vo',$list);
             $assign['grate_list'] = $grate_model->select();
-            $assign['department_list'] = $department_model->select();
             $this->assign($assign);
             $this->display();
         }
     }
 
 
-    public function del()
+    public function teacherdel()
     {
-        $model = M('Admin');
+        $model = M('teacher');
         $ids = I('id');
         if ($ids) {
             $sub_ids = explode(',', $ids);
-            $where = array('admin_id' => array('in', $sub_ids));
+            $where = array('teacher_id' => array('in', $sub_ids));
             $res = $model->where($where)->delete();
             if ($res === false) {
                 $this->error('操作失败！');
@@ -287,55 +277,12 @@ class UserAction extends CommonAction {
         }
     }
     /*------------------任教管理----------*/
-    public function bookEdit(){
-        $class_model = M('Class');
-        $grate_model = M('Grate');
-        $TeacherClass = M("TeacherClass");
 
-        if(IS_POST){
-            $id = I('id');
-            $data = $TeacherClass->create();
-
-            if($data){
-                $res = $TeacherClass->where(array('id'=>$id))->save($data);
-                if(false !== $res){
-                    $this->ajaxReturn(array('ret'=>1,'msg'=>'操作成功'));
-                }else{
-                    $this->ajaxReturn(array('ret'=>0,'msg'=>'操作失败'));
-                }
-            }
-        }else{
-            $id = I('id');
-            $list = $TeacherClass->find($id);
-            $this->assign('vo',$list);
-            $assign['grate_list'] = $grate_model->select();
-            $assign['class_list'] = $class_model->where(array('grate_id'=>$list['grate_id']))->select();
-            $this->assign($assign);
-            $this->display();
-        }
-
-    }
     public function getclass(){
         $grate_id = I('post.grate_id');
         $class_model = M('Class');
         $class_list = $class_model->where(array('grate_id'=>$grate_id))->select();
         $this->ajaxReturn($class_list);
-    }
-
-    public function bookDel(){
-
-        $model = M('TeacherClass');
-        $ids = I('id');
-        if ($ids) {
-            $sub_ids = explode(',', $ids);
-            $where = array('id' => array('in', $sub_ids));
-            $res = $model->where($where)->delete();
-            if ($res === false) {
-                $this->error('操作失败！');
-            } else {
-                $this->success('操作成功！');
-            }
-        }
     }
 
 

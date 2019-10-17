@@ -7,7 +7,7 @@
 	<div class="page">
 		<div class="fixed-bar">
 			<div class="item-title">
-				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<a class="back" href="{:U(CONTROLLER_NAME.'/teacher')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
 					<h3>教师管理 - 修改信息</h3>
 					<h5>教师管理的添加、修改和删除</h5>
@@ -16,49 +16,87 @@
 		</div>
 		<form id="add_form" method="post" action="{:U('teacherEdit')}" enctype="multipart/form-data">
 			<input type="hidden" name="form_submit" value="ok" />
-			<input type="hidden" name="id" value="{$vo.admin_id}" />
+			<input type="hidden" name="id" value="{$vo.teacher_id}" />
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
-						<label for="type_name"><em>*</em>教师姓名</label>
+						<label for="teacher_name"><em>*</em>教师姓名</label>
 					</dt>
 					<dd class="opt">
-						<input type="text" id="name" name="admin_name" class="input-txt" value="{$vo.admin_name}">
+						<input type="text" id="teacher_name" name="teacher_name" class="input-txt" value="{$vo.teacher_name}">
 						<span class="err"></span>
 						<p class="notic"></p>
 					</dd>
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="type_name"><em>*</em>账号密码</label>
+						<label for="username"><em>*</em>账号</label>
 					</dt>
 					<dd class="opt">
-						<input type="password" id="username"  name="admin_password" class="input-txt" value="">
-						<span class="err"></span>
-						<p class="notic">修改密码之后需要重新登录</p>
-					</dd>
-				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="type_name"><em>*</em>电话号码</label>
-					</dt>
-					<dd class="opt">
-						<input type="password" id="text"  name="phone" class="input-txt" value="{$vo.phone}">
+						<input type="text" id="username" readonly
+							   onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly',true);" autocomplete="false"  name="username" class="input-txt" value="{$vo.username}">
 						<span class="err"></span>
 						<p class="notic"></p>
 					</dd>
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="type_name"><em>*</em>部门主管</label>
+						<label for="pwd"><em>*</em>账号密码</label>
+					</dt>
+					<dd class="opt">
+						<input type="password" id="pwd" readonly
+							   onfocus="this.removeAttribute('readonly');" onblur="this.setAttribute('readonly',true);" autocomplete="false"  name="pwd" class="input-txt" value="">
+						<input type="hidden" id="repwd"  name="repwd" class="input-txt" value="{$vo.pwd}">
+						<span class="err"></span>
+						<p class="notic">修改密码之后需要重新登录（为空则不修改）</p>
+					</dd>
+				</dl>
+
+				<dl class="row">
+					<dt class="tit">
+						<label for="grate_id"><em>*</em>年级类别</label>
 					</dt>
 					<dd class="opt">
 						<div class="onoff">
-							<volist name="department_list" id="v">
-								<label style="font-size:12px;">
-									<input type="checkbox" id="department" name="department[]" value="{$v.sort}" <if condition="in_array($v['sort'],$vo['_department_ids'])">checked</if> class="name" />{$v.department_name}
-								</label>
-							</volist>
+							<select name="grate_id" id="grate_id" class="input-txt" >
+								<volist name="grate_list" id="v">
+									<option value="{$v.id}" <if condition="$vo['grate_id'] eq $v['id']">selected</if> >{$v.grate_name}</option>
+								</volist>
+							</select>
+							<span class="err"></span>
+							<p class="notic" style="font-size: 12px;"></p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="is_online"><em>*</em>是否在线</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<div class="onoff">
+								<label class="cb-enable selected" for="is_online1">在线</label>
+								<label class="cb-disable" for="is_online0">下线</label>
+								<input type="radio" value="1" name="is_online" id="is_online1">
+								<input type="radio" value="0" name="is_online" id="is_online0">
+							</div>
+							<span class="err"></span>
+							<p class="notic" style="font-size: 12px;"></p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="status"><em>*</em>状态</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<div class="onoff">
+								<label class="cb-enable selected" for="status1">开启</label>
+								<label class="cb-disable" for="status0">关闭</label>
+								<input type="radio" value="1" name="status" id="status1">
+								<input type="radio" value="0" name="status" id="status0">
+							</div>
 							<span class="err"></span>
 							<p class="notic" style="font-size: 12px;"></p>
 						</div>
@@ -122,6 +160,7 @@
 			if($("#add_form").valid()){
 			 var sub_data = $('#add_form').serialize();
 			 var response_url = $('#add_form').attr('action');
+			 console.log(response_url);
 				$.ajax({
 					type: 'POST',
 					dataType: 'json',
@@ -130,9 +169,8 @@
 					success:function(json_data){
 					    if(json_data.ret == 1){
                             layer.alert(json_data.msg,function(){
-                                window.location.href= "{:U('student')}";
+                                window.location.href= "{:U('teacher')}";
 							});
-
 						}else{
                             layer.alert(json_data.msg);
 						}
@@ -148,14 +186,14 @@
 				error_td.append(error);
 			},
 			rules : {
-				id 		: 	{required : true},
-				type_name	: 	{required : true},
-				sort		:	{required:true}
+                username 		: 	{required : true},
+				teacher_name	: 	{required : true},
+                grate_id		:	{required:true}
 			},
 			messages : {
-				id			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-				type_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-				sort	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+                username			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                teacher_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                grate_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
 			}
 		});
 

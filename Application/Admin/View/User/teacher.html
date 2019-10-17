@@ -21,13 +21,10 @@
 				<div class="sDiv">
 					<div class="sDiv2">
 					<form action="{:fn_getUrl()}" method='post'>
-						<input type="hidden" name="m" value="Admin">
-						<input type="hidden" name="c" value="User">
-						<input type="hidden" name="a" value="teacher">
 						教师姓名搜索：
 						<input type="text" placeholder="搜索相关数据..." class="qsbox" name="username" size="30" value="{$username}">
-						手机号搜索：
-						<input type="text" placeholder="搜索相关数据..." class="qsbox" name="phone" size="30" value="{$phone}">
+						账号搜索：
+						<input type="text" placeholder="搜索相关数据..." class="qsbox" name="teacher_name" size="30" value="{$teacher_name}">
 						<input type="submit" value="搜索" class="btn">
 
 					</form>
@@ -38,30 +35,50 @@
 			<thead>
 			<tr>
 				<th width="24" align="center" class="sign"><i class="ico-check"></i></th>
-				<th width="300" class="handle" align="center">操作</th>
+				<th width="100" class="handle" align="center">操作</th>
 				<th width="80" align="center">用户编号</th>
-				<th width="120" align="center">教师姓名</th>
-				<th width="150" align="center">注册时间</th>
+				<th width="120" align="center">教师名称</th>
+				<th width="120" align="center">账号</th>
+				<th width="120" align="center">年级</th>
+				<!--<th width="120" align="center">是否推荐</th>-->
+				<th width="150" align="center">是否在线</th>
+				<th width="150" align="center">状态</th>
 				<th width="150" align="center">登录时间</th>
-				<th width="100" align="center">登录次数</th>
+				<th width="150" align="center">添加时间</th>
 				<th></th>
 			</tr>
 			</thead>
 			<tbody>
 			<volist name="list" id="vo">
-				<tr data-id="{$vo.admin_id}">
+				<tr data-id="{$vo.teacher_id}">
 					<td class="sign"><i class="ico-check"></i></td>
 					<td class="handle">
-						<a class="btn red" href="javascript:void(0);" onclick="fg_del({$vo.admin_id});"><i class="fa fa-trash-o"></i>删除</a>
-						<a class="btn blue" href="{:U('teacherEdit',array('id'=>$vo['admin_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-						<a class="btn blue" href="{:U(CONTROLLER_NAME.'/teacherDetail',array('id'=>$vo['admin_id']))}"><i class="fa fa-file-o"></i>任教详情</a>
+						<a class="btn red" href="javascript:void(0);" onclick="fg_del({$vo.teacher_id});"><i class="fa fa-trash-o"></i>删除</a>
+						<a class="btn blue" href="{:U('teacherEdit',array('id'=>$vo['teacher_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<!--<a class="btn blue" href="{:U(CONTROLLER_NAME.'/teacherDetail',array('id'=>$vo['admin_id']))}"><i class="fa fa-file-o"></i>任教详情</a>-->
 						<!--<a class="btn blue" href="{:U(CONTROLLER_NAME.'/subjectDetail',array('id'=>$vo['admin_id']))}"><i class="fa fa-file-o"></i>学科详情</a>-->
 					</td>
-					<td class="name">{$vo.admin_id}</td>
-					<td class="name">{$vo.admin_name}</td>
-					<td>{$vo.add_time|date='Y-m-d H:i:s',###}</td>
-					<td><if condition="$vo['login_time'] neq 0">{$vo.login_time|date='Y-m-d H:i:s',###}</if></td>
-					<td>{$vo.login_num}</td>
+					<td class="name">{$vo.teacher_id}</td>
+					<td class="name">{$vo.teacher_name}</td>
+					<td class="name">{$vo.username}</td>
+					<td class="name">{$vo.grate_name}</td>
+					<td>
+						<eq name="vo.is_online" value="0">
+							<span class="no"><i class="fa fa-ban"></i>禁用</span>
+							<else/>
+							<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
+						</eq>
+					</td>
+					<td>
+						<eq name="vo.status" value="0">
+							<span class="no"><i class="fa fa-ban"></i>禁用</span>
+							<else/>
+							<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
+						</eq>
+					</td>
+
+					<td><if condition="$vo['login_time']">{$vo.login_time|date='Y-m-d H:i:s',###}</if></td>
+					<td><if condition="$vo['add_time']">{$vo.add_time|date='Y-m-d H:i:s',###}</if></td>
 					<td></td>
 				</tr>
 			</volist>
@@ -69,11 +86,11 @@
 
 		</table>
 		<div class="page-main quotes">{$page}
-			<form  method="post" action="{:U('importData')}" id="myform" style="float: right;padding-top:0">
-				<input type="hidden" name="_type" value="2">
-				<span style="color:#f52d08;"> 导入老师数据：</span><input style="width: 160px" class="uploadFile" name="file_stu" type="file" value="">
-				<a href="javascript:void(0);"  onclick="sub()" >确定</a>
-			</form>
+			<!--<form  method="post" action="{:U('importData')}" id="myform" style="float: right;padding-top:0">-->
+				<!--<input type="hidden" name="_type" value="2">-->
+				<!--<span style="color:#f52d08;"> 导入老师数据：</span><input style="width: 160px" class="uploadFile" name="file_stu" type="file" value="">-->
+				<!--<a href="javascript:void(0);"  onclick="sub()" >确定</a>-->
+			<!--</form>-->
 		</div>
 	</div>
 	<script type="text/javascript" src="/Public/Common/js/jquery/jquery.cookie.js"></script>
@@ -104,7 +121,7 @@
 
         function fg_operation(name,bDiv){
             if(name == 'add') {
-                window.location.href = '{:U("add")}';
+                window.location.href = '{:U("teacherEdit")}';
             }else if(name == 'del'){
                 if($('.trSelected',bDiv).length == 0 ){
 
@@ -123,7 +140,7 @@
             };
             var id = ids.join(',');
             if(confirm('确认这些数据吗？')){
-                $.getJSON('{:U("del")}',{'id':id},function(data){
+                $.getJSON('{:U("teacherdel")}',{'id':id},function(data){
                     if(data.status) {
                         location.reload();
                     }else {
@@ -148,7 +165,7 @@
 				columnControl: false,// 不使用列控制
 				usepager:false,
 				buttons : [
-//					{display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add',url:"{:U(CONTROLLER_NAME.'/add',array('cate_type'=>$cate_type))}", onpress : fg_operation },
+					{display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add',url:"{:U(CONTROLLER_NAME.'/teacherEdit')}", onpress : fg_operation },
 					{display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation },
 				],
 				sortname: "sort",
