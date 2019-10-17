@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ebb8c3b-6390-488c-a3ed-51026925eb83" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Model/TeacherModel.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/User/advDetail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/User/bookEdit.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Action/UserAction.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Action/UserAction.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Common/function.php" afterPath="$PROJECT_DIR$/Application/Admin/Common/function.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/User/student.html" afterPath="$PROJECT_DIR$/Application/Admin/View/User/student.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/User/teacher.html" afterPath="$PROJECT_DIR$/Application/Admin/View/User/teacher.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Common/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Common/Conf/config.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/Model/CategoryModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/GrateModel.class.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/Model/UserModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/MemberModel.class.php" />
-    </list>
+    <list default="true" id="5ebb8c3b-6390-488c-a3ed-51026925eb83" name="Default" comment="" />
     <ignored path="a.51chuanxing.com.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -641,7 +623,8 @@
     <option name="totallyTimeSpent" value="163974000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
+    <frame x="-8" y="-8" width="1932" height="1056" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15384616" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
