@@ -67,7 +67,9 @@ function fn_getCheckbox($val,$filed_str){
  * 获取当前地址
  */
 function fn_getUrl($vars=array()){
+
     $url = $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
+
     if($vars){
         $str = '';
         foreach ($vars as $key=>$val){

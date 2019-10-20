@@ -2,15 +2,21 @@
 namespace Admin\Model;
 use Think\Model\RelationModel;
 
-class UserModel extends RelationModel{
+class TeacherModel extends RelationModel{
 	
     public function getUserData($where,$filed){
-        $filed = $filed ? $filed : 'id,username,avatar,mobile,device_token,token,status';
+        $filed = $filed ? $filed : '*';
         return $this->where($where)->field($filed)->find();
     }
-    //保存顾问数据
+
     public function saveUserData($where,$data){
         return $this->where($where)->save($data);
     }
-    
+
+    public function getAllUserData($where,$sort,$filed){
+        $filed = $filed ? $filed : '*';
+        return $this->where($where)->order($sort)->field($filed)->find();
+    }
+
+
 }
