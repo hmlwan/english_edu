@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-10-12 17:06:57
+Date: 2019-10-20 21:16:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,7 +42,7 @@ CREATE TABLE `cx_admin` (
 -- ----------------------------
 -- Records of cx_admin
 -- ----------------------------
-INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1570784380', '221', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
+INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1571054956', '222', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
 
 -- ----------------------------
 -- Table structure for `cx_admin_role`
@@ -2205,52 +2205,6 @@ INSERT INTO `cx_auth` VALUES ('1', '111');
 INSERT INTO `cx_auth` VALUES ('1', '112');
 
 -- ----------------------------
--- Table structure for `cx_award`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_award`;
-CREATE TABLE `cx_award` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) DEFAULT NULL COMMENT '获奖人姓名',
-  `award_name` varchar(100) DEFAULT NULL COMMENT '奖项名称',
-  `award_rank` tinyint(6) DEFAULT NULL COMMENT '奖项级别 1：镇级 2：区级3：市级4：国家级5：全球级',
-  `award_form` tinyint(6) DEFAULT NULL COMMENT '获奖形式 1：教师个人2：教师团体3：学生个人4：学生团体5：学生荣誉',
-  `award_time` int(11) DEFAULT NULL COMMENT '获奖日期',
-  `unit` text COMMENT '颁奖单位',
-  `department` tinyint(4) DEFAULT NULL COMMENT '所属部门1：教务处2：体卫科艺3：政教处4：团体5：校办6：人事7：工会8：科研',
-  `teacher_charge` text COMMENT '负责教师（可以是多位）',
-  `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cx_award
--- ----------------------------
-INSERT INTO `cx_award` VALUES ('1', 'admin', '奖项一', '2', '1', '1513958400', '王毅,李浩,王杰', '2', '王毅,李浩 王杰', '1514023773');
-INSERT INTO `cx_award` VALUES ('3', 'admin', '奖项2', '2', '2', '1514044800', '冯小刚,张艺谋', '2', '冯小刚,张艺谋', '1514085482');
-INSERT INTO `cx_award` VALUES ('4', 'admin1', '奖项2', '2', '2', '1514044800', '冯小刚,张艺谋', '2', '冯小刚,张艺谋', '1514085505');
-
--- ----------------------------
--- Table structure for `cx_award_images`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_award_images`;
-CREATE TABLE `cx_award_images` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `award_id` int(11) DEFAULT NULL COMMENT '奖项id',
-  `award_image` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cx_award_images
--- ----------------------------
-INSERT INTO `cx_award_images` VALUES ('38', '3', 'Uploads/2017-12-24/5a3f47c460b60.jpg');
-INSERT INTO `cx_award_images` VALUES ('33', '1', 'Uploads/2017-12-24/5a3f1a27abd75.jpg');
-INSERT INTO `cx_award_images` VALUES ('32', '1', 'Uploads/2017-12-24/5a3f1a27b462f.jpg');
-INSERT INTO `cx_award_images` VALUES ('37', '3', 'Uploads/2017-12-24/5a3f47c4582a6.jpg');
-INSERT INTO `cx_award_images` VALUES ('29', '4', 'Uploads/2017-12-24/5a3f453657c15.jpg');
-INSERT INTO `cx_award_images` VALUES ('28', '4', 'Uploads/2017-12-24/5a3f45364f35c.jpg');
-
--- ----------------------------
 -- Table structure for `cx_class`
 -- ----------------------------
 DROP TABLE IF EXISTS `cx_class`;
@@ -2272,51 +2226,38 @@ INSERT INTO `cx_class` VALUES ('3', '一班', '8', null, '1', '1');
 INSERT INTO `cx_class` VALUES ('4', '二班', '8', null, '2', '1');
 
 -- ----------------------------
--- Table structure for `cx_department`
+-- Table structure for `cx_discussion`
 -- ----------------------------
-DROP TABLE IF EXISTS `cx_department`;
-CREATE TABLE `cx_department` (
+DROP TABLE IF EXISTS `cx_discussion`;
+CREATE TABLE `cx_discussion` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `department_name` varchar(100) DEFAULT NULL COMMENT '部门名称',
-  `sort` tinyint(10) DEFAULT NULL,
-  `status` tinyint(10) DEFAULT '1',
+  `teaching_video_id` int(11) DEFAULT NULL COMMENT '教学视频id',
+  `student_id` int(11) DEFAULT NULL COMMENT '学生id',
+  `teacher_id` int(11) DEFAULT NULL COMMENT '老师id',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='师生讨论';
 
 -- ----------------------------
--- Records of cx_department
+-- Records of cx_discussion
 -- ----------------------------
-INSERT INTO `cx_department` VALUES ('1', '教务处', '1', '1');
-INSERT INTO `cx_department` VALUES ('2', '体卫科艺', '2', '1');
-INSERT INTO `cx_department` VALUES ('3', '政教处', '3', '1');
-INSERT INTO `cx_department` VALUES ('4', '团体', '4', '1');
-INSERT INTO `cx_department` VALUES ('5', '校办', '5', '1');
-INSERT INTO `cx_department` VALUES ('6', '人事', '6', '1');
-INSERT INTO `cx_department` VALUES ('7', '工会', '7', '1');
-INSERT INTO `cx_department` VALUES ('8', '科研', '8', '1');
 
 -- ----------------------------
--- Table structure for `cx_discipline`
+-- Table structure for `cx_discussion_detail`
 -- ----------------------------
-DROP TABLE IF EXISTS `cx_discipline`;
-CREATE TABLE `cx_discipline` (
+DROP TABLE IF EXISTS `cx_discussion_detail`;
+CREATE TABLE `cx_discussion_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(11) DEFAULT NULL COMMENT '学科名称',
-  `sort` tinyint(4) DEFAULT NULL,
-  `status` tinyint(4) DEFAULT '1',
-  `grate_id` tinyint(11) DEFAULT NULL COMMENT '年级id',
-  `grate_name` varchar(50) DEFAULT NULL COMMENT '年级名称',
+  `discussion_id` int(11) DEFAULT NULL,
+  `content` varchar(1024) DEFAULT NULL COMMENT '留言内容',
+  `is_read` tinyint(4) DEFAULT '0' COMMENT '是否已读 1：是 0：否',
+  `type` tinyint(4) DEFAULT NULL COMMENT '回复类型1：学生 2：老师',
+  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='师生讨论详情表';
 
 -- ----------------------------
--- Records of cx_discipline
+-- Records of cx_discussion_detail
 -- ----------------------------
-INSERT INTO `cx_discipline` VALUES ('6', '数学', '23', '1', '8', '八年级');
-INSERT INTO `cx_discipline` VALUES ('2', '数学', '2', '1', '9', null);
-INSERT INTO `cx_discipline` VALUES ('3', '语文', '1', '1', '6', null);
-INSERT INTO `cx_discipline` VALUES ('4', '语文', '1', '1', '8', '八年级');
-INSERT INTO `cx_discipline` VALUES ('5', '数学', '2', '1', '8', '八年级');
 
 -- ----------------------------
 -- Table structure for `cx_grate`
@@ -2337,26 +2278,6 @@ INSERT INTO `cx_grate` VALUES ('4', '七年级', '7', '1');
 INSERT INTO `cx_grate` VALUES ('3', '六年级', '6', '1');
 INSERT INTO `cx_grate` VALUES ('5', '八年级', '8', '1');
 INSERT INTO `cx_grate` VALUES ('6', '九年级', '9', '1');
-
--- ----------------------------
--- Table structure for `cx_invite`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_invite`;
-CREATE TABLE `cx_invite` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) NOT NULL DEFAULT '0' COMMENT '用户id',
-  `rid` int(11) NOT NULL DEFAULT '0' COMMENT '邀请者id',
-  `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `status` tinyint(1) NOT NULL DEFAULT '10' COMMENT '状态，1：邀请成功；0：已邀请未注册',
-  `type` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1：运营销售邀请；2：搭配邀请；3：作品号邀请；4：客户邀请',
-  PRIMARY KEY (`id`),
-  KEY `rid` (`rid`),
-  KEY `uid` (`uid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='邀请表';
-
--- ----------------------------
--- Records of cx_invite
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for `cx_logistics`
@@ -2485,7 +2406,6 @@ CREATE TABLE `cx_member` (
   `phone` int(11) DEFAULT NULL COMMENT '手机号码',
   `nick_name` varchar(100) DEFAULT NULL COMMENT '昵称',
   `head` varchar(250) DEFAULT NULL COMMENT '头像',
-  `mem_type` tinyint(4) DEFAULT NULL COMMENT '用户类型 1：学生 2：老师',
   `reg_time` int(11) DEFAULT NULL COMMENT '注册时间',
   `login_time` int(11) DEFAULT NULL COMMENT '登录时间',
   `login_ip` varchar(50) DEFAULT NULL COMMENT '登录ip',
@@ -2534,12 +2454,12 @@ CREATE TABLE `cx_menu` (
   `sort` tinyint(3) unsigned NOT NULL DEFAULT '255' COMMENT '排序',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态 0::禁用 1:启用',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台菜单表';
 
 -- ----------------------------
 -- Records of cx_menu
 -- ----------------------------
-INSERT INTO `cx_menu` VALUES ('1', '系统', '0', '1', '', '', null, '', '', '0', '50', '1');
+INSERT INTO `cx_menu` VALUES ('1', '系统', '0', '1', '', '', null, '', '', '0', '5', '1');
 INSERT INTO `cx_menu` VALUES ('2', '核心', '1', '1', '', '', 'ico-system-0', '', '', '0', '1', '1');
 INSERT INTO `cx_menu` VALUES ('3', '个人信息', '2', '1', 'System', 'site_setting', '', '', '', '0', '255', '1');
 INSERT INTO `cx_menu` VALUES ('4', '后台菜单', '2', '1', 'menu', 'index', null, '', '', '0', '255', '1');
@@ -2548,21 +2468,27 @@ INSERT INTO `cx_menu` VALUES ('6', '管理员', '2', '1', 'admin', 'index', null
 INSERT INTO `cx_menu` VALUES ('27', '添加', '4', '0', 'Menu', 'add', '', '', '', '0', '255', '1');
 INSERT INTO `cx_menu` VALUES ('28', '删除', '4', '0', 'Menu', 'del', '', '', '', '0', '255', '1');
 INSERT INTO `cx_menu` VALUES ('29', '修改', '4', '0', 'Menu', 'edit', null, '', '', '0', '255', '1');
-INSERT INTO `cx_menu` VALUES ('43', '内容', '0', '1', '', '', '', '', '', '0', '20', '1');
-INSERT INTO `cx_menu` VALUES ('50', '业务', '0', '1', '', '', '', '', '商品管理', '0', '2', '1');
-INSERT INTO `cx_menu` VALUES ('52', '会员', '0', '1', 'Member', 'list', ' ico-shop-1', 'pid=0&amp;id=3', '会员管理', '0', '3', '1');
-INSERT INTO `cx_menu` VALUES ('70', '功能管理', '50', '1', 'Advert', '', 'ico-shop-1', '', '功能管理', '0', '30', '1');
-INSERT INTO `cx_menu` VALUES ('71', '班级管理', '70', '1', 'class', 'index', '', '', '栏目管理', '0', '10', '1');
+INSERT INTO `cx_menu` VALUES ('43', '单词', '0', '1', '', '', '', '', '', '0', '3', '1');
+INSERT INTO `cx_menu` VALUES ('50', '视频', '0', '1', '', '', '', '', '商品管理', '0', '2', '1');
+INSERT INTO `cx_menu` VALUES ('52', '会员', '0', '1', 'Member', 'list', ' ico-shop-1', 'pid=0&amp;id=3', '会员管理', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('70', '视频管理', '50', '1', 'Video', '', 'ico-shop-1', '', '功能管理', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('71', '视频列表', '70', '1', 'video', 'index', '', '', '视频列表', '0', '1', '1');
 INSERT INTO `cx_menu` VALUES ('77', '提现管理', '73', '1', 'Acount', 'index', '', '', '提现管理', '0', '100', '1');
 INSERT INTO `cx_menu` VALUES ('82', '用户反馈管理', '69', '1', 'User', 'userFeedback', '', '', '用户反馈管理', '0', '100', '1');
-INSERT INTO `cx_menu` VALUES ('99', '用户管理', '52', '1', 'Member', 'index', '', '', '', '0', '0', '1');
-INSERT INTO `cx_menu` VALUES ('100', '学生信息', '99', '1', 'user', 'student', '', '', '', '0', '100', '1');
-INSERT INTO `cx_menu` VALUES ('101', '教师信息', '99', '1', 'user', 'teacher', '', '', '', '0', '100', '1');
-INSERT INTO `cx_menu` VALUES ('114', '年级管理', '70', '1', 'grate', 'index', '', '', '', '0', '42', '1');
-INSERT INTO `cx_menu` VALUES ('115', '学科管理', '70', '1', 'discipline', 'index', '', '', '', '0', '10', '1');
-INSERT INTO `cx_menu` VALUES ('116', '获奖管理', '43', '1', 'Award', 'index', '', '', '', '0', '4', '1');
-INSERT INTO `cx_menu` VALUES ('117', '获奖记录', '116', '1', 'Award', 'index', '', '', '', '0', '1', '1');
-INSERT INTO `cx_menu` VALUES ('118', '部门管理', '70', '1', 'Department', 'index', '', '', '', '0', '10', '1');
+INSERT INTO `cx_menu` VALUES ('99', '用户管理', '52', '1', 'user', 'index', '', '', '', '0', '0', '1');
+INSERT INTO `cx_menu` VALUES ('100', '学生管理', '99', '1', 'user', 'student', '', '', '', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('101', '教师管理', '99', '1', 'user', 'teacher', '', '', '', '0', '2', '1');
+INSERT INTO `cx_menu` VALUES ('115', '教学视频管理', '70', '1', 'Video', 'teaching_video', '', '', '教学视频管理', '0', '2', '1');
+INSERT INTO `cx_menu` VALUES ('116', '单词管理', '43', '1', 'Word', 'index', '', '', '', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('117', '单词库管理', '116', '1', 'Word', 'index', '', '', '', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('120', '其他', '0', '1', 'Grate', 'index', '', '', '', '0', '4', '1');
+INSERT INTO `cx_menu` VALUES ('121', '题目管理', '50', '1', 'Task', '', '', '', '', '0', '2', '1');
+INSERT INTO `cx_menu` VALUES ('122', '题目列表', '121', '1', 'Task', 'index', '', '', '', '0', '2', '1');
+INSERT INTO `cx_menu` VALUES ('123', '题目类别', '121', '1', 'Task', 'category', '', '', '题目类别', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('124', '批改作业', '121', '1', 'Task', 'correct_record', '', '', '', '0', '3', '1');
+INSERT INTO `cx_menu` VALUES ('125', '年级管理', '120', '1', 'Grate', '', '', '', '', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('126', '年级列表', '125', '1', 'Grate', 'index', '', '', '', '0', '1', '1');
+INSERT INTO `cx_menu` VALUES ('127', '师生讨论记录', '70', '1', 'Video', 'discussion_record', '', '', '', '0', '3', '1');
 
 -- ----------------------------
 -- Table structure for `cx_message`
@@ -2587,69 +2513,6 @@ CREATE TABLE `cx_message` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `cx_news`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_news`;
-CREATE TABLE `cx_news` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '标识id',
-  `cate_id` int(10) unsigned DEFAULT '0' COMMENT '所属栏目(分类)id，0为游离状态',
-  `title` varchar(200) NOT NULL COMMENT '文章标题',
-  `summary` varbinary(150) DEFAULT NULL COMMENT '简介',
-  `contents` text NOT NULL COMMENT '文章内容',
-  `sort` tinyint(6) DEFAULT '0' COMMENT '排序',
-  `status` tinyint(1) unsigned DEFAULT '1' COMMENT '状态 0:不显示 1:显示',
-  `update_time` varchar(13) DEFAULT NULL COMMENT '最后修改时间',
-  `view_times` int(11) DEFAULT '100' COMMENT '浏览量',
-  `pic` text COMMENT '缩略图',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='资讯表';
-
--- ----------------------------
--- Records of cx_news
--- ----------------------------
-INSERT INTO `cx_news` VALUES ('14', '7', '客户管理', '', '客户管理新手帮助文档，资料整理中，将会尽快发布', '0', '1', '1479282758', '100', '');
-INSERT INTO `cx_news` VALUES ('16', '11', '提现规则', '', '提现规则提现规则提现规则提现规则', '0', '1', '1479368402', '100', '');
-INSERT INTO `cx_news` VALUES ('17', '12', '订购服务', '', '&lt;p&gt;\n	&lt;img src=&quot;/Public/Admin/kindeditor/attached/image/20161122/20161122144215_55094.jpg&quot; alt=&quot;&quot; /&gt;\n&lt;/p&gt;', '0', '1', '1479796941', '100', '');
-INSERT INTO `cx_news` VALUES ('18', '0', '关于我们', '', '&lt;p style=&quot;text-align:center;&quot;&gt;\n	&lt;img src=&quot;/Public/Admin/kindeditor/attached/image/20161121/20161121121152_38639.png&quot; alt=&quot;&quot; width=&quot;300&quot; height=&quot;300&quot; title=&quot;&quot; align=&quot;&quot; /&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;&quot;&gt;\n	&lt;br /&gt;\n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;&quot;&gt;\n	&lt;br /&gt;\n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	穿形 &amp;nbsp;\n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	时尚服饰创业者的赚钱法器和省钱利器\n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	减少顾客购衣决策时间和&lt;span style=&quot;vertical-align:baseline;&quot;&gt;穿衣品质美感的神器&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	&lt;span style=&quot;vertical-align:baseline;&quot;&gt;&lt;br /&gt;\n&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	&lt;span style=&quot;vertical-align:baseline;&quot;&gt;服饰创业者&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	&lt;span style=&quot;vertical-align:baseline;&quot;&gt;开店卖作品用穿形 服务老客户用穿形 &amp;nbsp;管理店铺用穿形&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	&lt;span style=&quot;vertical-align:baseline;&quot;&gt;&lt;br /&gt;\n&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	&lt;span style=&quot;vertical-align:baseline;&quot;&gt;即刻开始体验&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;font-size:15px;vertical-align:baseline;color:#333333;font-family:arial, sans-serif;background-color:#FFFFFF;&quot;&gt;\n	&lt;span style=&quot;vertical-align:baseline;&quot;&gt;让品牌更高效获得收益&lt;/span&gt; \n&lt;/p&gt;\n&lt;p style=&quot;text-align:center;&quot;&gt;\n	&lt;br /&gt;\n&lt;/p&gt;', '0', '1', '1479714675', '100', '');
-INSERT INTO `cx_news` VALUES ('19', '0', '收入管理', '', '&lt;div style=&quot;text-align:center;&quot;&gt;\n	收入管理\n&lt;/div&gt;', '0', '1', '1479701584', '100', '');
-
--- ----------------------------
--- Table structure for `cx_news_attachment`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_news_attachment`;
-CREATE TABLE `cx_news_attachment` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '标志id',
-  `nid` int(11) NOT NULL COMMENT '文章id',
-  `path` text NOT NULL COMMENT '附件路径',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
--- ----------------------------
--- Records of cx_news_attachment
--- ----------------------------
-
--- ----------------------------
--- Table structure for `cx_news_category`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_news_category`;
-CREATE TABLE `cx_news_category` (
-  `cat_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '栏目id',
-  `cat_name` varchar(50) NOT NULL COMMENT '栏目名称',
-  `sort` tinyint(6) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
-  PRIMARY KEY (`cat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='资讯类目表';
-
--- ----------------------------
--- Records of cx_news_category
--- ----------------------------
-INSERT INTO `cx_news_category` VALUES ('7', '新手帮助', '0');
-INSERT INTO `cx_news_category` VALUES ('10', '注册协议', '0');
-INSERT INTO `cx_news_category` VALUES ('11', '提现规则', '0');
-INSERT INTO `cx_news_category` VALUES ('12', '订购服务', '0');
-INSERT INTO `cx_news_category` VALUES ('13', '关于我们', '0');
-INSERT INTO `cx_news_category` VALUES ('14', '收入管理', '0');
-
--- ----------------------------
 -- Table structure for `cx_subject_category`
 -- ----------------------------
 DROP TABLE IF EXISTS `cx_subject_category`;
@@ -2660,11 +2523,14 @@ CREATE TABLE `cx_subject_category` (
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of cx_subject_category
 -- ----------------------------
+INSERT INTO `cx_subject_category` VALUES ('4', '选择题', '', '1', '1571316978');
+INSERT INTO `cx_subject_category` VALUES ('2', '填空题', '|||', '1', '1571316803');
+INSERT INTO `cx_subject_category` VALUES ('3', '阅读题', '***', '1', '1571316914');
 
 -- ----------------------------
 -- Table structure for `cx_subject_task`
@@ -2672,8 +2538,8 @@ CREATE TABLE `cx_subject_category` (
 DROP TABLE IF EXISTS `cx_subject_task`;
 CREATE TABLE `cx_subject_task` (
   `subject_task_id` int(11) NOT NULL AUTO_INCREMENT,
-  `content` text,
-  `video_id` int(11) DEFAULT NULL COMMENT '视频id',
+  `task_name` varchar(200) DEFAULT NULL COMMENT '作业名称',
+  `content` text COMMENT '内容',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   `op_time` int(11) DEFAULT NULL COMMENT '操作时间',
@@ -2713,45 +2579,23 @@ INSERT INTO `cx_system` VALUES ('3', '4', '4', '4', '2', null);
 DROP TABLE IF EXISTS `cx_teacher`;
 CREATE TABLE `cx_teacher` (
   `teacher_id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(11) DEFAULT NULL COMMENT '账号',
+  `pwd` varchar(50) DEFAULT NULL COMMENT '密码',
+  `login_time` int(11) DEFAULT NULL,
   `grate_id` int(11) DEFAULT NULL COMMENT '所属年级',
   `teacher_name` varchar(50) DEFAULT NULL COMMENT '教师名称',
   `is_recomment` tinyint(4) DEFAULT '0' COMMENT '是否推荐 1：是 0：否',
   `teacher_info` varchar(1024) DEFAULT NULL COMMENT '教师信息',
-  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1开启0关闭',
+  `is_online` tinyint(4) DEFAULT NULL COMMENT '是否在线 1是 0否',
+  `status` tinyint(4) DEFAULT '1' COMMENT '状态 1是 0否',
+  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
   PRIMARY KEY (`teacher_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教师表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='教师表';
 
 -- ----------------------------
 -- Records of cx_teacher
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `cx_teacher_class`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_teacher_class`;
-CREATE TABLE `cx_teacher_class` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `admin_id` int(11) DEFAULT NULL COMMENT '教师id',
-  `class_id` int(11) DEFAULT NULL COMMENT '任教班级id',
-  `grate_id` int(11) DEFAULT NULL COMMENT '任教年级id',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cx_teacher_class
--- ----------------------------
-INSERT INTO `cx_teacher_class` VALUES ('1', '6', '1', '9');
-INSERT INTO `cx_teacher_class` VALUES ('2', '6', '2', '9');
-INSERT INTO `cx_teacher_class` VALUES ('3', '7', '2', '6');
-INSERT INTO `cx_teacher_class` VALUES ('4', '7', '2', '8');
-INSERT INTO `cx_teacher_class` VALUES ('5', '8', '1', '9');
-INSERT INTO `cx_teacher_class` VALUES ('6', '8', '2', '9');
-INSERT INTO `cx_teacher_class` VALUES ('7', '9', '1', '8');
-INSERT INTO `cx_teacher_class` VALUES ('8', '9', '2', '8');
-INSERT INTO `cx_teacher_class` VALUES ('9', '10', '1', '9');
-INSERT INTO `cx_teacher_class` VALUES ('10', '10', '2', '9');
-INSERT INTO `cx_teacher_class` VALUES ('11', '11', '1', '8');
-INSERT INTO `cx_teacher_class` VALUES ('12', '11', '2', '8');
+INSERT INTO `cx_teacher` VALUES ('1', '程咬金1', 'e10adc3949ba59abbe56e057f20f883e', null, '4', '程咬金', '0', null, null, '0', null);
 
 -- ----------------------------
 -- Table structure for `cx_teacher_correct_task`
@@ -2759,40 +2603,19 @@ INSERT INTO `cx_teacher_class` VALUES ('12', '11', '2', '8');
 DROP TABLE IF EXISTS `cx_teacher_correct_task`;
 CREATE TABLE `cx_teacher_correct_task` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `teaching_video_id` int(11) DEFAULT NULL COMMENT '教学视频id',
+  `member_id` int(11) DEFAULT NULL COMMENT '学生id',
+  `teacher_id` int(11) DEFAULT NULL COMMENT '教师id',
+  `content` text COMMENT '作业以及评语',
+  `is_correct` tinyint(4) DEFAULT '0' COMMENT '是否批改完 1：批改完 0：为批改完',
+  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  `op_time` int(11) DEFAULT NULL COMMENT '批改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='批改记录';
 
 -- ----------------------------
 -- Records of cx_teacher_correct_task
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `cx_teacher_discipline`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_teacher_discipline`;
-CREATE TABLE `cx_teacher_discipline` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `admin_id` int(11) DEFAULT NULL,
-  `grate_id` int(11) DEFAULT NULL COMMENT '年级id',
-  `dis_id` int(11) DEFAULT NULL COMMENT '学科id',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cx_teacher_discipline
--- ----------------------------
-INSERT INTO `cx_teacher_discipline` VALUES ('1', '6', '9', '1');
-INSERT INTO `cx_teacher_discipline` VALUES ('2', '6', '9', '2');
-INSERT INTO `cx_teacher_discipline` VALUES ('3', '7', '8', '1');
-INSERT INTO `cx_teacher_discipline` VALUES ('4', '7', '8', '2');
-INSERT INTO `cx_teacher_discipline` VALUES ('5', '8', '9', '1');
-INSERT INTO `cx_teacher_discipline` VALUES ('6', '8', '9', '2');
-INSERT INTO `cx_teacher_discipline` VALUES ('7', '9', '8', '1');
-INSERT INTO `cx_teacher_discipline` VALUES ('8', '9', '8', '2');
-INSERT INTO `cx_teacher_discipline` VALUES ('9', '10', '9', '1');
-INSERT INTO `cx_teacher_discipline` VALUES ('10', '10', '9', '2');
-INSERT INTO `cx_teacher_discipline` VALUES ('11', '11', '8', '1');
-INSERT INTO `cx_teacher_discipline` VALUES ('12', '11', '8', '2');
 
 -- ----------------------------
 -- Table structure for `cx_teaching_video`
@@ -2814,79 +2637,6 @@ CREATE TABLE `cx_teaching_video` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `cx_theme`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_theme`;
-CREATE TABLE `cx_theme` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '分类id',
-  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '专题名称',
-  `theme_img` varchar(255) DEFAULT NULL COMMENT '专题图片',
-  `sort` smallint(5) DEFAULT '100' COMMENT '排序',
-  `category` varchar(50) NOT NULL COMMENT '分类',
-  `introduce` varchar(255) DEFAULT NULL COMMENT '专题简介',
-  `create_time` int(11) NOT NULL COMMENT '创建时间',
-  `cate_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL COMMENT '状态 0：生成html；1：动态',
-  `url` varchar(50) NOT NULL COMMENT '网址',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
-
--- ----------------------------
--- Records of cx_theme
--- ----------------------------
-INSERT INTO `cx_theme` VALUES ('1', '裁缝邦', 'http://cfb01.wearmaker.cn/Uploads/Theme/2016/08/29/57c4055e5d727.jpg', '10', '小型企业', '正在发展的企业！', '1472464308', '0', '0', '');
-INSERT INTO `cx_theme` VALUES ('3', '超凡试衣体验流程介', 'http://cfb01.wearmaker.cn/Uploads/Theme/2016/08/29/57c406312f519.png', '100', '小型企业', '完美', '0', '0', '0', '');
-INSERT INTO `cx_theme` VALUES ('4', '华为荣耀', 'http://cfb01.wearmaker.cn/Uploads/Theme/2016/08/30/57c4e49149156.jpg', '100', '小型企业', '完美！', '0', '0', '0', 'www.lasilaisi.com');
-
--- ----------------------------
--- Table structure for `cx_type`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_type`;
-CREATE TABLE `cx_type` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `type_name` varchar(50) DEFAULT '' COMMENT '类型名称',
-  `type_img` varchar(255) DEFAULT '' COMMENT '类型图片',
-  `sort` smallint(5) DEFAULT '10' COMMENT '排序',
-  `status` tinyint(1) DEFAULT '1' COMMENT '状态',
-  PRIMARY KEY (`id`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='类型管理';
-
--- ----------------------------
--- Records of cx_type
--- ----------------------------
-INSERT INTO `cx_type` VALUES ('1', '穿衣场合', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('4', '肤色', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('5', '尺码', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('6', '颜色', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('7', '脸型', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('9', '风格', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('10', '体型', 'Uploads/Type/2016/10/12/2016-10-12/57fda626e2af6.png', '10', '1');
-INSERT INTO `cx_type` VALUES ('12', '用户标签', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('13', '生活喜好', '', '10', '1');
-INSERT INTO `cx_type` VALUES ('14', '模板', '', '10', '1');
-
--- ----------------------------
--- Table structure for `cx_user_feedback`
--- ----------------------------
-DROP TABLE IF EXISTS `cx_user_feedback`;
-CREATE TABLE `cx_user_feedback` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `uid` int(11) DEFAULT '0' COMMENT '用户id',
-  `contents` varchar(255) DEFAULT '' COMMENT '反馈内容',
-  `contact` varchar(50) DEFAULT '' COMMENT '联系方式',
-  `create_time` int(11) DEFAULT '0' COMMENT '反馈时间',
-  PRIMARY KEY (`id`),
-  KEY `uid` (`uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='用户反馈';
-
--- ----------------------------
--- Records of cx_user_feedback
--- ----------------------------
-INSERT INTO `cx_user_feedback` VALUES ('1', '208', '46646446', '15037150825', '1477944548');
-INSERT INTO `cx_user_feedback` VALUES ('2', '218', '好像还是你很喜欢的好的好的几点能到', '18600678647', '1480909160');
-
--- ----------------------------
 -- Table structure for `cx_video`
 -- ----------------------------
 DROP TABLE IF EXISTS `cx_video`;
@@ -2894,14 +2644,37 @@ CREATE TABLE `cx_video` (
   `video_id` int(11) NOT NULL AUTO_INCREMENT,
   `video_name` varchar(100) DEFAULT NULL COMMENT '视频名称',
   `video_url` varchar(200) DEFAULT NULL COMMENT '视频地址',
+  `blackboard_writing` varchar(1024) DEFAULT NULL COMMENT '板书',
   `status` tinyint(5) DEFAULT '1' COMMENT '状态 1：开启0:关闭',
   `create_time` int(11) DEFAULT NULL COMMENT '创建时间',
   `create_man` varchar(50) DEFAULT NULL,
   `op_time` int(11) DEFAULT NULL,
   `op_man` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`video_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教学视频表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='教学视频表';
 
 -- ----------------------------
 -- Records of cx_video
+-- ----------------------------
+INSERT INTO `cx_video` VALUES ('1', '陈情令', 'www.baidu.com', '陈情令', '0', '1571233113', null, '1571233299', null);
+
+-- ----------------------------
+-- Table structure for `cx_word`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_word`;
+CREATE TABLE `cx_word` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `word_name` varchar(100) DEFAULT NULL COMMENT '单词',
+  `person_name` varchar(100) DEFAULT NULL COMMENT '人名',
+  `word_origin` varchar(200) DEFAULT NULL COMMENT '词源',
+  `synonym` text COMMENT '同义词',
+  `chinese_interpretation` varchar(1024) DEFAULT NULL COMMENT '中国化解释',
+  `chinese_interpretation_con` text COMMENT '中国化解释详情',
+  `op_time` int(11) DEFAULT NULL,
+  `create_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='单词表';
+
+-- ----------------------------
+-- Records of cx_word
 -- ----------------------------

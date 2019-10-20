@@ -1,48 +1,43 @@
-<include file="Public/header" />
+	<include file="Public/header" />
 <body style="background-color: #FFF; overflow: auto;">
 	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
-	
+
 	<div id="append_parent"></div>
 	<div id="ajaxwaitid"></div>
 	<div class="page">
 		<div class="fixed-bar">
 			<div class="item-title">
-				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
-					<h3>学科管理 - 添加类型</h3>
-					<h5>学科管理的添加、修改和删除</h5>
+					<h3>题目类别 - 修改</h3>
+					<h5>题目类别的添加、修改和删除</h5>
 				</div>
 			</div>
 		</div>
-		<form id="add_form" method="post" action="{:U('Discipline/add')}">
+		<form id="add_form" method="post" action="{:U('Task/categoryedit')}">
 			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
-						<label for="grate_id"><em>*</em>年级名称</label>
+						<label for="subject_cate_name"><em>*</em>类别名称</label>
 					</dt>
 					<dd class="opt">
-						<select name="grate_id">
-							<option value="">--请选择--</option>
-							<volist name="class_list" id="v">
-								<option value="{$v.sort}">{$v.grate_name}</option>
-							</volist>
-						</select>
+						<input type="text" id="subject_cate_name" name="subject_cate_name" class="w200 input-txt" value="{$vo.subject_cate_name}">
+						<span class="err"></span>
+						<p class="notic">名称不能为空且必须小于10个字</p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="replace_mark">代替标志</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="replace_mark" name="replace_mark" class="w200 input-txt" value="{$vo.replace_mark}">
 						<span class="err"></span>
 						<p class="notic"></p>
 					</dd>
 				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="type_name"><em>*</em>学科名称</label>
-					</dt>
-					<dd class="opt">
-						<input type="text" id="name" name="name" class="input-txt" value="">
-						<span class="err"></span>
-						<p class="notic">学科名称不能为空且必须小于10个字</p>
-					</dd>
-				</dl>
-
 				<dl class="row">
 					<dt class="tit">
 						<label for="status"><em>*</em>状态</label>
@@ -56,17 +51,7 @@
 						</div>
 					</dd>
 				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="sort"><em>*</em>排序</label>
-					</dt>
-					<dd class="opt">
-						<input type="text" id="sort" name="sort" class="w60" value='10'>
-						<span class="err"></span>
-						<p class="notic">数字范围为0~255，数字越大越靠前。</p>
-					</dd>
-				</dl>
-				
+
 				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
 			</div>
 		</form>
@@ -92,12 +77,13 @@
 					data: sub_data,
 					url: response_url,
 					success:function(json_data){
-						layer.alert(json_data.info);
-						window.location.href="{:U('Discipline/index')}";
+                        layer.alert(json_data.info,function(){
+                            window.location.href= "{:U('category')}";
+                        });
 					}
 				});
 			}
-		});
+		})
 
 		$("#add_form").validate({
 			errorPlacement: function(error, element){
@@ -105,14 +91,10 @@
 				error_td.append(error);
 			},
 			rules : {
-				id 		: 	{required : true},
-				name	: 	{required : true},
-				sort		:	{required:true}
+                subject_cate_name	: 	{required : true},
 			},
 			messages : {
-				id			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-				name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-				sort	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+                subject_cate_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
 			}
 		});
 
