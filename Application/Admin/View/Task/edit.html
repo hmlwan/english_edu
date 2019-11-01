@@ -7,40 +7,39 @@
 	<div class="page">
 		<div class="fixed-bar">
 			<div class="item-title">
-				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
-					<h3>学科管理 - 修改类型</h3>
-					<h5>学科管理的添加、修改和删除</h5>
+					<h3>题目 - 修改</h3>
+					<h5>题目的添加、修改和删除</h5>
 				</div>
 			</div>
 		</div>
-		<form id="add_form" method="post" action="{:U('Discipline/edit')}">
+		<form id="add_form" method="post" action="{:U('Task/edit')}">
 			<input type="hidden" name="form_submit" value="ok" />
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
-						<label for="grate_id"><em>*</em>年级名称</label>
+						<label for="task_name"><em>*</em>作业名称</label>
 					</dt>
 					<dd class="opt">
-						<select name="grate_id" disabled>
-							<option value="">--请选择--</option>
-							<volist name="class_list" id="v">
-								<option value="{$v.sort}"   <if condition="$vo['grate_id'] eq $v['sort']">selected </if>>{$v.grate_name}</option>
-							</volist>
-						</select>
+						<input type="text" id="task_name" name="task_name" class="w200 input-txt" value="{$vo.task_name}">
 						<span class="err"></span>
 						<p class="notic"></p>
 					</dd>
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="type_name"><em>*</em>学科名称</label>
+						<label for="replace_mark"><em>*</em>作业内容</label>
 					</dt>
 					<dd class="opt">
-						<input type="text" id="name" name="name" class="input-txt" value="{$vo.name}">
-						<span class="err"></span>
-						<p class="notic">学科名称不能为空且必须小于10个字</p>
+						<select name="subject_task_id" class="w200" >
+							<option value="">--请选择--</option>
+							<volist name="task_list" id="s_val">
+								<option value="{$s_val.subject_task_id}" <if condition="$vo['subject_task_id'] eq $s_val['subject_task_id']">selected</if>>{$s_val.task_name}</option>
+							</volist>
+						</select>
+						<a href="JavaScript:void(0);" style="    margin-left: 0;padding: 3px 0;" class="ncap-btn-big ncap-btn-green" >添加</a>
 					</dd>
 				</dl>
 				<dl class="row">
@@ -56,17 +55,7 @@
 						</div>
 					</dd>
 				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="sort"><em>*</em>排序</label>
-					</dt>
-					<dd class="opt">
-						<input type="text" id="sort" name="sort" class="w60" value='{$vo.sort}'>
-						<span class="err"></span>
-						<p class="notic">数字范围为0~255，数字越大越靠前。</p>
-					</dd>
-				</dl>
-				
+
 				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
 			</div>
 		</form>
@@ -92,8 +81,9 @@
 					data: sub_data,
 					url: response_url,
 					success:function(json_data){
-						alert(json_data.info);
-						window.location.href="{:U('Discipline/index')}";
+                        layer.alert(json_data.info,function(){
+                            window.location.href= "{:U('index')}";
+                        });
 					}
 				});
 			}
@@ -105,14 +95,10 @@
 				error_td.append(error);
 			},
 			rules : {
-				id 		: 	{required : true},
-				name	: 	{required : true},
-				sort		:	{required:true}
+                task_name	: 	{required : true},
 			},
 			messages : {
-				id			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-                name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-				sort	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+                task_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
 			}
 		});
 
