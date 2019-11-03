@@ -64,6 +64,7 @@ class UserAction extends CommonAction {
      * 老师信息
      */
     public function teacher(){
+
         $user_model = D('Teacher');
         $page = I('p',1,'trim');
         $rp = 10;

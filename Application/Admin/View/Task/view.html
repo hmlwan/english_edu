@@ -26,8 +26,8 @@
 			<div class="item-title">
 				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
-					<h3>题目 - 修改</h3>
-					<h5>题目的添加、修改和删除</h5>
+					<h3>作业记录- 修改</h3>
+					<!--<h5>题目的添加、修改和删除</h5>-->
 				</div>
 			</div>
 		</div>
@@ -37,117 +37,90 @@
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
-						<label for="task_name"><em>*</em>作业名称</label>
+						<label for="replace_mark"><em>*</em>作业内容以及评语</label>
 					</dt>
-					<dd class="opt">
-						<input type="text" id="task_name" name="task_name" class="w200 input-txt" value="{$vo.task_name}">
-						<span class="err"></span>
-						<p class="notic"></p>
-					</dd>
-				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="status"><em>*</em>状态</label>
-					</dt>
-					<dd class="opt">
-						<div class="onoff">
-							<if condition="$vo['id'] eq ''">
-								<label class="cb-enable selected" for="status1" >启用</label>
-								<label class="cb-disable" for="status0">禁用</label>
-								<else />
-								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
-							<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
-							</if>
-							<input type="radio" value="1" name="status" id="status1">
-							<input type="radio" value="0" name="status" id="status0">
-						</div>
-					</dd>
-				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="replace_mark"><em>*</em>作业内容</label>
-					</dt>
-					<dd class="opt">
-						<select name="cate_en" class="w200" >
-							<volist name="cate_list" id="c">
-								<option value="{$c.cate_en}" data-cate_name="{$c.subject_cate_name}">{$c.subject_cate_name} <if condition="$c['replace_mark']">({$c['replace_mark']})</if></option>
-							</volist>
-						</select>
-						<a href="JavaScript:void(0);" style="margin-left: 0;padding: 3px 0;" class="ncap-btn-big ncap-btn-green AddTaskItem" >添加</a>
-					</dd>
-					<div style="text-align: left;margin-left: 20%;" class="task_item">
-						<div class="item FILL_ANSWERS">
-							<if condition="$vo['content']['FILL_ANSWERS']">
-								<h1>填空题</h1>
-								<volist name="vo['content']['FILL_ANSWERS']" id="i">
-									<div class="mb15">
-									<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$i.question}">
-									<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$i.answer}">
-									<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>
-									</div>
-								</volist>
-							</if>
-							<!--<h1>填空题</h1>-->
-							<!--<div class="mb15">-->
+					<!--<dd class="opt">-->
+						<!--<select name="cate_en" class="w200" >-->
+							<!--<volist name="cate_list" id="c">-->
+								<!--<option value="{$c.cate_en}" data-cate_name="{$c.subject_cate_name}">{$c.subject_cate_name} <if condition="$c['replace_mark']">({$c['replace_mark']})</if></option>-->
+							<!--</volist>-->
+						<!--</select>-->
+						<!--<a href="JavaScript:void(0);" style="margin-left: 0;padding: 3px 0;" class="ncap-btn-big ncap-btn-green AddTaskItem" >添加</a>-->
+					<!--</dd>-->
+					<if condition="$content">
+						<div style="text-align: left;margin-left: 20%;" class="task_item">
+							<div class="item FILL_ANSWERS">
+								<if condition="$vo['content']['FILL_ANSWERS']">
+									<h1>填空题</h1>
+									<volist name="vo['content']['FILL_ANSWERS']" id="i">
+										<div class="mb15">
+											<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$i.question}">
+											<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$i.answer}">
+											<span>评语：</span><input type="text"  name="answer" class="w200 input-txt mr20" value="{$i.comment}">
+										</div>
+									</volist>
+								</if>
+								<!--<h1>填空题</h1>-->
+								<!--<div class="mb15">-->
 								<!--<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>-->
-							<!--</div>-->
-							<!--<div class="mb15">-->
+								<!--</div>-->
+								<!--<div class="mb15">-->
 								<!--<span>题目2：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>答案：</span><input type="text"  name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
-							<!--</div>-->
-						</div>
-						<div  class="item SINGLE_ANSWER">
-							<if condition="$vo['content']['SINGLE_ANSWER']">
-								<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>
-								<volist name="vo['content']['SINGLE_ANSWER']" id="j">
-									<div class="mb15">
-									<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$j.question}">
-									<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20" value="{$j.sel_con}">
-									<span>答案：</span><input type="text" name="answer" class="w100 input-txt mr20" value="{$j.answer}">
-									<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>
-									</div>
-								</volist>
-							</if>
-							<!--<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>-->
-							<!--<div class="mb15">-->
+								<!--</div>-->
+							</div>
+							<div  class="item SINGLE_ANSWER">
+								<if condition="$content['SINGLE_ANSWER']">
+									<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>
+									<volist name="content['SINGLE_ANSWER']" id="j">
+										<div class="mb15">
+											<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$j.question}">
+											<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20" value="{$j.sel_con}">
+											<span>答案：</span><input type="text" name="answer" class="w100 input-txt mr20" value="{$j.answer}">
+											<span>评语：</span><input type="text"  name="answer" class="w200 input-txt mr20" value="{$j.comment}">
+										</div>
+									</volist>
+								</if>
+								<!--<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>-->
+								<!--<div class="mb15">-->
 								<!--<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>答案：</span><input type="text" name="answer" class="w100 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>-->
-							<!--</div>-->
-							<!--<div class="mb15">-->
+								<!--</div>-->
+								<!--<div class="mb15">-->
 								<!--<span>题目2：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>选项：</span><input type="text"  name="task_name" class="w300 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>答案：</span><input type="text"  name="task_name" class="w100 input-txt " value="{$vo.task_name}">-->
-							<!--</div>-->
-						</div>
-						<div class="item QUESTION_ANSWERS">
-							<if condition="$vo['content']['QUESTION_ANSWERS']">
-								<h1>阅读题</h1>
-								<volist name="vo['content']['QUESTION_ANSWERS']" id="k">
-									<div class="mb15">
-										<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$k.question}">
-										<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$k.answer}">
-										<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>
-									</div>
-								</volist>
-							</if>
-							<!--<h1>阅读题</h1>-->
-							<!--<div class="mb15">-->
+								<!--</div>-->
+							</div>
+							<div class="item QUESTION_ANSWERS">
+								<if condition="$vo['content']['QUESTION_ANSWERS']">
+									<h1>阅读题</h1>
+									<volist name="content['QUESTION_ANSWERS']" id="k">
+										<div class="mb15">
+											<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$k.question}">
+											<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$k.answer}">
+											<span>评语：</span><input type="text"  name="answer" class="w200 input-txt mr20" value="{$k.comment}">
+										</div>
+									</volist>
+								</if>
+								<!--<h1>阅读题</h1>-->
+								<!--<div class="mb15">-->
 								<!--<span>题目1：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>选项：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
-							<!--</div>-->
-							<!--<div class="mb15">-->
+								<!--</div>-->
+								<!--<div class="mb15">-->
 								<!--<span>题目2：</span><input type="text"  name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
 								<!--<span>选项：</span><input type="text"  name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
-							<!--</div>-->
+								<!--</div>-->
+							</div>
 						</div>
-					</div>
+					</if>
+
 				</dl>
-
-
 				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
 			</div>
 		</form>

@@ -1,0 +1,172 @@
+	<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>单词 - 修改</h3>
+					<h5>单词的添加、修改和删除</h5>
+				</div>
+			</div>
+		</div>
+		<form id="add_form" method="post" action="{:U('Word/edit')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="word_name"><em>*</em>单词</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="word_name" name="word_name" class="w200 input-txt" value="{$vo.word_name}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="person_name"><em>*</em>人名</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="person_name" name="person_name" class="w200 input-txt" value="{$vo.person_name}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="word_origin"><em>*</em>词源</label>
+					</dt>
+					<dd class="opt">
+						<textarea name="word_origin" id="word_origin" cols="30" rows="10">{$vo.word_origin}</textarea>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="chinese_interpretation"><em>*</em>中国化解释</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="chinese_interpretation" name="chinese_interpretation" class="w200 input-txt" value="{$vo.chinese_interpretation}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="chinese_interpretation_con"><em>*</em>中国化解释内容</label>
+					</dt>
+					<dd class="opt">
+						<textarea name="chinese_interpretation_con" id="chinese_interpretation_con" cols="30" rows="10">{$vo.chinese_interpretation}</textarea>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="synonym"><em>*</em>同义词</label>
+					</dt>
+					<dd class="opt">
+						<textarea name="synonym" id="synonym" cols="30" rows="10">{$vo.synonym}</textarea>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="status"><em>*</em>状态</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<if condition="$vo['id'] eq ''">
+								<label class="cb-enable selected" for="status1" >启用</label>
+								<label class="cb-disable" for="status0">禁用</label>
+								<else />
+								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
+							<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
+							</if>
+							<input type="radio" value="1" name="status" id="status1">
+							<input type="radio" value="0" name="status" id="status0">
+						</div>
+					</dd>
+				</dl>
+				</dl>
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+
+	<js href="__COMMON__/jquery-ui/jquery.ui.widget.js" />
+	<js href="__COMMON__/js/jquery/jquery.fileupload.js" />
+	<js href="__COMMON__/js/jquery/jquery.nyroModal.js" />
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		//按钮先执行验证再提交表单
+        var KE;
+        KindEditor.ready(function(K) {
+            KE = K.create("textarea[name='chinese_interpretation_con'],textarea[name='word_origin'],textarea[name='synonym']", option);
+            KE.appendHtml = function(id,val) {
+                this.html(this.html() + val);
+                if (this.isCreated) {
+                    var cmd = this.cmd;
+                    cmd.range.selectNodeContents(cmd.doc.body).collapse(false);
+                    cmd.select();
+                }
+                return this;
+            }
+        });
+        $("#submitBtn").click(function(){
+            if($("#add_form").valid()){
+                var sub_data = $('#add_form').serialize();
+                var response_url = $('#add_form').attr('action');
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    data: sub_data,
+                    url: response_url,
+                    success:function(json_data){
+                        console.log(json_data);
+                        layer.alert(json_data.info,function(){
+                            window.location.href= "{:U('index')}";
+                        });
+
+                    }
+                });
+            }
+        })
+
+		$("#add_form").validate({
+			errorPlacement: function(error, element){
+				var error_td = element.parent('dd').children('span.err');
+				error_td.append(error);
+			},
+			rules : {
+                word_name	: 	{required : true},
+                person_name	: 	{required : true},
+                word_origin	: 	{required : true},
+                synonym	: 	{required : true},
+			},
+			messages : {
+                word_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                person_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                word_origin			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                synonym			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+			}
+		});
+
+	});
+	</script>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+</html>

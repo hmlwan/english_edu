@@ -41,6 +41,26 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
+						<label for="video_name"><em>*</em>视频名称</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="video_name" name="video_name" class="w200 input-txt" value="{$vo.video_name}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="video_name"><em>*</em>视频名称</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="video_name" name="video_name" class="w200 input-txt" value="{$vo.video_name}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
 						<label for="blackboard_writing"><em>*</em>板书</label>
 					</dt>
 					<dd class="opt">
@@ -49,14 +69,21 @@
 						<p class="notic"></p>
 					</dd>
 				</dl>
+
 				<dl class="row">
 					<dt class="tit">
 						<label for="status"><em>*</em>状态</label>
 					</dt>
 					<dd class="opt">
 						<div class="onoff">
-							<label class="cb-enable selected" for="status1">启用</label>
-							<label class="cb-disable" for="status0">禁用</label>
+							<if condition="$vo['video_id'] eq ''">
+								<label class="cb-enable selected" for="status1" >启用</label>
+								<label class="cb-disable" for="status0">禁用</label>
+							<else />
+								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
+								<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
+							</if>
+
 							<input type="radio" value="1" name="status" id="status1">
 							<input type="radio" value="0" name="status" id="status0">
 						</div>
@@ -87,7 +114,8 @@
 					data: sub_data,
 					url: response_url,
 					success:function(json_data){
-                        layer.alert(json_data.msg,function(){
+					    console.log(json_data);
+                        layer.alert(json_data.info,function(){
                             window.location.href= "{:U('index')}";
                         });
 

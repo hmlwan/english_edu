@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-10-20 21:16:06
+Date: 2019-11-03 21:38:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,7 +42,7 @@ CREATE TABLE `cx_admin` (
 -- ----------------------------
 -- Records of cx_admin
 -- ----------------------------
-INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1571054956', '222', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
+INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1572675127', '223', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
 
 -- ----------------------------
 -- Table structure for `cx_admin_role`
@@ -2248,10 +2248,12 @@ DROP TABLE IF EXISTS `cx_discussion_detail`;
 CREATE TABLE `cx_discussion_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `discussion_id` int(11) DEFAULT NULL,
-  `content` varchar(1024) DEFAULT NULL COMMENT '留言内容',
-  `is_read` tinyint(4) DEFAULT '0' COMMENT '是否已读 1：是 0：否',
-  `type` tinyint(4) DEFAULT NULL COMMENT '回复类型1：学生 2：老师',
-  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  `stu_content` varchar(1024) DEFAULT NULL COMMENT '学生留言内容',
+  `tea_content` varchar(1024) DEFAULT NULL COMMENT '教师留言内容',
+  `stu_is_read` tinyint(4) DEFAULT '0' COMMENT '学生是否已读 1：是 0：否',
+  `tea_is_read` tinyint(4) DEFAULT '0' COMMENT '教师是否已读 1：是 0：否',
+  `stu_add_time` int(11) DEFAULT NULL COMMENT '学生留言时间',
+  `tea_add_time` int(11) DEFAULT NULL COMMENT '教师留言时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='师生讨论详情表';
 
@@ -2519,6 +2521,7 @@ DROP TABLE IF EXISTS `cx_subject_category`;
 CREATE TABLE `cx_subject_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subject_cate_name` varchar(50) DEFAULT NULL,
+  `cate_en` varchar(100) DEFAULT NULL COMMENT '类型英文名称',
   `replace_mark` varchar(100) DEFAULT NULL COMMENT '替代标志例如， 填空题用***代替',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
@@ -2528,9 +2531,9 @@ CREATE TABLE `cx_subject_category` (
 -- ----------------------------
 -- Records of cx_subject_category
 -- ----------------------------
-INSERT INTO `cx_subject_category` VALUES ('4', '选择题', '', '1', '1571316978');
-INSERT INTO `cx_subject_category` VALUES ('2', '填空题', '|||', '1', '1571316803');
-INSERT INTO `cx_subject_category` VALUES ('3', '阅读题', '***', '1', '1571316914');
+INSERT INTO `cx_subject_category` VALUES ('4', '选择题', 'SINGLE_ANSWER', '', '1', '1571316978');
+INSERT INTO `cx_subject_category` VALUES ('2', '填空题', 'FILL_ANSWERS', '|||', '1', '1571316803');
+INSERT INTO `cx_subject_category` VALUES ('3', '阅读题', 'QUESTION_ANSWERS', '***', '1', '1571316914');
 
 -- ----------------------------
 -- Table structure for `cx_subject_task`
@@ -2546,11 +2549,12 @@ CREATE TABLE `cx_subject_task` (
   `create_man` varchar(50) DEFAULT NULL COMMENT '创建人',
   `op_man` varchar(50) DEFAULT NULL COMMENT '操作人',
   PRIMARY KEY (`subject_task_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='题目表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='题目表';
 
 -- ----------------------------
 -- Records of cx_subject_task
 -- ----------------------------
+INSERT INTO `cx_subject_task` VALUES ('3', '22', '{\"SINGLE_ANSWER\":[{\"question\":\"1\",\"sel_con\":\"2\",\"answer\":\"3\"}],\"FILL_ANSWERS\":[],\"QUESTION_ANSWERS\":[]}', '1', '1572762766', null, null, '1572762766');
 
 -- ----------------------------
 -- Table structure for `cx_system`
@@ -2589,13 +2593,15 @@ CREATE TABLE `cx_teacher` (
   `is_online` tinyint(4) DEFAULT NULL COMMENT '是否在线 1是 0否',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1是 0否',
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  `head` varchar(200) DEFAULT NULL COMMENT '头像',
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`teacher_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='教师表';
 
 -- ----------------------------
 -- Records of cx_teacher
 -- ----------------------------
-INSERT INTO `cx_teacher` VALUES ('1', '程咬金1', 'e10adc3949ba59abbe56e057f20f883e', null, '4', '程咬金', '0', null, null, '0', null);
+INSERT INTO `cx_teacher` VALUES ('1', '程咬金1', 'e10adc3949ba59abbe56e057f20f883e', null, '4', '程咬金', '0', null, '1', '1', null, null, 'http://www.english_edu.com/Uploads/Common/2019/11/03/2019-11-03/5dbec8a6b317e.png');
 
 -- ----------------------------
 -- Table structure for `cx_teacher_correct_task`
@@ -2608,8 +2614,7 @@ CREATE TABLE `cx_teacher_correct_task` (
   `teacher_id` int(11) DEFAULT NULL COMMENT '教师id',
   `content` text COMMENT '作业以及评语',
   `is_correct` tinyint(4) DEFAULT '0' COMMENT '是否批改完 1：批改完 0：为批改完',
-  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
-  `op_time` int(11) DEFAULT NULL COMMENT '批改时间',
+  `add_time` int(11) DEFAULT NULL COMMENT '批改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='批改记录';
 
@@ -2623,18 +2628,24 @@ CREATE TABLE `cx_teacher_correct_task` (
 DROP TABLE IF EXISTS `cx_teaching_video`;
 CREATE TABLE `cx_teaching_video` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL COMMENT '教学视频标题',
   `teacher_id` int(11) DEFAULT NULL COMMENT '教师id',
   `video_id` int(11) DEFAULT NULL COMMENT '视频id',
   `subject_task_id` int(11) DEFAULT NULL COMMENT '作业id',
+  `sort` tinyint(10) DEFAULT NULL COMMENT '排序',
   `create_time` int(11) DEFAULT NULL,
   `create_man` varchar(50) DEFAULT NULL,
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
+  `is_recommend` tinyint(4) DEFAULT '0' COMMENT '是否推荐 1：是 0：否',
+  `cover_img` varchar(200) DEFAULT NULL COMMENT '视频封面',
+  `logo` varchar(200) DEFAULT NULL COMMENT '图片',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教学视频';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='教学视频';
 
 -- ----------------------------
 -- Records of cx_teaching_video
 -- ----------------------------
+INSERT INTO `cx_teaching_video` VALUES ('1', '测试2', '1', '1', '0', '1', '1572678606', null, '1', null, 'http://www.english_edu.com/Uploads/Common/2019/11/03/2019-11-03/5dbecead2d9ac.png', 'http://www.english_edu.com/Uploads/Common/2019/11/03/2019-11-03/5dbeceb229d1e.png');
 
 -- ----------------------------
 -- Table structure for `cx_video`
@@ -2656,7 +2667,7 @@ CREATE TABLE `cx_video` (
 -- ----------------------------
 -- Records of cx_video
 -- ----------------------------
-INSERT INTO `cx_video` VALUES ('1', '陈情令', 'www.baidu.com', '陈情令', '0', '1571233113', null, '1571233299', null);
+INSERT INTO `cx_video` VALUES ('1', '陈情令', 'www.baidu.com', '陈情令', '1', '1571233113', null, '1572677462', null);
 
 -- ----------------------------
 -- Table structure for `cx_word`
@@ -2670,11 +2681,12 @@ CREATE TABLE `cx_word` (
   `synonym` text COMMENT '同义词',
   `chinese_interpretation` varchar(1024) DEFAULT NULL COMMENT '中国化解释',
   `chinese_interpretation_con` text COMMENT '中国化解释详情',
+  `status` tinyint(2) DEFAULT '1' COMMENT '状态 1开启 0：关闭',
   `op_time` int(11) DEFAULT NULL,
-  `create_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='单词表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='单词表';
 
 -- ----------------------------
 -- Records of cx_word
 -- ----------------------------
+INSERT INTO `cx_word` VALUES ('1', 'demur', '德)德穆尔；(法)德米尔', 'V-I If you demur, you say that you do not agree with something or will not do something that you have been asked to do. 表示异议 [正式]', '&lt;span style=&quot;color:#434343;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;欢迎访问您访问郭威英语网站，本网站内容基于郭威教练新浪博客转载。 ... demonstrate 证明,演示,作示威运动&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color:#638C0B;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;demur&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color:#638C0B;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;反对&lt;/span&gt;&lt;span style=&quot;color:#434343;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;,犹豫 denude 剥下,脱去,剥夺 ...&lt;/span&gt;', '异议；反对', '异议；反对', '1', '1572767159');

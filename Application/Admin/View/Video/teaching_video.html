@@ -20,7 +20,12 @@
 					<th width="25" align="center" class="sign"><i class="ico-check"></i></th>
 					<th width="160" class="handle" align="center">操作</th>
 					<th width="60" align="center">编号</th>
+					<th width="100" align="center">排序</th>
 					<th width="100" align="center">教学视频名称</th>
+					<th width="200" align="center">视频封面</th>
+					<th width="200" align="center">图片</th>
+					<th width="100" align="center">是否推荐</th>
+					<th width="100" align="center">视频名称</th>
 					<th width="100" align="center">教师名称</th>
 					<th width="300" align="center">作业名称</th>
 					<th width="80" align="center">状态</th>
@@ -34,13 +39,30 @@
 				<tr data-id="{$r.id}">
 					<td class="sign"><i class="ico-check"></i></td>
 					<td class="handle">
-					<a class="btn red" href="{:U('teaching_video_del',array('id'=>$r['id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这 1 项吗?')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
-						<a class="btn blue" href="{:U('teaching_video_deledit',array('id'=>$r['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<a class="btn red" href="{:U('teaching_video_del',array('id'=>$r['id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这 1 项吗?')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
+						<a class="btn blue" href="{:U('teaching_video_edit',array('id'=>$r['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<a class="btn blue" href="{:U('discussion_record',array('teaching_video_id'=>$r['id']))}"><i class="fa fa-pencil-square-o"></i>查看讨论记录</a>
 					</td>
-					<!--<td class="sort"><span title="可编辑" column_id="{$r.id}" fieldname="sort" nc_type="inline_edit" class="editable ">{$r.sort}</span></td>-->
-					<!--<td class="name"><span title="可编辑" column_id="{$r.id}" fieldname="name" nc_type="inline_edit" class="editable ">{$r.name}</span></td>-->
-
 					<td>{$r.id}</td>
+					<td class="sort"><span title="可编辑" column_id="{$r.id}" fieldname="sort" nc_type="inline_edit" class="editable ">{$r.sort}</span></td>
+					<td class="title"><span title="可编辑" column_id="{$r.id}" fieldname="title" nc_type="inline_edit" class="editable ">{$r.title}</span></td>
+					<td class="name">
+						<if condition="$r['cover_img']">
+							<a href="{$r['cover_img']}"><img style="width: 80px;height: 80px" src="{$r['cover_img']}" alt=""></a>
+						</if>
+					</td>
+					<td>
+						<if condition="$r['logo']">
+							<img style="width: 80px;height: 80px" src="{$r['logo']}" alt="">
+						</if>
+					</td>
+					<td>
+						<eq name="r.is_recommend" value="0">
+							<span class="no"><i class="fa fa-ban"></i>否</span>
+							<else/>
+							<span class="yes"><i class="fa fa-check-circle"></i>是</span>
+						</eq>
+					</td>
 					<td>{$r.video_name}</td>
 					<td>{$r.teacher_name}</td>
 					<td>{$r.task_name}</td>
@@ -88,7 +110,7 @@
 				sortname: "sort",
 				sortorder: "asc",
 			});
-			$('span[nc_type="inline_edit"]').inline_edit({c:'Discipline',a:'ajax_save_data'});
+			$('span[nc_type="inline_edit"]').inline_edit({c:'Video',a:'ajax_save_data'});
 		});
 			function fg_operation(name,bDiv){
 				if(name == 'add') {

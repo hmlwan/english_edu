@@ -13,8 +13,6 @@ class CommonAction extends Action {
 			$url = $_SERVER['HTTP_REFERER'];
 			session('_JUMPURL_',$url);
 		}
-        $imgHost = 'http://img.51Admin.com/';
-        $this->assign('imgHost',$imgHost);
 
 		$this->check_login();
  		$this->check_auth();
@@ -546,7 +544,7 @@ class CommonAction extends Action {
 	    $field = 'fileupload';
 
 	    $upload_info = $this->upload_file($savepath,$field);
-		dd($upload_info);
+
 
 	  //  header('Content-Type:application/json; charset=utf-8');
 	  //判断是否kindEditor上传的文件
@@ -588,12 +586,13 @@ class CommonAction extends Action {
 		}
 
 		$upload_info = $upload->upload();
-        dd($upload_info);
+
 		if(!$upload_info) { 
 			$this->error($upload->getError());
 		}else{
-			$file_path = C('IMG_HTTP').'Uploads/'.ltrim($upload_info[$field]['savepath'],'.').$upload_info[$field]['savename'];
+			$file_path = "http://".$_SERVER['HTTP_HOST'].'/Uploads/'.ltrim($upload_info[$field]['savepath'],'.').$upload_info[$field]['savename'];
 			$upload_info[$field]['file_path'] = $file_path;
+
 			return $upload_info[$field];
 		}
 	}

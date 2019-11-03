@@ -33,8 +33,10 @@ class VideoAction extends CommonAction
      */
     public function edit()
     {
+
         if (IS_POST && I('form_submit') == 'ok') {
             $data = $this->video_model->create();
+
             $id = I('id');
             if ($data) {
                 $data['op_time'] = time();
@@ -126,6 +128,7 @@ class VideoAction extends CommonAction
             $res = $db->find($id);
             /*教师*/
             $teacher_list = D("Teacher")->getAllUserData(array('status'=>1));
+
             /*视频*/
             $video_list = D("Video")->where(array('status'=>1))->select();
 
@@ -158,18 +161,66 @@ class VideoAction extends CommonAction
         }
     }
 
+    /*师生讨论记录*/
+    public function  discussion_record(){
+        $page = I('p', 1, 'trim');
+        $rp = 8;
+        $teaching_video_id = I('get.teaching_video_id');
+
+        $db = M('discussion');
+
+        $where = array();
+        if($teaching_video_id){
+            $where['teaching_video_id'] =  $teaching_video_id;
+        }
+
+        $count = $db->where($where)->count();
+        $Page = new \Think\Page($count, $rp);
+        $show = $Page->show();
+        $res = $db->where($where)->order('id desc')->page($page . ',' . $rp)->select();
+        foreach ($res as &$value){
+            $value['title'] = M('teaching_video')->where(array('id'=>$value['teaching_video_id']))->getField('title');
+            $value['nick_name'] = M('member')->where(array('member_id'=>$value['student_id']))->getField('nick_name');
+            $value['teacher_name'] = M('teacher')->where(array('teacher_id'=>$value['teacher_id']))->getField('teacher_name');
+            $discussion_detail = M('discussion_detail')->where(array('discussion_id'=>$value['id']))->find();
+            $value['discussion_detail'] = $discussion_detail;
+        }
+        $this->assign('list', $res);
+        $this->assign('page', $show);
+        $this->display();
+
+    }
+    /**
+     *删除
+     */
+    public function discussion_del()
+    {
+        $db = M('discussion');
+        $ids = I('id');
+        $sub_ids = explode(',', $ids);
+        $where = array('id' => array('in', $sub_ids));
+
+        $res = $db->where($where)->delete();
+        if ($res === false) {
+            $this->error('操作失败！');
+        } else {
+            M("discussion_detail")->where(array('discussion_id'=>array('in',$sub_ids)))->delete();
+            $this->success('操作成功！');
+        }
+    }
     /**
      * ajax修改类型
      */
     public function ajax_save_data()
     {
-        $data = $this->type_model->create();
+        $db = M('teaching_video');
+        $data = $db->create();
 
         $data[I('branch')] = I('value');
         $data['id'] = I('id');
 
         if ($data) {
-            $res = $this->type_model->save($data);
+            $res = $db->save($data);
         }
         if ($res === false) {
             $this->error('修改失败!');

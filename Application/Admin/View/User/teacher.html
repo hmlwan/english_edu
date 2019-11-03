@@ -38,6 +38,8 @@
 				<th width="100" class="handle" align="center">操作</th>
 				<th width="80" align="center">用户编号</th>
 				<th width="120" align="center">教师名称</th>
+				<th width="120" align="center">头像</th>
+				<th width="120" align="center">人物图片</th>
 				<th width="120" align="center">账号</th>
 				<th width="120" align="center">年级</th>
 				<!--<th width="120" align="center">是否推荐</th>-->
@@ -59,6 +61,17 @@
 						<!--<a class="btn blue" href="{:U(CONTROLLER_NAME.'/subjectDetail',array('id'=>$vo['admin_id']))}"><i class="fa fa-file-o"></i>学科详情</a>-->
 					</td>
 					<td class="name">{$vo.teacher_id}</td>
+					<td class="name">{$vo.teacher_name}</td>
+					<td class="name">
+						<if condition="$vo['head']">
+							<a href="{$vo['head']}"><img style="width: 80px;height: 80px" src="{$vo['head']}" alt=""></a>
+						</if>
+					</td>
+					<td>
+						<if condition="$vo['img']">
+							<img style="width: 80px;height: 80px" src="{$vo['img']}" alt="">
+						</if>
+					</td>
 					<td class="name">{$vo.teacher_name}</td>
 					<td class="name">{$vo.username}</td>
 					<td class="name">{$vo.grate_name}</td>
