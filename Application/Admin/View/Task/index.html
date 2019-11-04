@@ -1,6 +1,5 @@
 <include file="Public/header" />
 <body style="background-color: #FFF; overflow: auto;">
-
 	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
 	<div id="append_parent"></div>
 	<div id="ajaxwaitid"></div>
@@ -37,6 +36,7 @@
 					<td class="task_name"><span title="可编辑" column_id="{$r.subject_task_id}" fieldname="task_name" nc_type="inline_edit" class="editable ">{$r.task_name}</span></td>
 					<!--<td class="replace_mark"><span title="可编辑" column_id="{$r.id}" fieldname="replace_mark" nc_type="inline_edit" class="editable ">{$r.replace_mark}</span></td>-->
 					</td>
+
 					<td>
 						<eq name="r.status" value="0">
 						<span class="no"><i class="fa fa-ban"></i>禁用</span>
@@ -52,6 +52,8 @@
 					<td>
 						<if condition="$r['op_time']">
 							{$r.op_time|date="Y-m-d H:i:s",###}
+						<else />
+							{$r.create_time|date="Y-m-d H:i:s",###}
 						</if>
 					</td>
 					<td></td>

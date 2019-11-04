@@ -35,8 +35,11 @@ class TaskAction extends CommonAction
      */
     public function edit()
     {
+
         if (IS_POST && I('form_submit') == 'ok') {
+
             $data = $this->model->create();
+            $data['content'] = I("content",'','');
             $id = I('id');
             if ($data) {
                 $data['op_man'] = time();
@@ -55,9 +58,31 @@ class TaskAction extends CommonAction
         } else {
             $id = I('id');
             $res = $this->model->find($id);
+
+            $res['content'] = json_decode($res['content'],true);
             $this->assign('vo', $res);
+            /*作业类型*/
+            $cate_list = M("subject_category")->where(array('status'=>1))->select();
+
+            $this->assign('cate_list', $cate_list);
             $this->display();
 
+        }
+    }
+    /**
+     *删除
+     */
+    public function del()
+    {
+        $ids = I('id');
+        $sub_ids = explode(',', $ids);
+        $where = array('subject_task_id' => array('in', $sub_ids));
+
+        $res = $this->model->where($where)->delete();
+        if ($res === false) {
+            $this->error('操作失败！');
+        } else {
+            $this->success('操作成功！');
         }
     }
 
@@ -225,4 +250,36 @@ class TaskAction extends CommonAction
             $this->success('修改成功!');
         }
     }
+    /*批改作业记录*/
+    public function correct_record()
+    {
+        $page = I('p', 1, 'trim');
+        $rp = 8;
+
+        $count = M('teacher_correct_task')->count();
+        $Page = new \Think\Page($count, $rp);
+        $show = $Page->show();
+        $res = M('teacher_correct_task')->order('id desc')->page($page . ',' . $rp)->select();
+        foreach ($res as &$value){
+            $value['teaching_video_title'] = M('teaching_video')->where(array('id'=>$value['teaching_video_id']))->getField('title');
+            $value['stu_name'] = M('member')->where(array('member_id'=> $value['member_id']))->getField('nick_name');
+            $value['tea_name'] = M('teacher')->where(array('teacher_id'=> $value['member_id']))->getField('teacher_id');
+        }
+
+        cookie('pageUrl', funcurl());
+        $this->assign('list', $res);
+        $this->assign('page', $show);
+        $this->display();
+    }
+    /*评语详情*/
+    public function view(){
+        $id = I('id');
+
+        $info = M('teacher_correct_task')->find($id);
+        $content = json_decode($info['content'],true);
+        $this->assign('content', $content);
+        $this->display();
+    }
+
+
 }

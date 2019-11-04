@@ -30,6 +30,31 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
+						<label for="img">教师人物像</label>
+					</dt>
+					<dd class="opt">
+						<div class="input-file-show">
+							<input type="file" class="type-file-file fileupload" id="fileupload" name="fileupload" size="30" hidefocus="true"  nc_type="upload_file_pic" title="">
+							<input type='text' name='textfield' id='textfield' value="{$vo.img}" class='type-file-text' />
+							<input type='button' name='button' id='button1' value='选择上传...' class='type-file-button' />
+							<input type="hidden" name="img" id="img" value="{$vo.img}" />
+						</div>
+						<a  class="ncap-btn clear_pic" href="JavaScript:void(0);"><i class="fa fa-trash"></i>删除</a>
+						<span class="err"></span>
+						<div class="ncap-thumb-list thumbnails">
+							<h5><i class="fa fa-exclamation-circle"></i>上传后的图片可以插入到富文本编辑器中使用，无用附件请手动删除，如不处理系统会始终保存该附件图片。</h5>
+							<div class="thumb-list-pics">
+								<if condition="$vo['img']">
+									<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="{$vo['img']}" alt=""/></a></div>
+								</if>
+								<!--<a href="javascript:void(0);"><img style="width: 100px;height: 100px" alt="" src="http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg"></a>-->
+							</div>
+						</div>
+						<!--<p class="notic">建议尺寸：316px*226px，允许格式:gif,jpg,jpeg,png</p>-->
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
 						<label for="username"><em>*</em>账号</label>
 					</dt>
 					<dd class="opt">
@@ -52,22 +77,22 @@
 					</dd>
 				</dl>
 
-				<dl class="row">
-					<dt class="tit">
-						<label for="grate_id"><em>*</em>年级类别</label>
-					</dt>
-					<dd class="opt">
-						<div class="onoff">
-							<select name="grate_id" id="grate_id" class="input-txt" >
-								<volist name="grate_list" id="v">
-									<option value="{$v.id}" <if condition="$vo['grate_id'] eq $v['id']">selected</if> >{$v.grate_name}</option>
-								</volist>
-							</select>
-							<span class="err"></span>
-							<p class="notic" style="font-size: 12px;"></p>
-						</div>
-					</dd>
-				</dl>
+				<!--<dl class="row">-->
+					<!--<dt class="tit">-->
+						<!--<label for="grate_id"><em>*</em>年级类别</label>-->
+					<!--</dt>-->
+					<!--<dd class="opt">-->
+						<!--<div class="onoff">-->
+							<!--<select name="grate_id" id="grate_id" class="input-txt" >-->
+								<!--<volist name="grate_list" id="v">-->
+									<!--<option value="{$v.id}" <if condition="$vo['grate_id'] eq $v['id']">selected</if> >{$v.grate_name}</option>-->
+								<!--</volist>-->
+							<!--</select>-->
+							<!--<span class="err"></span>-->
+							<!--<p class="notic" style="font-size: 12px;"></p>-->
+						<!--</div>-->
+					<!--</dd>-->
+				<!--</dl>-->
 				<dl class="row">
 					<dt class="tit">
 						<label for="is_online"><em>*</em>是否在线</label>
@@ -75,8 +100,14 @@
 					<dd class="opt">
 						<div class="onoff">
 							<div class="onoff">
-								<label class="cb-enable selected" for="is_online1">在线</label>
-								<label class="cb-disable" for="is_online0">下线</label>
+								<if condition="$vo['teacher_id'] eq ''">
+									<label class="cb-enable selected" for="is_online1">在线</label>
+									<label class="cb-disable" for="is_online0">下线</label>
+									<else />
+
+									<label class="cb-enable <if condition="$vo['is_online'] eq 1">selected</if>" for="is_online1" >是</label>
+								<label class="cb-disable <if condition="$vo['is_online'] eq 0">selected</if>" for="is_online0">否</label>
+								</if>
 								<input type="radio" value="1" name="is_online" id="is_online1">
 								<input type="radio" value="0" name="is_online" id="is_online0">
 							</div>
@@ -87,13 +118,38 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
+						<label for="is_recomment"><em>*</em>是否推荐</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<if condition="$vo['teacher_id'] eq ''">
+								<label class="cb-enable" for="is_recomment1" >推荐</label>
+								<label class="cb-disable selected" for="is_recomment0">不推荐</label>
+								<else />
+								<label class="cb-enable <if condition="$vo['is_recomment'] eq 1">selected</if>" for="is_recomment1" >是</label>
+							<label class="cb-disable <if condition="$vo['is_recomment'] eq 0">selected</if>" for="is_recomment0">否</label>
+
+							</if>
+							<input type="radio" value="1" name="is_recomment" id="is_recomment1">
+							<input type="radio" value="0" name="is_recomment" id="is_recomment0">
+						</div>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
 						<label for="status"><em>*</em>状态</label>
 					</dt>
 					<dd class="opt">
 						<div class="onoff">
 							<div class="onoff">
-								<label class="cb-enable selected" for="status1">开启</label>
-								<label class="cb-disable" for="status0">关闭</label>
+								<if condition="$vo['teacher_id'] eq ''">
+									<label class="cb-enable selected" for="status1" >启用</label>
+									<label class="cb-disable" for="status0">禁用</label>
+								<else />
+									<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
+									<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
+								</if>
+
 								<input type="radio" value="1" name="status" id="status1">
 								<input type="radio" value="0" name="status" id="status0">
 							</div>
@@ -131,19 +187,27 @@
             draggable:'img'
         });
         // 图片上传
-        $('input[name="fileupload"]').each(function(){
+        $('.fileupload').each(function(){
+			var self = $(this);
+			var obj = self.closest('.opt');
             $(this).fileupload({
                 dataType: 'json',
-                url: '{:U("upload_attachment")}',
+                url: '{:U("/Common/upload")}',
                 done: function (e,json){
                     var data = json.result;
                     if(data.status==1){
-                        add_uploadedfile(data.data);
+                        add_oneuploadedfile(obj,data.data);
                     }
                 }
             });
         });
+        function add_oneuploadedfile(obj,data){
+			obj.find("input[name='textfield']").val(data.file_path);
+            obj.find("input[type='hidden']").val(data.file_path);
 
+            var newImg = '<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="' + data.file_path  + '" alt=""/></a></div>';
+            obj.find('.thumbnails div').append(newImg);
+        }
         function add_uploadedfile(data){
 
             var newImg = '<li id="' + data.file_id + '"><input type="hidden" name="carousel_img[][path]" value="' + data.file_path  + '" /><div class="thumb-list-pics"><a href="javascript:void(0);"><img src="' + data.file_path  + '" alt=""/></a></div><a href="javascript:del_file_upload(0,' + data.file_id +',\'' + data.file_path  + '\');" class="del" title="删除">X</a><a href="javascript:insert_editor(\'' + data.file_path  + '\');" class="inset"><i class="fa fa-clipboard"></i>插入图片</a></li>';
@@ -153,7 +217,14 @@
         function insert_editor(file_name){
             KE.appendHtml('content', '<img src="'+ file_name + '">');
         }
+		$(".clear_pic").click(function () {
+            var self = $(this);
+            var obj = self.closest('.opt');
+            obj.find("input[name='textfield']").val("");
+            obj.find("input[type='hidden']").val("");
+            obj.find('.thumbnails div').empty();
 
+        })
 
 		//按钮先执行验证再提交表单
 		$("#submitBtn").click(function(){
@@ -188,12 +259,14 @@
 			rules : {
                 username 		: 	{required : true},
 				teacher_name	: 	{required : true},
-                grate_id		:	{required:true}
+                img	: 	{required : true},
+//                grate_id		:	{required:true}
 			},
 			messages : {
                 username			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                img			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
                 teacher_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-                grate_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+//                grate_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
 			}
 		});
 

@@ -1,0 +1,292 @@
+	<include file="Public/header" />
+<body style="background-color: #FFF; overflow: auto;">
+	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
+	<style>
+		a.DelTaskItem{
+			margin-left: 0;
+			padding: 2px 0;
+			width: 5%;
+			vertical-align: bottom;
+			font-size: 14px;
+		}
+		.task_item .item{
+			margin: 1% 0
+		}
+		.task_item .item h1{
+			font-size: 16px;padding-bottom: 15px
+		}
+		.task_item .item span{
+			font-size: 14px
+		}
+	</style>
+	<div id="append_parent"></div>
+	<div id="ajaxwaitid"></div>
+	<div class="page">
+		<div class="fixed-bar">
+			<div class="item-title">
+				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<div class="subject">
+					<h3>作业记录- 修改</h3>
+					<!--<h5>题目的添加、修改和删除</h5>-->
+				</div>
+			</div>
+		</div>
+		<form id="add_form" method="post" action="{:U('Task/edit')}">
+			<input type="hidden" name="form_submit" value="ok" />
+			<input type="hidden" name="id" value="{$vo.id}" />
+			<div class="ncap-form-default">
+				<dl class="row">
+					<dt class="tit">
+						<label for="replace_mark"><em>*</em>作业内容以及评语</label>
+					</dt>
+					<!--<dd class="opt">-->
+						<!--<select name="cate_en" class="w200" >-->
+							<!--<volist name="cate_list" id="c">-->
+								<!--<option value="{$c.cate_en}" data-cate_name="{$c.subject_cate_name}">{$c.subject_cate_name} <if condition="$c['replace_mark']">({$c['replace_mark']})</if></option>-->
+							<!--</volist>-->
+						<!--</select>-->
+						<!--<a href="JavaScript:void(0);" style="margin-left: 0;padding: 3px 0;" class="ncap-btn-big ncap-btn-green AddTaskItem" >添加</a>-->
+					<!--</dd>-->
+					<if condition="$content">
+						<div style="text-align: left;margin-left: 20%;" class="task_item">
+							<div class="item FILL_ANSWERS">
+								<if condition="$vo['content']['FILL_ANSWERS']">
+									<h1>填空题</h1>
+									<volist name="vo['content']['FILL_ANSWERS']" id="i">
+										<div class="mb15">
+											<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$i.question}">
+											<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$i.answer}">
+											<span>评语：</span><input type="text"  name="answer" class="w200 input-txt mr20" value="{$i.comment}">
+										</div>
+									</volist>
+								</if>
+								<!--<h1>填空题</h1>-->
+								<!--<div class="mb15">-->
+								<!--<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>-->
+								<!--</div>-->
+								<!--<div class="mb15">-->
+								<!--<span>题目2：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>答案：</span><input type="text"  name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--</div>-->
+							</div>
+							<div  class="item SINGLE_ANSWER">
+								<if condition="$content['SINGLE_ANSWER']">
+									<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>
+									<volist name="content['SINGLE_ANSWER']" id="j">
+										<div class="mb15">
+											<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$j.question}">
+											<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20" value="{$j.sel_con}">
+											<span>答案：</span><input type="text" name="answer" class="w100 input-txt mr20" value="{$j.answer}">
+											<span>评语：</span><input type="text"  name="answer" class="w200 input-txt mr20" value="{$j.comment}">
+										</div>
+									</volist>
+								</if>
+								<!--<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>-->
+								<!--<div class="mb15">-->
+								<!--<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>答案：</span><input type="text" name="answer" class="w100 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>-->
+								<!--</div>-->
+								<!--<div class="mb15">-->
+								<!--<span>题目2：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>选项：</span><input type="text"  name="task_name" class="w300 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>答案：</span><input type="text"  name="task_name" class="w100 input-txt " value="{$vo.task_name}">-->
+								<!--</div>-->
+							</div>
+							<div class="item QUESTION_ANSWERS">
+								<if condition="$vo['content']['QUESTION_ANSWERS']">
+									<h1>阅读题</h1>
+									<volist name="content['QUESTION_ANSWERS']" id="k">
+										<div class="mb15">
+											<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$k.question}">
+											<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$k.answer}">
+											<span>评语：</span><input type="text"  name="answer" class="w200 input-txt mr20" value="{$k.comment}">
+										</div>
+									</volist>
+								</if>
+								<!--<h1>阅读题</h1>-->
+								<!--<div class="mb15">-->
+								<!--<span>题目1：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>选项：</span><input type="text" name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--</div>-->
+								<!--<div class="mb15">-->
+								<!--<span>题目2：</span><input type="text"  name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--<span>选项：</span><input type="text"  name="task_name" class="w400 input-txt mr20" value="{$vo.task_name}">-->
+								<!--</div>-->
+							</div>
+						</div>
+					</if>
+
+				</dl>
+				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
+			</div>
+		</form>
+	</div>
+	<js href="__THEME__/kindeditor/kindeditor-min.js" />
+	<js href="__THEME__/kindeditor/config.js" />
+	<js href="__THEME__/kindeditor/lang/zh_CN.js" />
+
+	<js href="__COMMON__/jquery-ui/jquery.ui.widget.js" />
+	<js href="__COMMON__/js/jquery/jquery.fileupload.js" />
+	<js href="__COMMON__/js/jquery/jquery.nyroModal.js" />
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+		//按钮先执行验证再提交表单
+        var task_item_obj = $(".task_item");
+        var obj1 = task_item_obj.find('.SINGLE_ANSWER');
+        var obj2 = task_item_obj.find('.FILL_ANSWERS');
+        var obj3 = task_item_obj.find('.QUESTION_ANSWERS');
+
+        $("#submitBtn").click(function(){
+			if($("#add_form").valid()){
+				 var sub_data = $('#add_form').serialize();
+			 var response_url = $('#add_form').attr('action');
+			/*题目*/
+			var obj1_div = obj1.find("div");
+			var obj2_div = obj2.find("div");
+			var obj3_div = obj3.find("div");
+			var obj1_arr =  [];
+			var obj2_arr =  [];
+			var obj3_arr =  [];
+			if(obj1_div.length > 0){ /*选择题*/
+				for(var i=0;i< (obj1_div.length);i++){
+				    console.log(i);
+					var o1 = {
+					    'question' : $.trim($("input[name='question']",$(obj1_div[i])).val()),
+					    'sel_con' : $.trim($("input[name='sel_con']",$(obj1_div[i])).val()),
+					    'answer' : $.trim($("input[name='answer']",$(obj1_div[i])).val()),
+					};
+                    console.log(o1);
+					if(!o1){
+					    continue;
+					}
+                    obj1_arr.push(o1);
+				}
+				if(!obj1_arr){
+                    obj1_arr = [];
+				}
+
+			}
+			if(obj2_div.length > 0){ /*填空题*/
+                for(var j=0;j< (obj2_div.length);j++){
+                    var o2 = {
+                        'question' : $.trim($("input[name='question']",$(obj2_div[j])).val()),
+                        'answer' : $.trim($("input[name='answer']",$(obj2_div[j])).val()),
+                    };
+                    if(!o2){
+                        continue;
+                    }
+                    obj2_arr.push(o2);
+                }
+                if(!obj2_arr){
+                    obj2_arr = [];
+                }
+			}
+			if(obj3_div.length>0){ /*阅读题*/
+                for(var k=0;k< (obj3_div.length);k++){
+
+                    var o3 = {
+                        'question' : $.trim($("input[name='question']",$(obj3_div[k])).val()),
+                        'answer' : $.trim($("input[name='answer']",$(obj3_div[k])).val()),
+                    };
+                    if(!o3){
+                        continue;
+                    }
+                    obj3_arr.push(o3);
+                }
+                if(!obj3_arr){
+                    obj3_arr = [];
+                }
+			}
+			var content = {
+				SINGLE_ANSWER:obj1_arr,
+				FILL_ANSWERS:obj2_arr,
+				QUESTION_ANSWERS:obj3_arr,
+			};
+
+                content = JSON.stringify(content);
+                console.log(content);
+                var sub_data1 = sub_data+'&content='+content;
+			console.log(sub_data1);
+			$.ajax({
+				type: 'POST',
+				dataType: 'json',
+				data: sub_data1,
+				url: response_url,
+				success:function(json_data){
+					layer.alert(json_data.info,function(){
+						window.location.href= "{:U('index')}";
+					});
+				}
+			});
+			}
+		});
+
+		$("#add_form").validate({
+			errorPlacement: function(error, element){
+				var error_td = element.parent('dd').children('span.err');
+				error_td.append(error);
+			},
+			rules : {
+                task_name	: 	{required : true},
+			},
+			messages : {
+                task_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+			}
+		});
+
+		/*添加内容*/
+		$(".AddTaskItem").click(function () {
+			var cate_en = $("select[name='cate_en']").val();
+
+			if(cate_en == 'SINGLE_ANSWER'){ /*单选题*/
+				if(obj1.find("h1").length == 0){
+                    obj1.append('<h1>选择题 <i style="color: red;font-size: 13px;font-style: normal">(选项请以英文 | 隔开)</i></h1>');
+				}
+                obj1.append('<div class="mb15">'+
+                    '<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" >'+
+                	'<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20">'+
+					'<span>答案：</span><input type="text" name="answer" class="w100 input-txt mr20">'+
+					'<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>'+
+					'</div>');
+
+			}else if(cate_en == 'FILL_ANSWERS'){ /*填空题*/
+                if(obj2.find("h1").length == 0){
+                    obj2.append('<h1>填空题</h1>');
+                }
+                obj2.append('<div class="mb15">'+
+                    '<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20">'+
+					'<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" >'+
+					'<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>'+
+					'</div>');
+
+			}else if(cate_en == 'QUESTION_ANSWERS'){ /*阅读题*/
+                if(obj3.find("h1").length == 0){
+                    obj3.append('<h1>阅读题</h1>');
+                }
+                obj3.append('<div class="mb15">'+
+                    '<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20">'+
+                    '<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" >'+
+                    '<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>'+
+                    '</div>');
+			}
+        });
+        task_item_obj.on('click','.DelTaskItem',function () {
+            var obj = 	$(this);
+            var item_obj = 	obj.closest('.item');
+			$(this).parent('div').remove();
+			if(item_obj.find('div').length == 0){
+                item_obj.empty();
+			}
+        })
+
+	});
+	</script>
+
+	<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+</html>

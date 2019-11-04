@@ -14,7 +14,7 @@
 <style>html, body { overflow: visible;}</style>
 <script>
 
-var ADMIN_TEMPLATES_URL = '__THEME__';
+var ADMIN_TEMPLATES_URL = '/Admin';
 var LOADING_IMAGE = "__THEME__/images/loading.gif";
 var ADMIN_RESOURCE_URL = '__THEME__';
 </script>
@@ -37,7 +37,7 @@ var ADMIN_RESOURCE_URL = '__THEME__';
 	<div class="page">
 		<div class="fixed-bar">
 			<div class="item-title">
-				<a class="back" href="{:U('admin/group')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<a class="back" href="{:U('/Admin/admin/group')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
 					<h3>{$subject}</h3>
 					<h5>管理中心操作权限及分组设置</h5>
@@ -55,7 +55,7 @@ var ADMIN_RESOURCE_URL = '__THEME__';
 				<li>可在标题处全选所有功能或根据功能模块逐一选择操作权限，提交保存后生效。</li>
 			</ul>
 		</div>
-		<form id="add_form" action="{:U('admin/save_role')}" method="post" style="margin-bottom: 50px;">
+		<form id="add_form" action="{:U('/Admin/admin/save_role')}" method="post" style="margin-bottom: 50px;">
 			<input type="hidden" name="form_submit" value="ok" />
 			<input type="hidden" name="role_id" id="role_id" value="{$role_id}" />
 			<div class="ncap-form-default">
@@ -149,7 +149,7 @@ $(document).ready(function(){
             role_name : {
                 required : true,
 				remote	: {
-                    url :'{:U("admin/check_role_exist")}',
+                    url :'{:U("/Admin/admin/check_role_exist")}',
                     type:'get',
                     data:{
                     	role_name : function(){

@@ -58,8 +58,8 @@ var ADMIN_RESOURCE_URL = '__THEME__';
 				<tr class="hover">
 					<td class="sign"><i class="ico-check"></i></td>
 					<td class="handle">
-						<a class="btn red" href="{:U('role/del_role',array('role_id'=>$r['role_id']))}" onclick="if(confirm('确定要删除此权限及拥有此权限的管理员吗？')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
-						<a class="btn blue" href="{:U('role/edit',array('role_id'=>$r['role_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<a class="btn red" href="{:U('/Admin/role/del_role',array('role_id'=>$r['role_id']))}" onclick="if(confirm('确定要删除此权限及拥有此权限的管理员吗？')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
+						<a class="btn blue" href="{:U('/Admin/role/edit',array('role_id'=>$r['role_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
 					</td>
 					<td>{$r.role_name}</td>
 					<td></td>
@@ -84,7 +84,7 @@ var ADMIN_RESOURCE_URL = '__THEME__';
 
 		function fg_operation(name, grid) {
 			if (name == 'add') {
-				window.location.href = '{:U("role/add")}';
+				window.location.href = '{:U("/Admin/role/add")}';
 			}
 		}
 	</script>

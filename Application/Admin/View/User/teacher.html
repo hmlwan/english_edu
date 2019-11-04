@@ -38,10 +38,12 @@
 				<th width="100" class="handle" align="center">操作</th>
 				<th width="80" align="center">用户编号</th>
 				<th width="120" align="center">教师名称</th>
+				<th width="120" align="center">头像</th>
+				<th width="120" align="center">人物图片</th>
 				<th width="120" align="center">账号</th>
-				<th width="120" align="center">年级</th>
-				<!--<th width="120" align="center">是否推荐</th>-->
+				<!--<th width="100" align="center">年级</th>-->
 				<th width="150" align="center">是否在线</th>
+				<th width="150" align="center">是否推荐</th>
 				<th width="150" align="center">状态</th>
 				<th width="150" align="center">登录时间</th>
 				<th width="150" align="center">添加时间</th>
@@ -60,23 +62,43 @@
 					</td>
 					<td class="name">{$vo.teacher_id}</td>
 					<td class="name">{$vo.teacher_name}</td>
+					<td class="name">
+						<if condition="$vo['head']">
+							<a href="{$vo['head']}"><img style="width: 80px;height: 80px" src="{$vo['head']}" alt=""></a>
+						</if>
+					</td>
+					<td>
+						<if condition="$vo['img']">
+							<img style="width: 80px;height: 80px" src="{$vo['img']}" alt="">
+						</if>
+					</td>
 					<td class="name">{$vo.username}</td>
-					<td class="name">{$vo.grate_name}</td>
+					<!--<td class="name">{$vo.grate_name}</td>-->
 					<td>
-						<eq name="vo.is_online" value="0">
-							<span class="no"><i class="fa fa-ban"></i>禁用</span>
+						<eq name="vo.is_online" value="1">
+							<span class="yes"><i class="fa fa-check-circle"></i>在线</span>
 							<else/>
-							<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
+							<span class="no"><i class="fa fa-ban"></i>下线</span>
 						</eq>
 					</td>
 					<td>
-						<eq name="vo.status" value="0">
-							<span class="no"><i class="fa fa-ban"></i>禁用</span>
-							<else/>
-							<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
-						</eq>
-					</td>
+						<eq name="vo.is_recomment" value="1">
+							<span class="yes"><i class="fa fa-check-circle"></i>不推荐</span>
 
+							<else/>
+							<span class="no"><i class="fa fa-ban"></i>不推荐</span>
+
+						</eq>
+					</td>
+					<td>
+						<eq name="vo.status" value="1">
+							<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
+
+							<else/>
+							<span class="no"><i class="fa fa-ban"></i>禁用</span>
+
+						</eq>
+					</td>
 					<td><if condition="$vo['login_time']">{$vo.login_time|date='Y-m-d H:i:s',###}</if></td>
 					<td><if condition="$vo['add_time']">{$vo.add_time|date='Y-m-d H:i:s',###}</if></td>
 					<td></td>

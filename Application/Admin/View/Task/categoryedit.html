@@ -30,6 +30,16 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
+						<label for="cate_en"><em>*</em>英文标识</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="cate_en" name="cate_en" <if condition="$vo['id']">selected</if> class="w200 input-txt" value="{$vo.cate_en}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
 						<label for="replace_mark">代替标志</label>
 					</dt>
 					<dd class="opt">
@@ -44,8 +54,13 @@
 					</dt>
 					<dd class="opt">
 						<div class="onoff">
-							<label class="cb-enable selected" for="status1">启用</label>
-							<label class="cb-disable" for="status0">禁用</label>
+							<if condition="$vo['id'] eq ''">
+								<label class="cb-enable selected" for="status1" >启用</label>
+								<label class="cb-disable" for="status0">禁用</label>
+								<else />
+								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
+							<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
+							</if>
 							<input type="radio" value="1" name="status" id="status1">
 							<input type="radio" value="0" name="status" id="status0">
 						</div>
@@ -92,9 +107,11 @@
 			},
 			rules : {
                 subject_cate_name	: 	{required : true},
+                cate_en	: 	{required : true},
 			},
 			messages : {
                 subject_cate_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                cate_en			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
 			}
 		});
 

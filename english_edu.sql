@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-10-20 21:16:06
+Date: 2019-11-04 21:43:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,12 +37,12 @@ CREATE TABLE `cx_admin` (
   `department_ids` text COMMENT '部门主管id（可以是多个）',
   PRIMARY KEY (`admin_id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='管理员表';
 
 -- ----------------------------
 -- Records of cx_admin
 -- ----------------------------
-INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1571054956', '222', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
+INSERT INTO `cx_admin` VALUES ('1', '1', '127.0.0.1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '1', '', '1572867198', '224', '1', 'http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg', null, null, null, '1,2');
 
 -- ----------------------------
 -- Table structure for `cx_admin_role`
@@ -2161,48 +2161,25 @@ INSERT INTO `cx_auth` VALUES ('1', '4');
 INSERT INTO `cx_auth` VALUES ('1', '5');
 INSERT INTO `cx_auth` VALUES ('1', '6');
 INSERT INTO `cx_auth` VALUES ('1', '43');
-INSERT INTO `cx_auth` VALUES ('1', '44');
-INSERT INTO `cx_auth` VALUES ('1', '45');
-INSERT INTO `cx_auth` VALUES ('1', '46');
-INSERT INTO `cx_auth` VALUES ('1', '47');
-INSERT INTO `cx_auth` VALUES ('1', '48');
-INSERT INTO `cx_auth` VALUES ('1', '49');
 INSERT INTO `cx_auth` VALUES ('1', '50');
-INSERT INTO `cx_auth` VALUES ('1', '51');
 INSERT INTO `cx_auth` VALUES ('1', '52');
-INSERT INTO `cx_auth` VALUES ('1', '53');
-INSERT INTO `cx_auth` VALUES ('1', '54');
-INSERT INTO `cx_auth` VALUES ('1', '55');
-INSERT INTO `cx_auth` VALUES ('1', '56');
-INSERT INTO `cx_auth` VALUES ('1', '57');
-INSERT INTO `cx_auth` VALUES ('1', '58');
-INSERT INTO `cx_auth` VALUES ('1', '62');
-INSERT INTO `cx_auth` VALUES ('1', '63');
 INSERT INTO `cx_auth` VALUES ('1', '70');
 INSERT INTO `cx_auth` VALUES ('1', '71');
-INSERT INTO `cx_auth` VALUES ('1', '72');
-INSERT INTO `cx_auth` VALUES ('1', '78');
-INSERT INTO `cx_auth` VALUES ('1', '79');
-INSERT INTO `cx_auth` VALUES ('1', '80');
-INSERT INTO `cx_auth` VALUES ('1', '83');
-INSERT INTO `cx_auth` VALUES ('1', '85');
-INSERT INTO `cx_auth` VALUES ('1', '86');
-INSERT INTO `cx_auth` VALUES ('1', '88');
-INSERT INTO `cx_auth` VALUES ('1', '89');
 INSERT INTO `cx_auth` VALUES ('1', '99');
 INSERT INTO `cx_auth` VALUES ('1', '100');
 INSERT INTO `cx_auth` VALUES ('1', '101');
-INSERT INTO `cx_auth` VALUES ('1', '102');
-INSERT INTO `cx_auth` VALUES ('1', '103');
-INSERT INTO `cx_auth` VALUES ('1', '104');
-INSERT INTO `cx_auth` VALUES ('1', '105');
-INSERT INTO `cx_auth` VALUES ('1', '106');
-INSERT INTO `cx_auth` VALUES ('1', '107');
-INSERT INTO `cx_auth` VALUES ('1', '108');
-INSERT INTO `cx_auth` VALUES ('1', '109');
-INSERT INTO `cx_auth` VALUES ('1', '110');
-INSERT INTO `cx_auth` VALUES ('1', '111');
-INSERT INTO `cx_auth` VALUES ('1', '112');
+INSERT INTO `cx_auth` VALUES ('1', '115');
+INSERT INTO `cx_auth` VALUES ('1', '116');
+INSERT INTO `cx_auth` VALUES ('1', '117');
+INSERT INTO `cx_auth` VALUES ('1', '120');
+INSERT INTO `cx_auth` VALUES ('1', '121');
+INSERT INTO `cx_auth` VALUES ('1', '122');
+INSERT INTO `cx_auth` VALUES ('1', '123');
+INSERT INTO `cx_auth` VALUES ('1', '124');
+INSERT INTO `cx_auth` VALUES ('1', '125');
+INSERT INTO `cx_auth` VALUES ('1', '126');
+INSERT INTO `cx_auth` VALUES ('1', '127');
+INSERT INTO `cx_auth` VALUES ('1', '128');
 
 -- ----------------------------
 -- Table structure for `cx_class`
@@ -2248,10 +2225,12 @@ DROP TABLE IF EXISTS `cx_discussion_detail`;
 CREATE TABLE `cx_discussion_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `discussion_id` int(11) DEFAULT NULL,
-  `content` varchar(1024) DEFAULT NULL COMMENT '留言内容',
-  `is_read` tinyint(4) DEFAULT '0' COMMENT '是否已读 1：是 0：否',
-  `type` tinyint(4) DEFAULT NULL COMMENT '回复类型1：学生 2：老师',
-  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  `stu_content` varchar(1024) DEFAULT NULL COMMENT '学生留言内容',
+  `tea_content` varchar(1024) DEFAULT NULL COMMENT '教师留言内容',
+  `stu_is_read` tinyint(4) DEFAULT '0' COMMENT '学生是否已读 1：是 0：否',
+  `tea_is_read` tinyint(4) DEFAULT '0' COMMENT '教师是否已读 1：是 0：否',
+  `stu_add_time` int(11) DEFAULT NULL COMMENT '学生留言时间',
+  `tea_add_time` int(11) DEFAULT NULL COMMENT '教师留言时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='师生讨论详情表';
 
@@ -2404,6 +2383,7 @@ DROP TABLE IF EXISTS `cx_member`;
 CREATE TABLE `cx_member` (
   `member_id` int(11) NOT NULL AUTO_INCREMENT,
   `phone` int(11) DEFAULT NULL COMMENT '手机号码',
+  `pwd` varchar(100) DEFAULT NULL COMMENT '密码',
   `nick_name` varchar(100) DEFAULT NULL COMMENT '昵称',
   `head` varchar(250) DEFAULT NULL COMMENT '头像',
   `reg_time` int(11) DEFAULT NULL COMMENT '注册时间',
@@ -2454,7 +2434,7 @@ CREATE TABLE `cx_menu` (
   `sort` tinyint(3) unsigned NOT NULL DEFAULT '255' COMMENT '排序',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态 0::禁用 1:启用',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='后台菜单表';
 
 -- ----------------------------
 -- Records of cx_menu
@@ -2478,7 +2458,7 @@ INSERT INTO `cx_menu` VALUES ('82', '用户反馈管理', '69', '1', 'User', 'us
 INSERT INTO `cx_menu` VALUES ('99', '用户管理', '52', '1', 'user', 'index', '', '', '', '0', '0', '1');
 INSERT INTO `cx_menu` VALUES ('100', '学生管理', '99', '1', 'user', 'student', '', '', '', '0', '1', '1');
 INSERT INTO `cx_menu` VALUES ('101', '教师管理', '99', '1', 'user', 'teacher', '', '', '', '0', '2', '1');
-INSERT INTO `cx_menu` VALUES ('115', '教学视频管理', '70', '1', 'Video', 'teaching_video', '', '', '教学视频管理', '0', '2', '1');
+INSERT INTO `cx_menu` VALUES ('115', '教学视频管理', '70', '1', 'Video', 'teaching_video', '', '', '教学视频管理', '0', '3', '1');
 INSERT INTO `cx_menu` VALUES ('116', '单词管理', '43', '1', 'Word', 'index', '', '', '', '0', '1', '1');
 INSERT INTO `cx_menu` VALUES ('117', '单词库管理', '116', '1', 'Word', 'index', '', '', '', '0', '1', '1');
 INSERT INTO `cx_menu` VALUES ('120', '其他', '0', '1', 'Grate', 'index', '', '', '', '0', '4', '1');
@@ -2488,7 +2468,8 @@ INSERT INTO `cx_menu` VALUES ('123', '题目类别', '121', '1', 'Task', 'catego
 INSERT INTO `cx_menu` VALUES ('124', '批改作业', '121', '1', 'Task', 'correct_record', '', '', '', '0', '3', '1');
 INSERT INTO `cx_menu` VALUES ('125', '年级管理', '120', '1', 'Grate', '', '', '', '', '0', '1', '1');
 INSERT INTO `cx_menu` VALUES ('126', '年级列表', '125', '1', 'Grate', 'index', '', '', '', '0', '1', '1');
-INSERT INTO `cx_menu` VALUES ('127', '师生讨论记录', '70', '1', 'Video', 'discussion_record', '', '', '', '0', '3', '1');
+INSERT INTO `cx_menu` VALUES ('127', '师生讨论记录', '70', '1', 'Video', 'discussion_record', '', '', '', '0', '4', '1');
+INSERT INTO `cx_menu` VALUES ('128', '课程列表', '70', '1', 'Video', 'video_cate', '', '', '', '0', '2', '1');
 
 -- ----------------------------
 -- Table structure for `cx_message`
@@ -2519,6 +2500,7 @@ DROP TABLE IF EXISTS `cx_subject_category`;
 CREATE TABLE `cx_subject_category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subject_cate_name` varchar(50) DEFAULT NULL,
+  `cate_en` varchar(100) DEFAULT NULL COMMENT '类型英文名称',
   `replace_mark` varchar(100) DEFAULT NULL COMMENT '替代标志例如， 填空题用***代替',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
@@ -2528,9 +2510,9 @@ CREATE TABLE `cx_subject_category` (
 -- ----------------------------
 -- Records of cx_subject_category
 -- ----------------------------
-INSERT INTO `cx_subject_category` VALUES ('4', '选择题', '', '1', '1571316978');
-INSERT INTO `cx_subject_category` VALUES ('2', '填空题', '|||', '1', '1571316803');
-INSERT INTO `cx_subject_category` VALUES ('3', '阅读题', '***', '1', '1571316914');
+INSERT INTO `cx_subject_category` VALUES ('4', '选择题', 'SINGLE_ANSWER', '', '1', '1571316978');
+INSERT INTO `cx_subject_category` VALUES ('2', '填空题', 'FILL_ANSWERS', '|||', '1', '1571316803');
+INSERT INTO `cx_subject_category` VALUES ('3', '阅读题', 'QUESTION_ANSWERS', '***', '1', '1571316914');
 
 -- ----------------------------
 -- Table structure for `cx_subject_task`
@@ -2546,11 +2528,12 @@ CREATE TABLE `cx_subject_task` (
   `create_man` varchar(50) DEFAULT NULL COMMENT '创建人',
   `op_man` varchar(50) DEFAULT NULL COMMENT '操作人',
   PRIMARY KEY (`subject_task_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='题目表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='题目表';
 
 -- ----------------------------
 -- Records of cx_subject_task
 -- ----------------------------
+INSERT INTO `cx_subject_task` VALUES ('3', '22', '{\"SINGLE_ANSWER\":[{\"question\":\"1\",\"sel_con\":\"2\",\"answer\":\"3\"}],\"FILL_ANSWERS\":[],\"QUESTION_ANSWERS\":[]}', '1', '1572762766', null, null, '1572762766');
 
 -- ----------------------------
 -- Table structure for `cx_system`
@@ -2589,13 +2572,15 @@ CREATE TABLE `cx_teacher` (
   `is_online` tinyint(4) DEFAULT NULL COMMENT '是否在线 1是 0否',
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1是 0否',
   `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
+  `head` varchar(200) DEFAULT NULL COMMENT '头像',
+  `img` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`teacher_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='教师表';
 
 -- ----------------------------
 -- Records of cx_teacher
 -- ----------------------------
-INSERT INTO `cx_teacher` VALUES ('1', '程咬金1', 'e10adc3949ba59abbe56e057f20f883e', null, '4', '程咬金', '0', null, null, '0', null);
+INSERT INTO `cx_teacher` VALUES ('1', '程咬金1', 'e10adc3949ba59abbe56e057f20f883e', null, '4', '程咬金', '1', null, '0', '1', null, null, 'http://www.english_edu.com/Uploads/Common/2019/11/03/2019-11-03/5dbec8a6b317e.png');
 
 -- ----------------------------
 -- Table structure for `cx_teacher_correct_task`
@@ -2608,8 +2593,8 @@ CREATE TABLE `cx_teacher_correct_task` (
   `teacher_id` int(11) DEFAULT NULL COMMENT '教师id',
   `content` text COMMENT '作业以及评语',
   `is_correct` tinyint(4) DEFAULT '0' COMMENT '是否批改完 1：批改完 0：为批改完',
-  `add_time` int(11) DEFAULT NULL COMMENT '添加时间',
-  `op_time` int(11) DEFAULT NULL COMMENT '批改时间',
+  `add_time` int(11) DEFAULT NULL COMMENT '批改时间',
+  `sub_time` int(11) DEFAULT NULL COMMENT '提交时间',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='批改记录';
 
@@ -2623,18 +2608,22 @@ CREATE TABLE `cx_teacher_correct_task` (
 DROP TABLE IF EXISTS `cx_teaching_video`;
 CREATE TABLE `cx_teaching_video` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `teacher_id` int(11) DEFAULT NULL COMMENT '教师id',
+  `title` varchar(100) DEFAULT NULL COMMENT '教学视频标题',
+  `video_cate_id` int(11) DEFAULT NULL COMMENT '课程id',
   `video_id` int(11) DEFAULT NULL COMMENT '视频id',
   `subject_task_id` int(11) DEFAULT NULL COMMENT '作业id',
+  `sort` tinyint(10) DEFAULT NULL COMMENT '排序',
   `create_time` int(11) DEFAULT NULL,
-  `create_man` varchar(50) DEFAULT NULL,
   `status` tinyint(4) DEFAULT '1' COMMENT '状态 1：开启 0：关闭',
+  `is_fee` tinyint(4) DEFAULT '0' COMMENT '是否收费 1：是 0：否',
+  `cover_img` varchar(200) DEFAULT NULL COMMENT '视频封面',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='教学视频';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='教学视频';
 
 -- ----------------------------
 -- Records of cx_teaching_video
 -- ----------------------------
+INSERT INTO `cx_teaching_video` VALUES ('1', '测试2', '1', '1', '0', '1', '1572678606', '1', null, 'http://www.english_edu.com/Uploads/Common/2019/11/03/2019-11-03/5dbecead2d9ac.png');
 
 -- ----------------------------
 -- Table structure for `cx_video`
@@ -2656,7 +2645,28 @@ CREATE TABLE `cx_video` (
 -- ----------------------------
 -- Records of cx_video
 -- ----------------------------
-INSERT INTO `cx_video` VALUES ('1', '陈情令', 'www.baidu.com', '陈情令', '0', '1571233113', null, '1571233299', null);
+INSERT INTO `cx_video` VALUES ('1', '陈情令', 'www.baidu.com', '陈情令', '1', '1571233113', null, '1572677462', null);
+
+-- ----------------------------
+-- Table structure for `cx_video_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `cx_video_cate`;
+CREATE TABLE `cx_video_cate` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL COMMENT '名称',
+  `cate_id` int(11) DEFAULT NULL,
+  `teacher_id` int(11) DEFAULT NULL,
+  `is_recommend` tinyint(4) DEFAULT '0' COMMENT '是否推荐 1：是 0：否',
+  `img` varchar(200) DEFAULT NULL COMMENT '图片',
+  `status` tinyint(4) DEFAULT NULL COMMENT '状态：1开启0关闭',
+  `op_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cx_video_cate
+-- ----------------------------
+INSERT INTO `cx_video_cate` VALUES ('1', '五年级课程', '3', '1', '1', 'http://www.english_edu.com/Uploads/Common/2019/11/04/2019-11-04/5dc016cee46e7.png', '1', '1572870041');
 
 -- ----------------------------
 -- Table structure for `cx_word`
@@ -2670,11 +2680,12 @@ CREATE TABLE `cx_word` (
   `synonym` text COMMENT '同义词',
   `chinese_interpretation` varchar(1024) DEFAULT NULL COMMENT '中国化解释',
   `chinese_interpretation_con` text COMMENT '中国化解释详情',
+  `status` tinyint(2) DEFAULT '1' COMMENT '状态 1开启 0：关闭',
   `op_time` int(11) DEFAULT NULL,
-  `create_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='单词表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='单词表';
 
 -- ----------------------------
 -- Records of cx_word
 -- ----------------------------
+INSERT INTO `cx_word` VALUES ('1', 'demur', '德)德穆尔；(法)德米尔', 'V-I If you demur, you say that you do not agree with something or will not do something that you have been asked to do. 表示异议 [正式]', '&lt;span style=&quot;color:#434343;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;欢迎访问您访问郭威英语网站，本网站内容基于郭威教练新浪博客转载。 ... demonstrate 证明,演示,作示威运动&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color:#638C0B;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;demur&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;color:#638C0B;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;反对&lt;/span&gt;&lt;span style=&quot;color:#434343;font-family:Arial, sans-serif;font-size:14px;background-color:#FCFCFE;&quot;&gt;,犹豫 denude 剥下,脱去,剥夺 ...&lt;/span&gt;', '异议；反对', '异议；反对', '1', '1572767159');

@@ -15,8 +15,7 @@ class TeacherModel extends RelationModel{
 
     public function getAllUserData($where,$sort,$filed){
         $filed = $filed ? $filed : '*';
-        return $this->where($where)->order($sort)->field($filed)->find();
+        return $this->where($where)->order($sort)->field($filed)->select();
     }
-
 
 }

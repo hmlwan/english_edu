@@ -18,7 +18,16 @@
 			<input type="hidden" name="form_submit" value="ok" />
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<div class="ncap-form-default">
-
+				<dl class="row">
+					<dt class="tit">
+						<label for="title"><em>*</em>教学视频标题</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="title" name="title" class="w200 input-txt" value="{$vo.title}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
 				<dl class="row">
 					<dt class="tit">
 						<label for="video_id"><em>*</em>选择视频</label>
@@ -36,13 +45,13 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="teacher_id"><em>*</em>选择老师</label>
+						<label for="video_cate_id"><em>*</em>选择课程</label>
 					</dt>
 					<dd class="opt">
-						<select name="teacher_id" class="w200" >
+						<select name="video_cate_id" class="w200" >
 							<option value="">--请选择--</option>
-							<volist name="teacher_list" id="t_val">
-								<option value="{$t_val.teacher_id}" <if condition="$vo['teacher_id'] eq $t_val['teacher_id']">selected</if>>{$t_val.teacher_name}</option>
+							<volist name="video_cate_list" id="t_val">
+								<option value="{$t_val.id}" <if condition="$vo['video_cate_id'] eq $t_val['id']">selected</if>>{$t_val.title}</option>
 							</volist>
 						</select>
 						<span class="err"></span>
@@ -66,12 +75,70 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
+						<label for="cover_img">视频封面</label>
+					</dt>
+					<dd class="opt">
+						<div class="input-file-show">
+							<input type="file" class="type-file-file fileupload" id="fileupload" name="fileupload" size="30" hidefocus="true"  nc_type="upload_file_pic" title="">
+							<input type='text' name='textfield' id='textfield' value="{$vo.cover_img}" class='type-file-text' />
+							<input type='button' name='button' id='button1' value='选择上传...' class='type-file-button' />
+							<input type="hidden" name="cover_img" id="cover_img" value="{$vo.cover_img}" />
+						</div>
+						<a  class="ncap-btn clear_pic" href="JavaScript:void(0);"><i class="fa fa-trash"></i>删除</a>
+						<span class="err"></span>
+						<div class="ncap-thumb-list thumbnails">
+							<h5><i class="fa fa-exclamation-circle"></i>上传后的图片可以插入到富文本编辑器中使用，无用附件请手动删除，如不处理系统会始终保存该附件图片。</h5>
+							<div class="thumb-list-pics">
+								<if condition="$vo['cover_img']">
+									<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="{$vo['cover_img']}" alt=""/></a></div>
+								</if>
+							</div>
+						</div>
+						<!--<p class="notic">建议尺寸：316px*226px，允许格式:gif,jpg,jpeg,png</p>-->
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="is_fee"><em>*</em>是否收费</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<if condition="$vo['id'] eq ''">
+								<label class="cb-enable" for="is_fee1" >收费</label>
+								<label class="cb-disable selected" for="is_fee0">不收费</label>
+								<else />
+								<label class="cb-enable <if condition="$vo['is_fee'] eq 1">selected</if>" for="is_fee1" >是</label>
+							<label class="cb-disable <if condition="$vo['is_fee'] eq 0">selected</if>" for="is_fee0">否</label>
+							</if>
+							<input type="radio" value="1" name="is_fee" id="is_fee1">
+							<input type="radio" value="0" name="is_fee" id="is_fee0">
+						</div>
+					</dd>
+				</dl>
+
+				<dl class="row">
+					<dt class="tit">
+						<label for="title"><em>*</em>排序</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="sort" name="sort" class="w200 input-txt" value="{$vo.sort}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
 						<label for="status"><em>*</em>状态</label>
 					</dt>
 					<dd class="opt">
 						<div class="onoff">
-							<label class="cb-enable selected" for="status1">启用</label>
-							<label class="cb-disable" for="status0">禁用</label>
+							<if condition="$vo['id'] eq ''">
+								<label class="cb-enable selected" for="status1" >启用</label>
+								<label class="cb-disable" for="status0">禁用</label>
+							<else />
+								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
+								<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
+							</if>
 							<input type="radio" value="1" name="status" id="status1">
 							<input type="radio" value="0" name="status" id="status0">
 						</div>
@@ -91,6 +158,28 @@
 	<script type="text/javascript">
 
 	$(document).ready(function(){
+        // 图片上传
+        $('.fileupload').each(function(){
+            var self = $(this);
+            var obj = self.closest('.opt');
+            $(this).fileupload({
+                dataType: 'json',
+                url: '{:U("/Common/upload")}',
+                done: function (e,json){
+                    var data = json.result;
+                    if(data.status==1){
+                        add_oneuploadedfile(obj,data.data);
+                    }
+                }
+            });
+        });
+        function add_oneuploadedfile(obj,data){
+            obj.find("input[name='textfield']").val(data.file_path);
+            obj.find("input[type='hidden']").val(data.file_path);
+
+            var newImg = '<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="' + data.file_path  + '" alt=""/></a></div>';
+            obj.find('.thumbnails div').append(newImg);
+        }
 		//按钮先执行验证再提交表单
 		$("#submitBtn").click(function(){
 			if($("#add_form").valid()){
@@ -102,29 +191,39 @@
 					data: sub_data,
 					url: response_url,
 					success:function(json_data){
-                        layer.alert(json_data.msg,function(){
-                            window.location.href= "{:U('index')}";
+                        layer.alert(json_data.info,function(){
+                            window.location.href= "{:U('teaching_video')}";
                         });
 
 					}
 				});
 			}
 		})
+        $(".clear_pic").click(function () {
+            var self = $(this);
+            var obj = self.closest('.opt');
+            obj.find("input[name='textfield']").val("");
+            obj.find("input[type='hidden']").val("");
+            obj.find('.thumbnails div').empty();
 
+        })
 		$("#add_form").validate({
 			errorPlacement: function(error, element){
 				var error_td = element.parent('dd').children('span.err');
 				error_td.append(error);
 			},
 			rules : {
-                teacher_id	: 	{required : true},
+                video_cate_id	: 	{required : true},
+                title	: 	{required : true},
+                sort	: 	{required : true},
                 video_id		:	{required:true},
-                subject_task_id		:	{required:true}
+//                subject_task_id		:	{required:true}
 			},
 			messages : {
-                teacher_id	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-                video_url	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-                subject_task_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+                title	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                sort	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                video_cate_id	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+//                subject_task_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
 			}
 		});
 

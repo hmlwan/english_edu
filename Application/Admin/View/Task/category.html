@@ -21,6 +21,7 @@
 					<th width="160" class="handle" align="center">操作</th>
 					<th width="200" align="center">类别名称</th>
 					<th width="200" align="center">代替标志</th>
+					<th width="200" align="center">英文标识</th>
 					<th width="100" align="center">状态</th>
 					<th width="200" align="center">创建时间</th>
 					<th></th>
@@ -36,7 +37,7 @@
 					</td>
 					<td class="subject_cate_name"><span title="可编辑" column_id="{$r.id}" fieldname="subject_cate_name" nc_type="inline_edit" class="editable ">{$r.subject_cate_name}</span></td>
 					<td class="replace_mark"><span title="可编辑" column_id="{$r.id}" fieldname="replace_mark" nc_type="inline_edit" class="editable ">{$r.replace_mark}</span></td>
-					</td>
+					<td>{$r.cate_en}</td>
 					<td>
 						<eq name="r.status" value="0">
 						<span class="no"><i class="fa fa-ban"></i>禁用</span>

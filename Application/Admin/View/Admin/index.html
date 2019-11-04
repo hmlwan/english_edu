@@ -1,34 +1,4 @@
-<!doctype html>
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<css href="__COMMON__/jquery-ui/jquery-ui.min.css" />
-<css href="__THEME__/css/index.css" />
-<css href="__THEME__/font/font-awesome.min.css" />
-<css href="__COMMON__/css/perfect-scrollbar.min.csss" />
-<style>html, body { overflow: visible;}</style>
-<script>
-
-var ADMIN_TEMPLATES_URL = '__THEME__';
-var LOADING_IMAGE = "__THEME__/images/loading.gif";
-var ADMIN_RESOURCE_URL = '__THEME__';
-</script>
-<js href="__COMMON__/js/jquery/jquery.js" />
-<js href="__COMMON__/jquery-ui/jquery-ui.min.js" />
-<js href="__COMMON__/jquery-ui/zh-CN.js" />
-<js href="__THEME__/js/admin.js" />
-<script src="__THEME__/dialog/dialog.js" id="dialog_js"></script>
-<js href="__THEME__/js/flexigrid.js" />
-<js href="__COMMON__/js/jquery/jquery.validation.min.js" />
-<js href="__THEME__/js/common.js" />
-<js href="__COMMON__/js/perfect-scrollbar.min.js" />
-<js href="__COMMON__/js/jquery/jquery.mousewheel.js" />
-</head>
+<include file="Public/header" />
 <body style="background-color: #FFF; overflow: auto;">
 	<js href="__COMMON__/js/jquery/jquery.picTip.js" />
 	<div id="append_parent"></div>
@@ -68,8 +38,8 @@ var ADMIN_RESOURCE_URL = '__THEME__';
 						<eq name="r.is_supper" value="1">
 						<span>--</span>
 						<else/>
-						<a class="btn red" href="{:U('admin/del_admin',array('admin_id'=>$r['admin_id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这  1 项吗？')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
-						<a class="btn blue" href="{:U('admin/edit',array('admin_id'=>$r['admin_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<a class="btn red" href="{:U('/Admin/admin/del_admin',array('admin_id'=>$r['admin_id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这  1 项吗？')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
+						<a class="btn blue" href="{:U('/Admin/admin/edit',array('admin_id'=>$r['admin_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
 						</eq>
 					</td>
 					<td>{$r.role.role_name}</td>
@@ -90,22 +60,35 @@ var ADMIN_RESOURCE_URL = '__THEME__';
 		</table>
 	</div>
 	<script>
-		$('.flex-table').flexigrid({	
-			height:'auto',// 高度自动
-			usepager: false,// 不翻页
-			striped: true,// 使用斑马线
-			resizable: false,// 不调节大小
-			reload: false,// 不使用刷新
-			columnControl: false,// 不使用列控制 
-			title: '管理员列表',
-			buttons : [
-					   {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add', onpress : fg_operation }
-				   ]
-		});
-
+        $(function(){
+            $('.flex-table').flexigrid({
+                height:"auto",// 高度自动
+                width:"auto",// 高度自动
+                usepager: false,// 不翻页
+                striped:false,// 不使用斑马线
+                resizable: false,// 不调节大小
+                title: '管理员列表',// 表格标题
+                reload: false,// 不使用刷新
+                url: false,
+                striped: true,
+                method: 'POST',
+                dataType: 'json',
+                columnControl: false,// 不使用列控制
+                usepager:false,
+                buttons : [
+                    {display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add',title : '将批量新增数据', onpress : fg_operation },
+//                    {display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation },
+                ],
+                sortname: "sort",
+                sortorder: "asc",
+            });
+            $('span[nc_type="inline_edit"]').inline_edit({c:'Task',a:'ajax_save_task'});
+        });
 		function fg_operation(name, grid) {
+
 			if (name == 'add') {
-				window.location.href = '{:U("admin/add")}';
+
+				window.location.href = '{:U("/Admin/admin/add")}';
 			}
 		}
 	</script>

@@ -53,7 +53,7 @@ class AdminAction extends CommonAction {
 		if($result === false){
 			$this->error('保存失败');
 		}else{
-			$this->success('保存成功',U('admin/index'));
+			$this->success('保存成功',U('/Admin/admin/index'));
 		}
 	}
 
@@ -66,7 +66,7 @@ class AdminAction extends CommonAction {
 		$model = D('Admin');
 		$state = $model->delete($admin_id);
 		if($state!==false){
-			$this->success('删除成功',U('admin/index'));
+			$this->success('删除成功',U('/Admin/admin/index'));
 		}else{
 			$this->error('操作失败');
 		}
@@ -164,7 +164,7 @@ class AdminAction extends CommonAction {
 		if(!$role_id) $this->error('参数错误');
 		$status = $model->relation(true)->delete($role_id);
 		if($status!==false){
-			$this->success('删除成功',U('admin/group'));
+			$this->success('删除成功',U('/Admin/admin/group'));
 		}else{
 			$this->error('操作失败');
 		}
@@ -195,7 +195,7 @@ class AdminAction extends CommonAction {
 		if($result === false){
 			$this->error('保存失败');
 		}else{
-			$this->success('保存成功',U('admin/group'));
+			$this->success('保存成功',U('/Admin/admin/group'));
 		}
 	}
 
