@@ -10,7 +10,6 @@ use Think\Model;
 class MemberModel extends Model
 {
 
-
     public function logCheckPhone($phone){
         $where['phone'] = $phone;
         $info = $this->where($where)->find();

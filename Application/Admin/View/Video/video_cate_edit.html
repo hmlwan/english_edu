@@ -9,18 +9,18 @@
 			<div class="item-title">
 				<a class="back" href="{:U(CONTROLLER_NAME.'/index')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
-					<h3>教学视频管理 - 修改</h3>
-					<h5>教学视频的添加、修改和删除</h5>
+					<h3>课程列表 - 修改</h3>
+					<h5>课程的添加、修改和删除</h5>
 				</div>
 			</div>
 		</div>
-		<form id="add_form" method="post" action="{:U('Video/teaching_video_edit')}">
+		<form id="add_form" method="post" action="{:U('Video/video_cate_edit')}">
 			<input type="hidden" name="form_submit" value="ok" />
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
-						<label for="title"><em>*</em>教学视频标题</label>
+						<label for="title"><em>*</em>课程名称</label>
 					</dt>
 					<dd class="opt">
 						<input type="text" id="title" name="title" class="w200 input-txt" value="{$vo.title}">
@@ -30,13 +30,13 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="video_id"><em>*</em>选择视频</label>
+						<label for="cate_id"><em>*</em>选择年级</label>
 					</dt>
 					<dd class="opt">
-						<select name="video_id" class="w200" >
+						<select name="cate_id" class="w200" >
 							<option value="">--请选择--</option>
-							<volist name="video_list" id="val">
-								<option value="{$val.video_id}" <if condition="$vo['video_id'] eq $val['video_id']">selected</if>>{$val.video_name}</option>
+							<volist name="grate_list" id="g">
+								<option value="{$g.id}" <if condition="$vo['cate_id'] eq $g['id']">selected</if>>{$g.grate_name}</option>
 							</volist>
 						</select>
 						<span class="err"></span>
@@ -45,13 +45,13 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="video_cate_id"><em>*</em>选择课程</label>
+						<label for="teacher_id"><em>*</em>选择老师</label>
 					</dt>
 					<dd class="opt">
-						<select name="video_cate_id" class="w200" >
+						<select name="teacher_id" class="w200" >
 							<option value="">--请选择--</option>
-							<volist name="video_cate_list" id="t_val">
-								<option value="{$t_val.id}" <if condition="$vo['video_cate_id'] eq $t_val['id']">selected</if>>{$t_val.title}</option>
+							<volist name="teacher_list" id="val">
+								<option value="{$val.teacher_id}" <if condition="$vo['teacher_id'] eq $val['teacher_id']">selected</if>>{$val.teacher_name}</option>
 							</volist>
 						</select>
 						<span class="err"></span>
@@ -60,38 +60,24 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="subject_task_id"><em>*</em>选择作业</label>
-					</dt>
-					<dd class="opt">
-						<select name="subject_task_id" class="w200" >
-							<option value="">--请选择--</option>
-							<volist name="task_list" id="s_val">
-								<option value="{$s_val.subject_task_id}" <if condition="$vo['subject_task_id'] eq $s_val['subject_task_id']">selected</if>>{$s_val.task_name}</option>
-							</volist>
-						</select>
-						<span class="err"></span>
-						<p class="notic"></p>
-					</dd>
-				</dl>
-				<dl class="row">
-					<dt class="tit">
-						<label for="cover_img">视频封面</label>
+						<label for="logo">图片</label>
 					</dt>
 					<dd class="opt">
 						<div class="input-file-show">
 							<input type="file" class="type-file-file fileupload" id="fileupload" name="fileupload" size="30" hidefocus="true"  nc_type="upload_file_pic" title="">
-							<input type='text' name='textfield' id='textfield' value="{$vo.cover_img}" class='type-file-text' />
+							<input type='text' name='textfield' id='textfield' value="{$vo.img}" class='type-file-text' />
 							<input type='button' name='button' id='button1' value='选择上传...' class='type-file-button' />
-							<input type="hidden" name="cover_img" id="cover_img" value="{$vo.cover_img}" />
+							<input type="hidden" name="img" id="img" value="{$vo.img}" />
 						</div>
 						<a  class="ncap-btn clear_pic" href="JavaScript:void(0);"><i class="fa fa-trash"></i>删除</a>
 						<span class="err"></span>
 						<div class="ncap-thumb-list thumbnails">
 							<h5><i class="fa fa-exclamation-circle"></i>上传后的图片可以插入到富文本编辑器中使用，无用附件请手动删除，如不处理系统会始终保存该附件图片。</h5>
 							<div class="thumb-list-pics">
-								<if condition="$vo['cover_img']">
-									<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="{$vo['cover_img']}" alt=""/></a></div>
+								<if condition="$vo['img']">
+									<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="{$vo['img']}" alt=""/></a></div>
 								</if>
+								<!--<a href="javascript:void(0);"><img style="width: 100px;height: 100px" alt="" src="http://img.51chuanxing.com/Uploads/User/2016/10/18/2016-10-18/5805fd6195bfd.jpg"></a>-->
 							</div>
 						</div>
 						<!--<p class="notic">建议尺寸：316px*226px，允许格式:gif,jpg,jpeg,png</p>-->
@@ -99,31 +85,20 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="is_fee"><em>*</em>是否收费</label>
+						<label for="is_recommend"><em>*</em>是否推荐</label>
 					</dt>
 					<dd class="opt">
 						<div class="onoff">
 							<if condition="$vo['id'] eq ''">
-								<label class="cb-enable" for="is_fee1" >收费</label>
-								<label class="cb-disable selected" for="is_fee0">不收费</label>
+								<label class="cb-enable" for="is_recommend1" >启用</label>
+								<label class="cb-disable selected" for="is_recommend0">禁用</label>
 								<else />
-								<label class="cb-enable <if condition="$vo['is_fee'] eq 1">selected</if>" for="is_fee1" >是</label>
-							<label class="cb-disable <if condition="$vo['is_fee'] eq 0">selected</if>" for="is_fee0">否</label>
+								<label class="cb-enable <if condition="$vo['is_recommend'] eq 1">selected</if>" for="is_recommend1" >是</label>
+							<label class="cb-disable <if condition="$vo['is_recommend'] eq 0">selected</if>" for="is_recommend0">否</label>
 							</if>
-							<input type="radio" value="1" name="is_fee" id="is_fee1">
-							<input type="radio" value="0" name="is_fee" id="is_fee0">
+							<input type="radio" value="1" name="is_recommend" id="is_recommend1">
+							<input type="radio" value="0" name="is_recommend" id="is_recommend0">
 						</div>
-					</dd>
-				</dl>
-
-				<dl class="row">
-					<dt class="tit">
-						<label for="title"><em>*</em>排序</label>
-					</dt>
-					<dd class="opt">
-						<input type="text" id="sort" name="sort" class="w200 input-txt" value="{$vo.sort}">
-						<span class="err"></span>
-						<p class="notic"></p>
 					</dd>
 				</dl>
 				<dl class="row">
@@ -192,7 +167,7 @@
 					url: response_url,
 					success:function(json_data){
                         layer.alert(json_data.info,function(){
-                            window.location.href= "{:U('teaching_video')}";
+                            window.location.href= "{:U('video_cate')}";
                         });
 
 					}

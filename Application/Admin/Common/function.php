@@ -474,76 +474,8 @@ function funcIdArr($arr,$field){
     }
     return $idArr;
 }
-/**
- * 订单状态
- */
-function funcOrderState($state){
-    switch($state){
-        case 1:   //待付款
-            $condition = array(
-                'pay_status'=>0,
-                'order_status'=>0,
-                'handle_status'=>0
-            );
-            break;
-        case 2: //待发货
-            $condition = array(
-                'pay_status'=>1,
-                'order_status'=>0,
-                'handle_status'=>0
-            );
-            break;
-        case 3:  //待收货
-            $condition = array(
-                'pay_status'=>1,
-                'order_status'=>0,
-                'handle_status'=>1
-            );
-            break;
-        case 4:  //待评价
-            $condition = array(
-                'pay_status'=>1,
-                'order_status'=>0,
-                'handle_status'=>2
-            );
-            break;
-        case 5 : //已评价
-            $condition = array(
-                'pay_status'=>1,
-                'order_status'=>1,
-                'handle_status'=>3
 
-            );
-            break;
-    }
-       return  $condition;
-}
 
-/**
- * @param $data
- * @return mixed  订单状态编号
- */
-function funcOrderStatsNum($data){
-    foreach($data as $data_key=>$data_item) {
-        if ($data_item['pay_status'] == 0 && $data_item['order_status'] == 0 && $data_item['handle_status'] == 0) {
-            $data[$data_key]['status'] = 1; //待付款
-        } elseif ($data_item['pay_status'] == 1 && $data_item['order_status'] == 0 && $data_item['handle_status'] == 0) {
-            $data[$data_key]['status'] = 2; //已付款，待发货
-
-        } elseif ($data_item['pay_status'] == 1 && $data_item['order_status'] == 0 && $data_item['handle_status'] == 1) {
-            $data[$data_key]['status'] = 5; //已发货，待收货
-
-        } elseif ($data_item['pay_status'] == 1 && $data_item['order_status'] == 0 && $data_item['handle_status'] == 2) {
-            $data[$data_key]['status'] = 6; //已收货，待评价
-
-        } elseif ($data_item['pay_status'] == 1 && $data_item['order_status'] == 1 && $data_item['handle_status'] == 3) {
-            $data[$data_key]['status'] = 7; //已评价,完成
-        }else{
-            $data[$data_key]['status'] = 0; //订单失效/删除
-        }
-    }
-    return $data;
-}
 /**
  * 切割以'|'分割的数值
  */

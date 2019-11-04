@@ -17,18 +17,9 @@ class CommonAction extends Action
         parent::_initialize();
 
         if(empty($_SESSION['USER_KEY_ID'])){
-            $data['status'] = 2;
+            $data['status'] = 0;
             $data['info'] = '请先登陆';
             $this->ajaxReturn($data);
         }
-
-
     }
-
-
-
-
-
-
-
 }

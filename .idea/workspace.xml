@@ -2,53 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5ebb8c3b-6390-488c-a3ed-51026925eb83" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/Action/WordAction.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Task/view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/discussion_record.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Word/edit.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Common/function.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Home/Conf/db.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/Action/AwardAction.class.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/Action/ClassAction.class.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/Action/DataAction.class.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/Action/DepartmentAction.class.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/Action/NewsCategoryAction.class.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Acount/detail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Acount/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Award/add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Award/detail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Award/edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Award/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Class/add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Class/edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Department/add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/Department/edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/News/add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/News/edit.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Application/Admin/View/News/index.html" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/video_cate.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/video_cate_edit.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Action/CommonAction.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Action/CommonAction.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Action/TaskAction.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Action/TaskAction.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Action/UserAction.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Action/UserAction.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Action/AdminAction.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Action/AdminAction.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Conf/config.php" afterPath="$PROJECT_DIR$/Application/Admin/Conf/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Model/TeacherModel.class.php" afterPath="$PROJECT_DIR$/Application/Admin/Model/TeacherModel.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Task/category.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Task/category.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Task/categoryedit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Task/categoryedit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Task/edit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Task/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/Common/function.php" afterPath="$PROJECT_DIR$/Application/Admin/Common/function.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Admin/add.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Admin/add.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Admin/edit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Admin/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Admin/edit_group.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Admin/edit_group.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Admin/group.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Admin/group.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Admin/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Admin/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Role/add.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Role/add.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Role/edit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Role/edit.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Role/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Role/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Task/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Task/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/User/teacher.html" afterPath="$PROJECT_DIR$/Application/Admin/View/User/teacher.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Video/edit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Video/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Admin/View/default/Index_index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/default/Index_index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Class/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Task/correct_record.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Application/Admin/View/Department/index.html" afterPath="$PROJECT_DIR$/Application/Admin/View/Word/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php" afterPath="$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php" afterPath="$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php" afterPath="$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Application/Home/Model/MemberModel.class.php" afterPath="$PROJECT_DIR$/Application/Home/Model/MemberModel.class.php" />
     </list>
     <ignored path="a.51chuanxing.com.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,54 +44,26 @@
     <favorites_list name="a.51chuanxing.com" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.74608356">
+    <splitter split-orientation="horizontal" split-proportion="0.3609166">
       <split-first>
-        <leaf>
-          <file leaf-file-name="CommonAction.class.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="357">
-                  <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="IndexAction.class.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1155">
-                  <caret line="55" column="7" lean-forward="true" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MemberModel.class.php" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Application/Home/Model/MemberModel.class.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="273">
-                  <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Application/Home/Common/function.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1041">
-                  <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="ApiAction.class.php" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1176">
-                  <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+                <state relative-caret-position="21">
+                  <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+                  <folding>
+                    <marker date="1572874864445" expanded="true" signature="2078:2084" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="IndexAction.class.php" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="4170">
+                  <caret line="200" column="25" lean-forward="true" selection-start-line="200" selection-start-column="25" selection-end-line="200" selection-end-column="25" />
                   <folding />
                 </state>
               </provider>
@@ -125,12 +73,24 @@
       </split-first>
       <split-second>
         <leaf>
+          <file leaf-file-name="IndexAction.class.php" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-4251">
+                  <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="ApiAction.class.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="189">
-                  <caret line="9" column="36" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
-                  <folding />
+                <state relative-caret-position="348">
+                  <caret line="148" column="43" lean-forward="false" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+                  <folding>
+                    <marker date="1572874864445" expanded="true" signature="2078:2084" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -141,13 +101,9 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Public/Admin/</find>
-      <find>Public/Admin</find>
-      <find>ADMIN_RESOURCE_URL</find>
       <find>inline_edit</find>
       <find>ajax_save_menu</find>
       <find>__THEME__</find>
-      <find>ADMIN_TEMPLATES_URL</find>
       <find>header</find>
       <find>ajax_pending_matters</find>
       <find>fn_getUrl</find>
@@ -171,6 +127,10 @@
       <find>clear_pic</find>
       <find>.type-file-box</find>
       <find>upload_attachment</find>
+      <find>mousewheel</find>
+      <find>ADMIN_TEMPLATES_URL</find>
+      <find>ADMIN_RESOURCE_URL</find>
+      <find>Check_admin_exist</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -192,23 +152,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Application/Home/Conf/config.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Lib/Tree.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Lib/Seccode.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Action/AdminAction.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Action/MenuAction.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Action/RoleAction.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Acount/index.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Award/index.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Index/index.html" />
-        <option value="$PROJECT_DIR$/Public/Admin/js/admincp.js" />
-        <option value="$PROJECT_DIR$/Public/Common/js/jquery/jquery.edit.js" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Public/header.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Menu/index.html" />
         <option value="$PROJECT_DIR$/Application/Admin/Conf/db.php" />
         <option value="$PROJECT_DIR$/Application/Common/Conf/config.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Model/MemberModel.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/Common/function.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/User/advDetail.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/User/student.html" />
         <option value="$PROJECT_DIR$/Application/Admin/Model/GrateModel.class.php" />
@@ -217,7 +164,6 @@
         <option value="$PROJECT_DIR$/Application/Admin/Model/TeacherModel.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/default/Index_index.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Video/discuss.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Video/discussion_record.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Task/category.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Task/categoryedit.html" />
@@ -232,17 +178,31 @@
         <option value="$PROJECT_DIR$/Application/Admin/Conf/config.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Action/UserAction.class.php" />
         <option value="$PROJECT_DIR$/Application/Admin/Action/CommonAction.class.php" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/User/teacher.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Task/index.html" />
         <option value="$PROJECT_DIR$/Application/Admin/View/Video/edit.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html" />
-        <option value="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video.html" />
-        <option value="$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php" />
-        <option value="$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php" />
         <option value="$PROJECT_DIR$/Application/Home/Common/function.php" />
         <option value="$PROJECT_DIR$/Application/Home/Model/MemberModel.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/Common/function.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Public/header.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Task/index.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Admin/add.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/Action/AdminAction.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Admin/index.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Admin/edit.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Admin/group.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Admin/edit_group.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Role/index.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Role/edit.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Role/add.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Video/cate_video.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Video/video_cate_edit.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/User/teacher.html" />
+        <option value="$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html" />
         <option value="$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php" />
+        <option value="$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php" />
       </list>
     </option>
   </component>
@@ -274,6 +234,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -319,29 +280,50 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="english_edu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="english_edu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Application" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Home" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Action" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yunlian" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="D:\Program Files\nodejs\node.exe" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\51chuanxing\a.51chuanxing.com\Application\Admin\View\Goods" />
+      <recent name="E:\51chuanxing\a.51chuanxing.com\Application\Admin\View\Public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WWW\english_edu\Application\Admin\View\Video" />
       <recent name="D:\WWW\english_edu\Application\Home\Action" />
       <recent name="D:\WWW\english_edu\Application\Home\Conf" />
       <recent name="D:\WWW\english_edu\Application\Admin\View" />
       <recent name="D:\WWW\english_edu\Application\Admin\Action" />
-      <recent name="D:\WWW\english_edu\Application\Admin\View\Task" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\51chuanxing\a.51chuanxing.com\Application\Admin\View\Goods" />
-      <recent name="E:\51chuanxing\a.51chuanxing.com\Application\Admin\View\Public" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -450,22 +432,22 @@
       <workItem from="1568863862731" duration="9948000" />
       <workItem from="1570783929660" duration="15002000" />
       <workItem from="1571197419626" duration="14796000" />
-      <workItem from="1572676551070" duration="32074000" />
+      <workItem from="1572676551070" duration="39581000" />
+      <workItem from="1572862974583" duration="8912000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="200830000" />
+    <option name="totallyTimeSpent" value="217249000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18336888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16257995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -477,6 +459,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -522,7 +505,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php</url>
-          <line>148</line>
+          <line>147</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -536,170 +519,20 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/User/userDetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="198" column="21" lean-forward="false" selection-start-line="198" selection-start-column="21" selection-end-line="198" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/add.html" />
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/GrateModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="30" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/User/student.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="74" column="40" lean-forward="false" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#td#5;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Admin/css/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="223" column="56" lean-forward="false" selection-start-line="223" selection-start-column="56" selection-end-line="223" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Public/Admin/js/flexigrid.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="1389" column="4" lean-forward="false" selection-start-line="1389" selection-start-column="4" selection-end-line="1389" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="47" column="43" lean-forward="false" selection-start-line="47" selection-start-column="43" selection-end-line="47" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Model/TeacherModel.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/default/Index_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="156" column="16" lean-forward="false" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/discussion_record.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="96" column="38" lean-forward="false" selection-start-line="96" selection-start-column="38" selection-end-line="96" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#span#1;n#if#0;n#td#6;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#1;n#if#0;n#td#7;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="169" column="30" lean-forward="true" selection-start-line="169" selection-start-column="30" selection-end-line="169" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Task/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="39" column="25" lean-forward="false" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Task/categoryedit.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="334">
           <caret line="32" column="67" lean-forward="true" selection-start-line="32" selection-start-column="67" selection-end-line="32" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Department/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Class/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="71" column="61" lean-forward="false" selection-start-line="71" selection-start-column="57" selection-end-line="71" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/AwardAction.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Acount/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-105">
-          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/DataAction.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/NewsCategoryAction.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/News/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-567">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Department/index.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Class/index.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/AwardAction.class.php" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Acount/index.html" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/DataAction.class.php" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/NewsCategoryAction.class.php" />
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/News/index.html" />
     <entry file="file://$PROJECT_DIR$/Application/Admin/Action/TaskAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -717,10 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="586">
           <caret line="49" column="43" lean-forward="false" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
-          <folding>
-            <marker date="1572764068955" expanded="false" signature="1526:1556" ph="..." />
-            <marker date="1572764068955" expanded="true" signature="10074:10119" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -728,7 +557,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="740">
           <caret line="38" column="25" lean-forward="true" selection-start-line="38" selection-start-column="25" selection-end-line="38" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -736,7 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="943">
           <caret line="82" column="42" lean-forward="false" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -752,7 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1010">
           <caret line="36" column="77" lean-forward="false" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -760,15 +586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/AdminAction.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="38" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +600,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +607,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,7 +614,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,15 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
           <caret line="55" column="32" lean-forward="false" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/Common/function.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="391" column="30" lean-forward="false" selection-start-line="391" selection-start-column="21" selection-end-line="391" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,7 +638,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
           <caret line="293" column="13" lean-forward="false" selection-start-line="293" selection-start-column="13" selection-end-line="293" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -854,26 +657,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1953">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1806">
+          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/User/teacher.html">
+    <entry file="file://$PROJECT_DIR$/Application/Home/Model/MemberModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Common/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" column="47" lean-forward="false" selection-start-line="15" selection-start-column="47" selection-end-line="15" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Common/function.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10374">
+          <caret line="494" column="18" lean-forward="false" selection-start-line="494" selection-start-column="18" selection-end-line="494" selection-end-column="18" />
+          <folding>
+            <element signature="n#funcOutgetExcel#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="73" column="25" lean-forward="true" selection-start-line="64" selection-start-column="20" selection-end-line="73" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#if#0;n#td#4;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#if#0;n#td#5;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="false" />
-          </folding>
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Task/edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1048">
+        <state relative-caret-position="-156">
           <caret line="81" column="48" lean-forward="false" selection-start-line="81" selection-start-column="48" selection-end-line="81" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
@@ -885,93 +723,176 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/edit.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Public/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+        <state relative-caret-position="279">
+          <caret line="19" column="22" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Task/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-667">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="546">
+          <caret line="95" column="42" lean-forward="true" selection-start-line="95" selection-start-column="42" selection-end-line="95" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Admin/add.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="196" column="43" lean-forward="true" selection-start-line="196" selection-start-column="43" selection-end-line="196" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#if#0;n#div#0;n#div#1;n#dd#0;n#dl#1;n#div#0;n#form#0;n#div#2;n#body#0;n#!!top" expanded="true" />
-            <marker date="1572785781140" expanded="true" signature="7150:7176" ph="..." />
-          </folding>
+        <state relative-caret-position="-2691">
+          <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/AdminAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="110" column="53" lean-forward="false" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="53" />
+        <state relative-caret-position="4137">
+          <caret line="197" column="44" lean-forward="false" selection-start-line="197" selection-start-column="44" selection-end-line="197" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Admin/group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Admin/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2583">
+          <caret line="129" column="42" lean-forward="false" selection-start-line="129" selection-start-column="42" selection-end-line="129" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Admin/edit_group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Role/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1797">
+          <caret line="86" column="52" lean-forward="false" selection-start-line="86" selection-start-column="52" selection-end-line="86" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Role/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="169" column="38" lean-forward="false" selection-start-line="169" selection-start-column="38" selection-end-line="169" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Role/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="104" column="31" lean-forward="false" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Admin/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1869">
+          <caret line="90" column="45" lean-forward="false" selection-start-line="90" selection-start-column="45" selection-end-line="90" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/video_cate_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="57" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#if#0;n#div#0;n#div#1;n#dd#0;n#dl#4;n#div#0;n#form#0;n#div#2;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#if#0;n#div#0;n#div#1;n#dd#0;n#dl#5;n#div#0;n#form#0;n#div#2;n#body#0;n#!!top" expanded="true" />
-            <marker date="1572785874823" expanded="true" signature="8412:8438" ph="..." />
+            <marker date="1572869940061" expanded="true" signature="6253:6279" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/teaching_video.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="50" column="102" lean-forward="false" selection-start-line="50" selection-start-column="102" selection-end-line="50" selection-end-column="102" />
+        <state relative-caret-position="313">
+          <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#a#0;n#if#0;n#td#5;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#if#0;n#td#6;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#a#0;n#if#0;n#td#4;n#tr#0;n#volist#0;n#tbody#0;n#table#0;n#div#2;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/User/teacherEdit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+        <state relative-caret-position="383">
+          <caret line="262" column="26" lean-forward="false" selection-start-line="262" selection-start-column="18" selection-end-line="262" selection-end-column="26" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#if#0;n#div#0;n#div#1;n#dd#0;n#dl#1;n#div#0;n#form#0;n#div#2;n#body#0;n#!!top" expanded="true" />
+            <marker date="1572871044391" expanded="false" signature="4004:4020" ph="..." />
+            <marker date="1572871044391" expanded="true" signature="8374:8400" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/User/teacher.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Common/function.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/teaching_video_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1041">
-          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state relative-caret-position="292">
+          <caret line="117" column="0" lean-forward="false" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#a#0;n#div#0;n#if#0;n#div#0;n#div#1;n#dd#0;n#dl#4;n#div#0;n#form#0;n#div#2;n#body#0;n#!!top" expanded="true" />
+            <marker date="1572870841775" expanded="true" signature="6916:6942" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/Admin/View/Video/video_cate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="59" column="37" lean-forward="false" selection-start-line="59" selection-start-column="28" selection-end-line="59" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Action/CommonAction.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Admin/Action/VideoAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        <state relative-caret-position="2231">
+          <caret line="222" column="32" lean-forward="false" selection-start-line="222" selection-start-column="32" selection-end-line="222" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Application/Home/Action/IndexAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="55" column="7" lean-forward="true" selection-start-line="55" selection-start-column="7" selection-end-line="55" selection-end-column="7" />
+        <state relative-caret-position="-4251">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/Home/Model/MemberModel.class.php">
+    <entry file="file://$PROJECT_DIR$/Application/Home/Action/ApiAction.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="33" lean-forward="false" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="33" />
-          <folding />
+        <state relative-caret-position="348">
+          <caret line="148" column="43" lean-forward="false" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+          <folding>
+            <marker date="1572874864445" expanded="true" signature="2078:2084" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

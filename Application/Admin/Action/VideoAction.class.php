@@ -90,7 +90,7 @@ class VideoAction extends CommonAction
         $res = $db->order('id desc')->page($page . ',' . $rp)->select();
         foreach ($res as &$value){
             $value['video_name'] = M('video')->where(array('video_id'=>$value['video_id']))->getField('video_name');
-            $value['teacher_name'] = M('teacher')->where(array('teacher_id'=>$value['teacher_id']))->getField('teacher_name');
+            $value['video_cate_name'] = M('video_cate')->where(array('id'=>$value['video_cate_id']))->getField('title');
             $value['task_name'] = M('subject_task')->where(array('subject_task_id'=>$value['subject_task_id']))->getField('task_name');
         }
 
@@ -126,8 +126,8 @@ class VideoAction extends CommonAction
         } else {
             $id = I('id');
             $res = $db->find($id);
-            /*教师*/
-            $teacher_list = D("Teacher")->getAllUserData(array('status'=>1));
+            /*课程*/
+            $video_cate_list = D("video_cate")->where(array('status'=>1))->select();
 
             /*视频*/
             $video_list = D("Video")->where(array('status'=>1))->select();
@@ -136,11 +136,10 @@ class VideoAction extends CommonAction
             $task_list = D("subject_task")->where(array('status'=>1))->select();
 
             $this->assign('vo', $res);
-            $this->assign('teacher_list', $teacher_list);
+            $this->assign('video_cate_list', $video_cate_list);
             $this->assign('video_list', $video_list);
             $this->assign('task_list', $task_list);
             $this->display();
-
         }
     }
     /**
@@ -196,6 +195,82 @@ class VideoAction extends CommonAction
     public function discussion_del()
     {
         $db = M('discussion');
+        $ids = I('id');
+        $sub_ids = explode(',', $ids);
+        $where = array('id' => array('in', $sub_ids));
+
+        $res = $db->where($where)->delete();
+        if ($res === false) {
+            $this->error('操作失败！');
+        } else {
+            M("discussion_detail")->where(array('discussion_id'=>array('in',$sub_ids)))->delete();
+            $this->success('操作成功！');
+        }
+    }
+
+    /*课程*/
+    public function video_cate()
+    {
+        $page = I('p', 1, 'trim');
+        $rp = 8;
+        $db = M('video_cate');
+        $count = $db->count();
+        $Page = new \Think\Page($count, $rp);
+        $show = $Page->show();
+        $res = $db->order('id desc')->page($page . ',' . $rp)->select();
+        foreach ($res as &$value){
+            $value['cate_name'] = M('grate')->where(array('id'=>$value['cate_id']))->getField('grate_name');
+            $value['teacher_name'] = M('teacher')->where(array('teacher_id'=>$value['teacher_id']))->getField('teacher_name');
+        }
+
+        cookie('pageUrl', funcurl());
+        $this->assign('list', $res);
+        $this->assign('page', $show);
+        $this->display();
+    }
+
+    /**
+     * 修改
+     */
+    public function video_cate_edit()
+    {
+        $db = M('video_cate');
+        if (IS_POST && I('form_submit') == 'ok') {
+            $data = $db->create();
+            $id = I('id');
+            if ($data) {
+                $data['op_time'] = time();
+                if ($id) {
+                    $res = $db->where('id=' . $id)->save($data);
+                } else {
+                    $res = $db->add($data);
+                }
+            }
+            if (false === $res) {
+                $this->error('操作失败!', cookie('pageUrl'));
+            } else {
+                $this->success('操作成功！', cookie('pageUrl'));
+            }
+        } else {
+            $id = I('id');
+            $res = $db->find($id);
+            /*选择年级*/
+            $grate_list = D("grate")->where(array('status'=>1))->select();
+            /*视频*/
+            $teacher_list = D("teacher")->where(array('status'=>1))->select();
+
+            $this->assign('vo', $res);
+            $this->assign('grate_list', $grate_list);
+            $this->assign('teacher_list', $teacher_list);
+            $this->display();
+        }
+    }
+    /**
+     *删除
+     */
+    public function video_cate_del()
+    {
+        $db = M('video_cate');
         $ids = I('id');
         $sub_ids = explode(',', $ids);
         $where = array('id' => array('in', $sub_ids));

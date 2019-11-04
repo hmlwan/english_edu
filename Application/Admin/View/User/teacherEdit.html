@@ -77,22 +77,22 @@
 					</dd>
 				</dl>
 
-				<dl class="row">
-					<dt class="tit">
-						<label for="grate_id"><em>*</em>年级类别</label>
-					</dt>
-					<dd class="opt">
-						<div class="onoff">
-							<select name="grate_id" id="grate_id" class="input-txt" >
-								<volist name="grate_list" id="v">
-									<option value="{$v.id}" <if condition="$vo['grate_id'] eq $v['id']">selected</if> >{$v.grate_name}</option>
-								</volist>
-							</select>
-							<span class="err"></span>
-							<p class="notic" style="font-size: 12px;"></p>
-						</div>
-					</dd>
-				</dl>
+				<!--<dl class="row">-->
+					<!--<dt class="tit">-->
+						<!--<label for="grate_id"><em>*</em>年级类别</label>-->
+					<!--</dt>-->
+					<!--<dd class="opt">-->
+						<!--<div class="onoff">-->
+							<!--<select name="grate_id" id="grate_id" class="input-txt" >-->
+								<!--<volist name="grate_list" id="v">-->
+									<!--<option value="{$v.id}" <if condition="$vo['grate_id'] eq $v['id']">selected</if> >{$v.grate_name}</option>-->
+								<!--</volist>-->
+							<!--</select>-->
+							<!--<span class="err"></span>-->
+							<!--<p class="notic" style="font-size: 12px;"></p>-->
+						<!--</div>-->
+					<!--</dd>-->
+				<!--</dl>-->
 				<dl class="row">
 					<dt class="tit">
 						<label for="is_online"><em>*</em>是否在线</label>
@@ -100,13 +100,38 @@
 					<dd class="opt">
 						<div class="onoff">
 							<div class="onoff">
-								<label class="cb-enable selected" for="is_online1">在线</label>
-								<label class="cb-disable" for="is_online0">下线</label>
+								<if condition="$vo['teacher_id'] eq ''">
+									<label class="cb-enable selected" for="is_online1">在线</label>
+									<label class="cb-disable" for="is_online0">下线</label>
+									<else />
+
+									<label class="cb-enable <if condition="$vo['is_online'] eq 1">selected</if>" for="is_online1" >是</label>
+								<label class="cb-disable <if condition="$vo['is_online'] eq 0">selected</if>" for="is_online0">否</label>
+								</if>
 								<input type="radio" value="1" name="is_online" id="is_online1">
 								<input type="radio" value="0" name="is_online" id="is_online0">
 							</div>
 							<span class="err"></span>
 							<p class="notic" style="font-size: 12px;"></p>
+						</div>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="is_recomment"><em>*</em>是否推荐</label>
+					</dt>
+					<dd class="opt">
+						<div class="onoff">
+							<if condition="$vo['teacher_id'] eq ''">
+								<label class="cb-enable" for="is_recomment1" >推荐</label>
+								<label class="cb-disable selected" for="is_recomment0">不推荐</label>
+								<else />
+								<label class="cb-enable <if condition="$vo['is_recomment'] eq 1">selected</if>" for="is_recomment1" >是</label>
+							<label class="cb-disable <if condition="$vo['is_recomment'] eq 0">selected</if>" for="is_recomment0">否</label>
+
+							</if>
+							<input type="radio" value="1" name="is_recomment" id="is_recomment1">
+							<input type="radio" value="0" name="is_recomment" id="is_recomment0">
 						</div>
 					</dd>
 				</dl>
@@ -235,13 +260,13 @@
                 username 		: 	{required : true},
 				teacher_name	: 	{required : true},
                 img	: 	{required : true},
-                grate_id		:	{required:true}
+//                grate_id		:	{required:true}
 			},
 			messages : {
                 username			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
                 img			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
                 teacher_name	: 	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
-                grate_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
+//                grate_id	:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'}
 			}
 		});
 
