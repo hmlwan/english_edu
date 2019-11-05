@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-11-04 21:43:38
+Date: 2019-11-05 22:15:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -2382,7 +2382,7 @@ CREATE TABLE `cx_logistics_data` (
 DROP TABLE IF EXISTS `cx_member`;
 CREATE TABLE `cx_member` (
   `member_id` int(11) NOT NULL AUTO_INCREMENT,
-  `phone` int(11) DEFAULT NULL COMMENT '手机号码',
+  `phone` varchar(50) DEFAULT NULL COMMENT '手机号码',
   `pwd` varchar(100) DEFAULT NULL COMMENT '密码',
   `nick_name` varchar(100) DEFAULT NULL COMMENT '昵称',
   `head` varchar(250) DEFAULT NULL COMMENT '头像',
@@ -2533,7 +2533,7 @@ CREATE TABLE `cx_subject_task` (
 -- ----------------------------
 -- Records of cx_subject_task
 -- ----------------------------
-INSERT INTO `cx_subject_task` VALUES ('3', '22', '{\"SINGLE_ANSWER\":[{\"question\":\"1\",\"sel_con\":\"2\",\"answer\":\"3\"}],\"FILL_ANSWERS\":[],\"QUESTION_ANSWERS\":[]}', '1', '1572762766', null, null, '1572762766');
+INSERT INTO `cx_subject_task` VALUES ('3', '五年级作业', '{\"SINGLE_ANSWER\":[{\"question\":\"1\",\"sel_con\":\"2\",\"answer\":\"3\"}],\"FILL_ANSWERS\":[],\"QUESTION_ANSWERS\":[]}', '1', '1572762766', null, null, '1572762766');
 
 -- ----------------------------
 -- Table structure for `cx_system`
@@ -2666,7 +2666,7 @@ CREATE TABLE `cx_video_cate` (
 -- ----------------------------
 -- Records of cx_video_cate
 -- ----------------------------
-INSERT INTO `cx_video_cate` VALUES ('1', '五年级课程', '3', '1', '1', 'http://www.english_edu.com/Uploads/Common/2019/11/04/2019-11-04/5dc016cee46e7.png', '1', '1572870041');
+INSERT INTO `cx_video_cate` VALUES ('1', '五年级课程', '3', '1', '1', '/Uploads/Common/2019/11/05/2019-11-05/5dc0e4d2cce5e.png', '1', '1572922581');
 
 -- ----------------------------
 -- Table structure for `cx_word`

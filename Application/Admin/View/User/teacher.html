@@ -62,15 +62,23 @@
 					</td>
 					<td class="name">{$vo.teacher_id}</td>
 					<td class="name">{$vo.teacher_name}</td>
-					<td class="name">
-						<if condition="$vo['head']">
-							<a href="{$vo['head']}"><img style="width: 80px;height: 80px" src="{$vo['head']}" alt=""></a>
-						</if>
+					<td class="name" style="height:100px;position:relative;">
+						<div style="height:80px;position:absolute;top:-6px;">
+							<a onmouseover="toolTip('<img src= {$vo['head']}>')" onmouseout="toolTip()" class="pic-thumb-tip" href="{$vo['head']}" target='_blank'>
+								<if condition="$vo['head']">
+								<img style="height: 100px" src="{$vo['head']}" alt="">
+								</if>
+							</a>
+						</div>
 					</td>
-					<td>
-						<if condition="$vo['img']">
-							<img style="width: 80px;height: 80px" src="{$vo['img']}" alt="">
-						</if>
+					<td class="name" style="height:100px;position:relative;">
+						<div style="height:80px;position:absolute;top:-6px;">
+							<a onmouseover="toolTip('<img src= {$vo['img']}>')" onmouseout="toolTip()" class="pic-thumb-tip" href="{$vo['img']}" target='_blank'>
+								<if condition="$vo['img']">
+									<img style="height: 100px" src="{$vo['img']}" alt="">
+								</if>
+							</a>
+						</div>
 					</td>
 					<td class="name">{$vo.username}</td>
 					<!--<td class="name">{$vo.grate_name}</td>-->

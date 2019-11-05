@@ -135,12 +135,43 @@ class ApiAction extends CommonAction
 
     }
     /*
+    * 在线答题
+    * teaching_video_id 教学视频id
+    */
+    public function online_question(){
+        $db = M('teaching_video');
+
+        $teaching_video_id = I('teaching_video_id','','');
+        if($teaching_video_id){
+            $data['status'] = 0;
+            $data['info'] = "教学视频不存在";
+            $this->ajaxReturn($data);
+        }
+        $subject_task_id = $db->where(array('id'=>$teaching_video_id))->getField('subject_task_id');
+        $subject_task = M("subject_task")
+            ->where(array('subject_task_id'=>$subject_task_id))
+            ->field('subject_task_id,task_name,content')
+            ->find();
+        if(empty($subject_task)){
+            $data['status'] = 0;
+            $data['info'] = "该教学视频无作业";
+            $this->ajaxReturn($data);
+        }
+        $data['status'] = 1;
+        $data['info'] = "成功";
+        $data['data'] = $subject_task;
+        $this->ajaxReturn($data);
+    }
+
+    /*
      * 在线答题
-     * teaching_video_id
+     * teaching_video_id 教学视频id
+     * correct_task_id 作业id
+     * content 作业 json
      */
     public function online_answer(){
         $db = M('teacher_correct_task');
-
+        $correct_task_id = I("correct_task_id");
         $teaching_video_id = I('teaching_video_id','','');
         $content = I('content','','');
         $member_id = $_SESSION['USER_KEY_ID'];
@@ -148,29 +179,175 @@ class ApiAction extends CommonAction
             'is_correct' => 0,
             'teaching_video_id' => $teaching_video_id,
             'member_id' => $member_id,
-
+            'sub_time' => time(),
+            'content' => $content
         );
-
+        if($correct_task_id){
+            $info = $db->where(array('id'=>$correct_task_id))->find();
+            if($info['is_correct'] == 1){ //批改完
+                $r = $db->add($save_info);
+            }else{ //未批改
+                $r = $db->where(array('id'=>$correct_task_id))->save($save_info);
+            }
+        }else{
+            $r = $db->add($save_info);
+        }
+        if(false === $r){
+            $data['status'] = 0;
+            $data['info'] = "失败";
+            $this->ajaxReturn($data);
+        }else{
+            $data['status'] = 1;
+            $data['info'] = "成功";
+            $this->ajaxReturn($data);
+        }
 
     }
-    /*教师批语 */
+    /*
+     *  老师评语内容
+     *  teaching_video_id 教学视频id
+     */
+    public function  teacher_remark_view(){
+        $teaching_video_id = I('teaching_video_id','','');
+
+        $db = M('teacher_correct_task');
+        $list = $db->where(array(
+                'teaching_video_id'=>$teaching_video_id,
+                'is_correct' => 0))
+            ->field('id,teaching_video_id,member_id,content,sub_time,is_correct')
+            ->order('sub_time desc')
+            ->select();
+        if(empty($list)){
+            $data['status'] = 0;
+            $data['info'] = "无需批改的作业";
+            $this->ajaxReturn($data);
+        }
+        $data['status'] = 1;
+        $data['info'] = "成功";
+        $data['data'] = $list;
+        $this->ajaxReturn($data);
+    }
+    /*
+     * 教学讨论
+     * teaching_video_id 教学视频id
+     */
+    public function teaching_video_discussion(){
+        $teaching_video_id = I('teaching_video_id','','');
+        $db = M("discussion");
+        $where['dis.teaching_video_id'] = $teaching_video_id;
+        $list = $db->alias('dis')
+            ->where($where)
+            ->join('left join cx_discussion_detail as det ON det.discussion_id=dis.id')
+            ->field('det.*,dis.student_id,dis.teacher_id,dis.teaching_video_id')
+            ->order("det.stu_add_time desc")
+            ->select();
+        foreach ($list as $k=>$value){
+            $mem_info =  M("member")->where(array('member_id'=>$value['student_id']))
+                ->field('nick_name,head')
+                ->find();
+            $list[$k]['nick_name'] = $mem_info['nick_name'];
+            $list[$k]['stu_head'] =  $mem_info['head'];
+            $tea_info =  M("teacher")->where(array('teacher_id'=>$value['teacher_id']))
+                ->field('teacher_name,head')
+                ->find();
+            $list[$k]['teacher_name'] = $tea_info['teacher_name'];
+            $list[$k]['tea_head'] =  $tea_info['head'];
+        }
+        $data['status'] = 1;
+        $data['info'] = "成功";
+        $data['data'] = $list;
+        $this->ajaxReturn($data);
+    }
+
+    /*
+     * 老师批改
+     * teacher_id 老师id
+     * correct_task_id 批改作业id
+     * content 批改内容 json
+     */
     public function teacher_remark(){
+        $correct_task_id = I('correct_task_id','','');
+        $teacher_id = I('teacher_id','','');
+        $content = I('content','','');
+        $db = M('teacher_correct_task');
 
+        $r =  $db->where(array(
+            'teacher_id' => $teacher_id,
+            'content' => $content,
+            'add_time' => time()
+        ))->save(array('id'=>$correct_task_id));
+        if(false === $r){
+            $data['status'] = 0;
+            $data['info'] = "失败";
+            $this->ajaxReturn($data);
+        }else{
+            $data['status'] = 1;
+            $data['info'] = "成功";
+            $this->ajaxReturn($data);
+        }
     }
-    /*学生提问*/
+    /*
+     * 学生提问
+     * teaching_video_id 教学视频id
+     * stu_content 学生留言内容
+     */
     public function  stu_put_question(){
+        $teaching_video_id = I('teaching_video_id','','');
+        $stu_content = trim(I('stu_content','',''));
+        $member_id = $_SESSION['USER_KEY_ID'];
 
+        $db = M("discussion");
+        $db_detail = M("discussion_detail");
+        $r = $db->add(array(
+            'teaching_video_id' => $teaching_video_id,
+            'student_id' => $member_id,
+        ));
+        if($r){
+            $detail_data = array(
+                'discussion_id' => $r,
+                'stu_content' => $stu_content,
+                'stu_is_read' => 0,
+                'tea_is_read' => 0,
+                'stu_add_time' => time(),
+            );
+            $db_detail->add($detail_data);
+            $data['status'] = 1;
+            $data['info'] = "成功";
+            $this->ajaxReturn($data);
+        }else{
+            $data['status'] = 0;
+            $data['info'] = "失败";
+            $this->ajaxReturn($data);
+        }
     }
-    /*老师回复*/
+    /*
+     * 老师回复
+     * discussion_id 讨论id
+     * teacher_id 老师id
+     * tea_content 教师留言内容
+     */
     public function tea_reply(){
+        $discussion_id = I('discussion_id','','');
+        $teacher_id = I('teacher_id','','');
+        $tea_content = I('tea_content','','');
+        $db = M("discussion");
+        $db_detail = M("discussion_detail");
 
+
+        $res1 = $db->where(array('id'=>$discussion_id))->save(array('teacher_id'=>$teacher_id));
+        $detail_data = array(
+            'tea_content' => $tea_content,
+            'tea_add_time' => time(),
+        );
+        $res2 = $db_detail->where(array('discussion_id'=>$discussion_id))->save($detail_data);
+        if($res1 && $res2){
+            $data['status'] = 1;
+            $data['info'] = "成功";
+            $this->ajaxReturn($data);
+        }else{
+            $data['status'] = 0;
+            $data['info'] = "失败";
+            $this->ajaxReturn($data);
+        }
     }
-
-
-    /*播放教学视频*/
-    public function play_teaching_video(){
-
-    }
-
-
 }

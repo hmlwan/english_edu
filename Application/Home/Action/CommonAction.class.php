@@ -12,9 +12,9 @@ use Think\Action;
 class CommonAction extends Action
 {
 
-    public function _initialize(){
+    public function __construct(){
 
-        parent::_initialize();
+        parent::__construct();
 
         if(empty($_SESSION['USER_KEY_ID'])){
             $data['status'] = 0;

@@ -44,10 +44,15 @@
 					<td>{$r.title}</td>
 					<!--<td class="sort"><span title="可编辑" column_id="{$r.id}" fieldname="sort" nc_type="inline_edit" class="editable ">{$r.sort}</span></td>-->
 					<!--<td class="title"><span title="可编辑" column_id="{$r.id}" fieldname="title" nc_type="inline_edit" class="editable ">{$r.title}</span></td>-->
-					<td class="name">
-						<if condition="$r['img']">
-							<a href="{$r['img']}"><img style="width: 80px;height: 80px" src="{$r['img']}" alt=""></a>
-						</if>
+
+					<td class="name" style="height:100px;position:relative;">
+						<div style="height:80px;position:absolute;top:-6px;">
+							<a onmouseover="toolTip('<img src= {$r['img']}>')" onmouseout="toolTip()" class="pic-thumb-tip" href="{$r['img']}" target='_blank'>
+								<if condition="$r['img']">
+									<img style="height: 100px" src="{$r['img']}" alt="">
+								</if>
+							</a>
+						</div>
 					</td>
 					<td>
 						<eq name="r.is_recommend" value="0">

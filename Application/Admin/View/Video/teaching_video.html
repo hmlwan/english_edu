@@ -47,7 +47,8 @@
 					<td class="name" style="height:100px;position:relative;">
 						<div style="height:80px;position:absolute;top:-6px;">
 						<a onmouseover="toolTip('<img src= {$r['cover_img']}>')" onmouseout="toolTip()" class="pic-thumb-tip" href="{$r['cover_img']}" target='_blank'>
-							<a href="{$r['cover_img']}"><img style="height: 100px" src="{$r['cover_img']}" alt=""></a>
+							<if condition="$r['cover_img']">
+							<img style="height: 100px" src="{$r['cover_img']}" alt="">
 							</if>
 						</a>
 						</div>

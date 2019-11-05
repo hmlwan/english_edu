@@ -590,7 +590,7 @@ class CommonAction extends Action {
 		if(!$upload_info) { 
 			$this->error($upload->getError());
 		}else{
-			$file_path = "http://".$_SERVER['HTTP_HOST'].'/Uploads/'.ltrim($upload_info[$field]['savepath'],'.').$upload_info[$field]['savename'];
+			$file_path = '/Uploads/'.ltrim($upload_info[$field]['savepath'],'.').$upload_info[$field]['savename'];
 			$upload_info[$field]['file_path'] = $file_path;
 
 			return $upload_info[$field];

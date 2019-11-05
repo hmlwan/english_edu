@@ -9,7 +9,9 @@ use Think\Action;
  */
 class IndexAction extends Action
 {
-    /*注册*/
+    /*
+     * 注册
+     */
     public function reg(){
         if(IS_POST) {
             //增加添加时间,IP
@@ -240,6 +242,8 @@ class IndexAction extends Action
     }
     /*单词学习*/
     public function learn_word(){
+
+
 
     }
 

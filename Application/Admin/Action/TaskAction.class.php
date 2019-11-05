@@ -85,7 +85,25 @@ class TaskAction extends CommonAction
             $this->success('操作成功！');
         }
     }
+    /**
+     * ajax修改类型
+     */
+    public function ajax_save_task()
+    {
+        $data = $this->model->create();
 
+        $data[I('branch')] = I('value');
+        $data['subject_task_id'] = I('id');
+
+        if ($data) {
+            $res = $this->model->save($data);
+        }
+        if ($res === false) {
+            $this->error('修改失败!');
+        } else {
+            $this->success('修改成功!');
+        }
+    }
     public function category()
     {
         $page = I('p', 1, 'trim');

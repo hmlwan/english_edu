@@ -176,7 +176,7 @@
         function add_oneuploadedfile(obj,data){
             obj.find("input[name='textfield']").val(data.file_path);
             obj.find("input[type='hidden']").val(data.file_path);
-
+            obj.find('.thumbnails div').empty();
             var newImg = '<div class="thumb-list-pics"><a href="javascript:void(0);"><img style="width: 100px;height: 100px" src="' + data.file_path  + '" alt=""/></a></div>';
             obj.find('.thumbnails div').append(newImg);
         }
