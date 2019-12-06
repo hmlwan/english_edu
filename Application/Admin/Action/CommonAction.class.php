@@ -542,7 +542,7 @@ class CommonAction extends Action {
 
 	    $savepath = CONTROLLER_NAME.'/'.date('Y').'/'.date('m').'/'.date('d').'/';
 	    $field = 'fileupload';
-
+	
 	    $upload_info = $this->upload_file($savepath,$field);
 
 

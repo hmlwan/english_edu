@@ -239,7 +239,7 @@ class UserAction extends CommonAction {
             }
             if($data){
                 if($id){
-                    $res = $model->where(array('$id'=>$id))->save($data);
+                    $res = $model->where(array('teacher_id'=>$id))->save($data);
                 }else{
                     $data['add_time'] = time();
                     $res = $model->add();

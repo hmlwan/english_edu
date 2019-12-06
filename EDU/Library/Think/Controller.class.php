@@ -213,6 +213,15 @@ abstract class Controller {
             case 'JSON' :
                 // 返回JSON数据格式到客户端 包含状态信息
                 header('Content-Type:application/json; charset=utf-8');
+            	header('Access-Control-Allow-origin:*');
+                header('Access-Control-Allow-Credentials:true');
+                header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+                header('Access-Control-Allow-Headers:Origin, No-Cache, X-Requested-With, x-token,If-Modified-Since, Pragma, Last-Modified, Cache-Control, Expires, Content-Type,X-E4M-With');
+            	
+                header('Content-Type: text/json; charset=utf-8;');
+           		
+     
+            
                 exit(json_encode($data,$json_option));
             case 'XML'  :
                 // 返回xml格式数据

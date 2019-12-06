@@ -89,3 +89,32 @@ function curlPost($url,$postFields){
     curl_close ( $ch );
     return $result;
 }
+
+
+function send($ch,$data){
+    curl_setopt ($ch, CURLOPT_URL, 'https://sms.yunpian.com/v2/sms/single_send.json');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+    $result = curl_exec($ch);
+    $error = curl_error($ch);
+    checkErr($result,$error);
+    return $result;
+}
+function checkErr($result,$error) {
+    if($result === false)
+    {
+        echo 'Curl error: ' . $error;
+    }
+    else
+    {
+        //echo '操作完成没有任何错误';
+    }
+}
+//获得账户
+function get_user($ch,$apikey){
+    curl_setopt ($ch, CURLOPT_URL, 'https://sms.yunpian.com/v2/user/get.json');
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('apikey' => $apikey)));
+    $result = curl_exec($ch);
+    $error = curl_error($ch);
+    checkErr($result,$error);
+    return $result;
+}

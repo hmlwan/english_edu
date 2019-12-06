@@ -1,5 +1,5 @@
 <?php
-
+header('Content-Type:text/html; charset=utf-8');
 return array(
 	'LOAD_EXT_CONFIG' => 'db', 
 //	'TAG_NESTED_LEVEL' =>5,
@@ -15,5 +15,12 @@ return array(
     'APP_GROUP_LIST' => 'Admin,Home,Common',
     'DEFAULT_MODULE' => 'Admin' ,
 
+ 	'UPLOAD_CONFIG' => array(
+        'maxSize' => 3145728,
+        'saveName' => array('uniqid',''),
+        'exts' => array('jpg', 'gif', 'png', 'jpeg'),
+        'autoSub' => true,
+      	'subName'=>''
 
+    ),
 );

@@ -33,7 +33,7 @@
 		</div>
 		<form id="add_form" method="post" action="{:U('Task/edit')}">
 			<input type="hidden" name="form_submit" value="ok" />
-			<input type="hidden" name="id" value="{$vo.id}" />
+			<input type="hidden" name="id" value="{$vo.subject_task_id}" />
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
@@ -129,7 +129,8 @@
 								<volist name="vo['content']['QUESTION_ANSWERS']" id="k">
 									<div class="mb15">
 										<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20" value="{$k.question}">
-										<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" value="{$k.answer}">
+                                      	<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20" value="{$k.sel_con}">
+										<span>答案：</span><input type="text"  name="answer" class="w100 input-txt mr20" value="{$k.answer}">
 										<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>
 									</div>
 								</volist>
@@ -219,6 +220,7 @@
                     var o3 = {
                         'question' : $.trim($("input[name='question']",$(obj3_div[k])).val()),
                         'answer' : $.trim($("input[name='answer']",$(obj3_div[k])).val()),
+                      	'sel_con' : $.trim($("input[name='sel_con']",$(obj1_div[k])).val()),
                     };
                     if(!o3){
                         continue;
@@ -297,7 +299,8 @@
                 }
                 obj3.append('<div class="mb15">'+
                     '<span>题目：</span><input type="text" name="question" class="w400 input-txt mr20">'+
-                    '<span>答案：</span><input type="text"  name="answer" class="w400 input-txt mr20" >'+
+                   '<span>选项：</span><input type="text" name="sel_con" class="w250 input-txt mr20">'+
+                    '<span>答案：</span><input type="text"  name="answer" class="w100 input-txt mr20" >'+
                     '<a href="JavaScript:void(0);"  class="ncap-btn-big ncap-btn-red DelTaskItem">删除</a>'+
                     '</div>');
 			}

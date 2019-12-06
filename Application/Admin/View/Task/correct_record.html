@@ -35,7 +35,7 @@
 					<td class="sign"><i class="ico-check"></i></td>
 					<td class="handle">
 						<!--<a class="btn blue" href="{:U('edit',array('id'=>$r['subject_task_id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>-->
-						<a class="btn red" href="{:U('del',array('id'=>$r['id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这 1 项吗?')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
+						<a class="btn red" href="{:U('correct_record_del',array('id'=>$r['id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这 1 项吗?')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
 					</td>
 					<!--<td class="task_name"><span title="可编辑" column_id="{$r.subject_task_id}" fieldname="task_name" nc_type="inline_edit" class="editable ">{$r.task_name}</span></td>-->
 					<!--<td class="replace_mark"><span title="可编辑" column_id="{$r.id}" fieldname="replace_mark" nc_type="inline_edit" class="editable ">{$r.replace_mark}</span></td>-->
@@ -112,7 +112,7 @@
 			};
 			var id = ids.join(',');
 			if(confirm('确认这些吗？')){
-				$.getJSON('{:U("del")}',{'id':id},function(data){
+				$.getJSON('{:U("correct_record_del")}',{'id':id},function(data){
 					if(data.status) {
 						location.reload();
 					}else {

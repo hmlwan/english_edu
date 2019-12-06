@@ -15,12 +15,19 @@ class ApiAction extends CommonAction
      *  nick_name 昵称
      */
     public function update_mem_info(){
+     
         $db = M('member');
         $member_id = $_SESSION['USER_KEY_ID'];
         $nick_name = trim(I('nick_name','',''));
+        $head = trim(I('head','',''));
         if(!$nick_name){
             $data['status'] = 0;
             $data['info'] = "请输入昵称";
+            $this->ajaxReturn($data);
+        }
+      if(!$head){
+            $data['status'] = 0;
+            $data['info'] = "请上传头像";
             $this->ajaxReturn($data);
         }
         if(!$member_id){
@@ -69,7 +76,7 @@ class ApiAction extends CommonAction
         $res = $db->where(array('teacher_id'=>$teacher_id))->save(array('is_online'=>$is_online));
         if(false !== $res ){
             $data['status'] = 1;
-            $data['info'] = "失败";
+            $data['info'] = "成功";
         }else{
             $data['status'] = 0;
             $data['info'] = "失败";
@@ -142,7 +149,7 @@ class ApiAction extends CommonAction
         $db = M('teaching_video');
 
         $teaching_video_id = I('teaching_video_id','','');
-        if($teaching_video_id){
+        if(!$teaching_video_id){
             $data['status'] = 0;
             $data['info'] = "教学视频不存在";
             $this->ajaxReturn($data);
@@ -184,6 +191,8 @@ class ApiAction extends CommonAction
         );
         if($correct_task_id){
             $info = $db->where(array('id'=>$correct_task_id))->find();
+          dd( $info );
+          Think\Log::write(json_encode($info));
             if($info['is_correct'] == 1){ //批改完
                 $r = $db->add($save_info);
             }else{ //未批改
@@ -217,6 +226,10 @@ class ApiAction extends CommonAction
             ->field('id,teaching_video_id,member_id,content,sub_time,is_correct')
             ->order('sub_time desc')
             ->select();
+        foreach ($list as &$value){
+           $mem_info = M('member')->where(array('member_id'=>$value['member_id']))->field('head,nick_name,phone')->find();
+            $value['mem_info'] = $mem_info;
+        }
         if(empty($list)){
             $data['status'] = 0;
             $data['info'] = "无需批改的作业";
@@ -228,7 +241,7 @@ class ApiAction extends CommonAction
         $this->ajaxReturn($data);
     }
     /*
-     * 教学讨论
+     * 教学视频讨论列表
      * teaching_video_id 教学视频id
      */
     public function teaching_video_discussion(){
@@ -349,5 +362,26 @@ class ApiAction extends CommonAction
             $data['info'] = "失败";
             $this->ajaxReturn($data);
         }
+    }
+   /*上传教师二维码*/
+    public function tea_qrcode(){
+        $qrcode_url = I('qrcode_url');
+        $teacher_id = I('teacher_id');
+
+        if(!$qrcode_url){
+            $data['status'] = 0;
+            $data['info'] = "请上传教师二维码";
+            $this->ajaxReturn($data);
+        }
+        $m_teacher = D('teacher');
+        $res = $m_teacher->where(array('teacher_id'=>$teacher_id))->save(array('qrcode_url'=>$qrcode_url));
+        if(!$res){
+            $data['status'] = 0;
+            $data['info'] = "上传失败";
+            $this->ajaxReturn($data);
+        }
+        $data['status'] = 1;
+        $data['info'] = "上传成功";
+        $this->ajaxReturn($data);
     }
 }

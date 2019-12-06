@@ -44,7 +44,7 @@ class TaskAction extends CommonAction
             if ($data) {
                 $data['op_man'] = time();
                 if ($id) {
-                    $res = $this->model->where('id=' . $id)->save($data);
+                    $res = $this->model->where('subject_task_id=' . $id)->save($data);
                 } else {
                     $data['create_time'] = time();
                     $res = $this->model->add($data);
@@ -77,8 +77,9 @@ class TaskAction extends CommonAction
         $ids = I('id');
         $sub_ids = explode(',', $ids);
         $where = array('subject_task_id' => array('in', $sub_ids));
-
+		
         $res = $this->model->where($where)->delete();
+
         if ($res === false) {
             $this->error('操作失败！');
         } else {
@@ -288,6 +289,23 @@ class TaskAction extends CommonAction
         $this->assign('list', $res);
         $this->assign('page', $show);
         $this->display();
+    }
+   /**
+     *删除
+     */
+    public function correct_record_del()
+    {
+        $ids = I('id');
+        $sub_ids = explode(',', $ids);
+        $where = array('id' => array('in', $sub_ids));
+		
+        $res = M('teacher_correct_task')->where($where)->delete();
+
+        if ($res === false) {
+            $this->error('操作失败！');
+        } else {
+            $this->success('操作成功！');
+        }
     }
     /*评语详情*/
     public function view(){
