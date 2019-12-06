@@ -76,6 +76,64 @@ class WordAction extends CommonAction
             $this->success('操作成功！');
         }
     }
+    public function type()
+    {
+        $page = I('p', 1, 'trim');
+        $rp = 8;
 
+        $count = M('word_type')->count();
+        $Page = new \Think\Page($count, $rp);
+        $show = $Page->show();
+        $res = M('word_type')->order('id asc')->page($page . ',' . $rp)->select();
 
+        cookie('pageUrl', funcurl());
+        $this->assign('list', $res);
+        $this->assign('page', $show);
+        $this->display();
+    }
+
+    /**
+     * 修改
+     */
+    public function type_edit()
+    {
+
+        if (IS_POST && I('form_submit') == 'ok') {
+
+            $data = M('word_type')->create();
+            $id = I('id');
+            if ($data) {
+                $data['op_time'] = time();
+                if ($id) {
+                    $res = M('word_type')->where('id=' . $id)->save($data);
+                } else {
+                    $res = M('word_type')->add($data);
+                }
+            }
+            if (false === $res) {
+                $this->error('操作失败!', cookie('pageUrl'));
+            } else {
+                $this->success('操作成功！', cookie('pageUrl'));
+            }
+        } else {
+            $id = I('id');
+            $res = M('word_type')->find($id);
+            $this->assign('vo', $res);
+            $this->display();
+
+        }
+    }
+    public function type_del()
+    {
+        $ids = I('id');
+        $sub_ids = explode(',', $ids);
+        $where = array('id' => array('in', $sub_ids));
+
+        $res =  M('word_type')->where($where)->delete();
+        if ($res === false) {
+            $this->error('操作失败！');
+        } else {
+            $this->success('操作成功！');
+        }
+    }
 }
