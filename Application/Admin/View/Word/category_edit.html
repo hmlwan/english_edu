@@ -9,12 +9,12 @@
 			<div class="item-title">
 				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
-					<h3>单词类型- 修改</h3>
-					<h5>单词类型的添加、修改和删除</h5>
+					<h3>单词属性- 修改</h3>
+					<h5>单词属性的添加、修改和删除</h5>
 				</div>
 			</div>
 		</div>
-		<form id="add_form" method="post" action="{:U('Word/type_edit')}">
+		<form id="add_form" method="post" action="{:U('Word/category_edit')}">
 			<input type="hidden" name="form_submit" value="ok" />
 			<input type="hidden" name="id" value="{$vo.id}" />
 			<div class="ncap-form-default">
@@ -30,22 +30,28 @@
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="status"><em>*</em>状态</label>
+						<label for="word_type_id"><em>*</em>选择类型</label>
 					</dt>
 					<dd class="opt">
-						<div class="onoff">
-							<if condition="$vo['id'] eq ''">
-								<label class="cb-enable selected" for="status1" >启用</label>
-								<label class="cb-disable" for="status0">禁用</label>
-								<else />
-								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
-							<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
-							</if>
-							<input type="radio" value="1" name="status" id="status1">
-							<input type="radio" value="0" name="status" id="status0">
-						</div>
+						<select name="word_type_id" class="w200" >
+							<option value="type_list">--请选择--</option>
+							<volist name="type_list" id="s_val">
+								<option value="{$s_val.id}" <if condition="$vo['word_type_id'] eq $s_val['id']">selected</if>>{$s_val.name}</option>
+							</volist>
+						</select>
+						<span class="err"></span>
+						<p class="notic"></p>
 					</dd>
 				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sort"><em>*</em>排序</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="sort" name="sort" class="w200 input-txt" value="{$vo.sort}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
 				</dl>
 				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
 			</div>
@@ -87,7 +93,7 @@
                     success:function(json_data){
                         console.log(json_data);
                         layer.alert(json_data.info,function(){
-                            window.location.href= "{:U('type')}";
+                            window.location.href= "{:U('category')}";
                         });
 
                     }

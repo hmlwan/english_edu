@@ -9,8 +9,8 @@
 			<div class="item-title">
 				{$back_htn_html}
 				<div class="subject">
-					<h3>单词类型列表</h3>
-					<h5>单词类型的添加、修改和删除</h5>
+					<h3>词源列表</h3>
+					<h5>词源的添加、修改和删除</h5>
 				</div>
 			</div>
 		</div>
@@ -19,9 +19,9 @@
 				<tr>
 					<th width="25" align="center" class="sign"><i class="ico-check"></i></th>
 					<th width="160" class="handle" align="center">操作</th>
-					<th width="200" align="center">名称</th>
-					<th width="200" align="center">状态</th>
-					<th width="200" align="center">创建时间</th>
+					<th width="200" align="center">排序</th>
+					<th width="200" align="center">单词</th>
+					<th width="100" align="center">关联词</th>
 					<th width="200" align="center">操作时间</th>
 					<th></th>
 				</tr>
@@ -31,19 +31,13 @@
 				<tr data-id="{$r.id}">
 					<td class="sign"><i class="ico-check"></i></td>
 					<td class="handle">
-						<a class="btn blue" href="{:U('type_edit',array('id'=>$r['id']))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
-						<!--<a class="btn red" href="{:U('type_del',array('id'=>$r['id']))}" onclick="if(confirm('删除后将不能恢复，确认删除这 1 项吗?')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>-->
+						<a class="btn blue" href="{:U('edit',array('id'=>$r['id'],'model'=>'word_e','index'=>'etymology'))}"><i class="fa fa-pencil-square-o"></i>编辑</a>
+						<a class="btn red" href="{:U('del',array('id'=>$r['id'],'model'=>'word_e'))}" onclick="if(confirm('删除后将不能恢复，确认删除这 1 项吗?')){return true;} else {return false;}"><i class="fa fa-trash-o"></i>删除</a>
 					</td>
-					<!--<td class="task_name"><span title="可编辑" column_id="{$r.subject_task_id}" fieldname="task_name" nc_type="inline_edit" class="editable ">{$r.task_name}</span></td>-->
+					<td><span title="可编辑" column_id="{$r.id}" fieldname="sort" nc_type="inline_edit" class="editable ">{$r.sort}</span></td>
 					<!--<td class="replace_mark"><span title="可编辑" column_id="{$r.id}" fieldname="replace_mark" nc_type="inline_edit" class="editable ">{$r.replace_mark}</span></td>-->
-					<td>{$r.name}</td>
-					<td>
-						<eq name="r.status" value="0">
-						<span class="no"><i class="fa fa-ban"></i>禁用</span>
-						<else/>
-						<span class="yes"><i class="fa fa-check-circle"></i>启用</span>
-						</eq>
-					</td>
+					<td>{$r.word_name}</td>
+					<td>{$r.relation_word}</td>
 					<td>{$r.op_time|date="Y-m-d H:i:s",###}</td>
 					<td></td>
 				</tr>
@@ -61,7 +55,7 @@
 				usepager: false,// 不翻页
 				striped:false,// 不使用斑马线
 				resizable: false,// 不调节大小
-				title: '单词类型',// 表格标题
+				title: '词源列表',// 表格标题
 				reload: false,// 不使用刷新
 				url: false,
 				striped: true,
@@ -71,16 +65,16 @@
 				usepager:false,
 				buttons : [
 					{display: '<i class="fa fa-plus"></i>新增数据', name : 'add', bclass : 'add',title : '将批量新增数据', onpress : fg_operation },
-//					{display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation },
+					{display: '<i class="fa fa-trash"></i>批量删除', name : 'del', bclass : 'del', title : '将选定行数据批量删除', onpress : fg_operation },
 				],
 				sortname: "sort",
 				sortorder: "asc",
 			});
-			$('span[nc_type="inline_edit"]').inline_edit({c:'Task',a:'ajax_save_task'});
+			$('span[nc_type="inline_edit"]').inline_edit({c:'WordLibrary',a:'ajax_save_wl?model=word_e'});
 		});
 			function fg_operation(name,bDiv){
 				if(name == 'add') {
-					window.location.href = '{:U("type_edit")}';
+					window.location.href = '{:U("edit?model=word_e&index=etymology")}';
 				}else if(name == 'del'){
 					if($('.trSelected',bDiv).length == 0 ){
 
@@ -99,7 +93,7 @@
 			};
 			var id = ids.join(',');
 			if(confirm('确认这些吗？')){
-				$.getJSON('{:U("type_del")}',{'id':id},function(data){
+				$.getJSON('{:U("del")}',{'id':id,'model':'word_e'},function(data){
 					if(data.status) {
 						location.reload();
 					}else {

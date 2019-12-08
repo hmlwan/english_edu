@@ -7,45 +7,57 @@
 	<div class="page">
 		<div class="fixed-bar">
 			<div class="item-title">
-				<a class="back" href="{:U(CONTROLLER_NAME.'/category')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
+				<a class="back" href="{:U(CONTROLLER_NAME.'/synonyms')}" title="返回列表"><i class="fa fa-arrow-circle-o-left"></i></a>
 				<div class="subject">
-					<h3>单词类型- 修改</h3>
-					<h5>单词类型的添加、修改和删除</h5>
+					<h3>修改</h3>
+					<h5>添加、修改和删除</h5>
 				</div>
 			</div>
 		</div>
-		<form id="add_form" method="post" action="{:U('Word/type_edit')}">
+		<form id="add_form" method="post" action="{:U('WordLibrary/edit')}" index="{$index}">
 			<input type="hidden" name="form_submit" value="ok" />
 			<input type="hidden" name="id" value="{$vo.id}" />
+			<input type="hidden" name="model" value="{$model}" />
 			<div class="ncap-form-default">
 				<dl class="row">
 					<dt class="tit">
-						<label for="name"><em>*</em>名称</label>
+						<label for="word_name"><em>*</em>单词</label>
 					</dt>
 					<dd class="opt">
-						<input type="text" id="name" name="name" class="w200 input-txt" value="{$vo.name}">
+						<input type="text" id="word_name" name="word_name" class="w450 input-txt" value="{$vo.word_name}">
 						<span class="err"></span>
 						<p class="notic"></p>
 					</dd>
 				</dl>
 				<dl class="row">
 					<dt class="tit">
-						<label for="status"><em>*</em>状态</label>
+						<label for="relation_word"><em>*</em>关联词</label>
 					</dt>
 					<dd class="opt">
-						<div class="onoff">
-							<if condition="$vo['id'] eq ''">
-								<label class="cb-enable selected" for="status1" >启用</label>
-								<label class="cb-disable" for="status0">禁用</label>
-								<else />
-								<label class="cb-enable <if condition="$vo['status'] eq 1">selected</if>" for="status1" >启用</label>
-							<label class="cb-disable <if condition="$vo['status'] eq 0">selected</if>" for="status0">禁用</label>
-							</if>
-							<input type="radio" value="1" name="status" id="status1">
-							<input type="radio" value="0" name="status" id="status0">
-						</div>
+						<input type="text" id="relation_word" name="relation_word" class="w450 input-txt" value="{$vo.relation_word}">
+						<span class="err"></span>
+						<p class="notic"></p>
 					</dd>
 				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="sort"><em>*</em>排序</label>
+					</dt>
+					<dd class="opt">
+						<input type="text" id="sort" name="sort" class="w500 input-txt" value="{$vo.sort}">
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
+				</dl>
+				<dl class="row">
+					<dt class="tit">
+						<label for="ralation_detail"><em>*</em>关联词详情</label>
+					</dt>
+					<dd class="opt">
+						<textarea name="ralation_detail" id="ralation_detail" cols="30" rows="10">{$vo.ralation_detail}</textarea>
+						<span class="err"></span>
+						<p class="notic"></p>
+					</dd>
 				</dl>
 				<div class="bot"><a href="JavaScript:void(0);" class="ncap-btn-big ncap-btn-green" id="submitBtn">确认提交</a></div>
 			</div>
@@ -64,7 +76,7 @@
 		//按钮先执行验证再提交表单
         var KE;
         KindEditor.ready(function(K) {
-            KE = K.create("textarea[name='chinese_interpretation_con'],textarea[name='word_origin'],textarea[name='synonym']", option);
+            KE = K.create("textarea[name='ralation_detail'],textarea[name='word_origin'],textarea[name='synonym']", option);
             KE.appendHtml = function(id,val) {
                 this.html(this.html() + val);
                 if (this.isCreated) {
@@ -79,6 +91,7 @@
             if($("#add_form").valid()){
                 var sub_data = $('#add_form').serialize();
                 var response_url = $('#add_form').attr('action');
+                var index = $('#add_form').attr('index');
                 $.ajax({
                     type: 'POST',
                     dataType: 'json',
@@ -87,7 +100,7 @@
                     success:function(json_data){
                         console.log(json_data);
                         layer.alert(json_data.info,function(){
-                            window.location.href= "{:U('type')}";
+                            window.location.href= "{:U('"+index+"')}";
                         });
 
                     }
@@ -101,11 +114,15 @@
 				error_td.append(error);
 			},
 			rules : {
-				name	: 	{required : true},
+                word_name	: 	{required : true},
+				relation_word	: 	{required : true},
+				ralation_detail	: 	{required : true},
 
 			},
 			messages : {
-				name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+                word_name			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				relation_word			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
+				ralation_detail			:	{required:'<i class="fa fa-exclamation-circle"></i>不能为空'},
 			}
 		});
 
